@@ -1188,6 +1188,17 @@ body {
 .case-block {
   margin-bottom: 18px;
 }
+/* Action 裡的條列清單樣式 */
+.case-block ul {
+  margin: 0 0 8px;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.case-block li {
+  margin-bottom: 4px;
+  line-height: 1.7;
+}
 
 /* 右側圖片 */
 .case-image img {
@@ -1270,5 +1281,6 @@ body {
 .fade-in-right {
   transform: translateX(40px);
 }
+
 
 
