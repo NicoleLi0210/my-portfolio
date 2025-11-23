@@ -1066,6 +1066,183 @@ body {
     padding: 6px 10px;
   }
 }
+/* ----------------------
+   Portfolio – Chicony
+---------------------- */
+.portfolio-page {
+  padding: 80px 0 70px;
+  background: #ffffff;
+}
+
+.breadcrumb {
+  font-size: 0.82em;
+  color: var(--light-text);
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.breadcrumb a {
+  color: var(--light-text);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--secondary-text);
+  text-decoration: underline;
+}
+
+.breadcrumb-sep {
+  margin: 0 4px;
+}
+
+.portfolio-hero {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.portfolio-eyebrow {
+  font-size: 0.8em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c0c0c0;
+  margin: 4px 0 10px;
+}
+
+.portfolio-title {
+  font-size: 2.1em;
+  font-weight: 700;
+  color: var(--primary-text);
+  margin: 0 0 12px;
+}
+
+.portfolio-subtitle {
+  font-size: 0.98em;
+  color: var(--secondary-text);
+  line-height: 1.9;
+  max-width: 640px;
+  margin: 0 0 20px;
+}
+
+.portfolio-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.portfolio-topic {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #fffaf0;
+  color: var(--primary-text);
+  font-size: 0.86em;
+  text-decoration: none;
+  border: 1px solid #ffe199;
+}
+
+.portfolio-topic:hover {
+  background: #ffe76b;
+}
+
+.portfolio-hero-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Case section */
+.case-section {
+  padding: 40px 0;
+  border-top: 1px solid #f0f0f0;
+}
+
+.case-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+  gap: 26px;
+  align-items: flex-start;
+}
+
+.case-layout-reverse {
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+}
+
+.case-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--primary-text);
+  margin: 0 0 6px;
+}
+
+.case-tagline {
+  font-size: 0.92em;
+  color: var(--secondary-text);
+  margin-bottom: 18px;
+}
+
+.case-block {
+  margin-bottom: 14px;
+}
+
+.case-block h3 {
+  font-size: 0.9em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b0b0b0;
+  margin: 0 0 4px;
+}
+
+.case-block p,
+.case-block ul {
+  font-size: 0.95em;
+  color: var(--secondary-text);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.case-block ul {
+  padding-left: 18px;
+}
+
+.case-block li {
+  margin-bottom: 4px;
+}
+
+.case-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+}
+
+.portfolio-back {
+  margin-top: 32px;
+  text-align: left;
+}
+
+.portfolio-back-link {
+  font-size: 0.9em;
+  color: var(--secondary-text);
+  text-decoration: none;
+}
+
+.portfolio-back-link:hover {
+  color: var(--primary-text);
+  text-decoration: underline;
+}
+
+/* RWD */
+@media (max-width: 900px) {
+  .case-layout,
+  .case-layout-reverse {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 
 
