@@ -1,6 +1,12 @@
 /* ----------------------
    變數與基底
 ---------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
@@ -815,7 +821,8 @@ body {
 
 /* 讓卡片「大張」，一頁一張 */
 .tool-mobile-card {
-  min-width: 92%;
+   flex: 0 0 92%; 
+   min-width: 92%;
   max-width: 100%;
   background: #fffdf8;
   border-radius: 16px;
@@ -1048,7 +1055,19 @@ body {
   padding: 6px 12px;
   text-align: center;
   border-bottom: 1px solid #eee;
+  line-height: 1.6;
+  z-index: 900;
 }
+
+/* 手機字再小一點、行高舒適 */
+@media (max-width: 600px) {
+  .site-note {
+    font-size: 0.7em;
+    padding: 6px 10px;
+  }
+}
+
+
 
 
 
