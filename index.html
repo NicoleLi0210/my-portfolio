@@ -875,32 +875,6 @@
         cards.forEach((card) => io.observe(card));
       }
     })();
-
-    // Tools mobile slider arrows
-    (function () {
-      const slider = document.querySelector('.tool-mobile-slider');
-      if (!slider) return;
-
-      const cards = slider.querySelectorAll('.tool-mobile-card');
-      const prev = document.querySelector('.tool-slider-nav.prev');
-      const next = document.querySelector('.tool-slider-nav.next');
-      const gap = 16;
-
-      function getAmount() {
-        if (!cards.length) return slider.clientWidth * 0.8;
-        return cards[0].offsetWidth + gap;
-      }
-
-      prev &&
-        prev.addEventListener('click', () => {
-          slider.scrollBy({ left: -getAmount(), behavior: 'smooth' });
-        });
-
-      next &&
-        next.addEventListener('click', () => {
-          slider.scrollBy({ left: getAmount(), behavior: 'smooth' });
-        });
-    })();
   </script>
   <script>
   (function () {
@@ -923,6 +897,7 @@
 
 </body>
 </html>
+
 
 
 
