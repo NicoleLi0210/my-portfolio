@@ -329,7 +329,7 @@
     </div>
   </section>
 
-  <!-- 2017 - 2019｜大八餐飲集團（只有經歷區塊，可不放在選單） -->
+  <!-- 2017 - 2019｜大八餐飲集團 -->
   <section id="experience-daba" class="experience-section reveal-on-scroll">
     <div class="container experience-layout">
       <div class="experience-left">
@@ -356,6 +356,7 @@
   <!-- 關於我的工作風格與思考框架 -->
   <section id="work-style" class="work-style-section">
     <div class="container">
+      <!-- 已改成純文字樣式，沒有白底卡片 -->
       <div class="work-style-eyebrow-block">
         <span>不只追求事情完成，</span><br />
         <span>更讓成果可被理解、可被延續、可被移轉。</span>
@@ -369,7 +370,7 @@
         無論是技術整合、流程優化，或是跨部門協作，我都能將抽象需求轉化為可執行的系統方案。
       </p>
 
-      <!-- 四象限黃色卡片 -->
+      <!-- 四象限黃色卡片（已移除掃光覆蓋效果） -->
       <div class="framework-grid">
         <div class="framework-card">
           <h3>Define</h3>
@@ -834,39 +835,37 @@
     })();
 
     // Nav submenu：桌機 hover、手機點擊展開
-    // Nav submenu：桌機 hover、手機點擊展開
-(function () {
-  const submenuItems = document.querySelectorAll('.nav-item.has-submenu');
+    (function () {
+      const submenuItems = document.querySelectorAll('.nav-item.has-submenu');
 
-  submenuItems.forEach((item) => {
-    const trigger = item.querySelector('.nav-link');
-    const links = item.querySelectorAll('.submenu a');
+      submenuItems.forEach((item) => {
+        const trigger = item.querySelector('.nav-link');
+        const links = item.querySelectorAll('.submenu a');
 
-    // 手機：點主選單展開 / 收起
-    trigger.addEventListener('click', (e) => {
-      if (window.innerWidth <= 900) {
-        e.preventDefault();
-        item.classList.toggle('open');
-      }
-    });
+        // 手機：點主選單展開 / 收起
+        trigger.addEventListener('click', (e) => {
+          if (window.innerWidth <= 900) {
+            e.preventDefault();
+            item.classList.toggle('open');
+          }
+        });
 
-    // 手機：點子選單連結後，自動把選單收起
-    links.forEach((link) => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 900) {
-          item.classList.remove('open');
+        // 手機：點子選單連結後，自動把選單收起
+        links.forEach((link) => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 900) {
+              item.classList.remove('open');
+            }
+          });
+        });
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) {
+          submenuItems.forEach((item) => item.classList.remove('open'));
         }
       });
-    });
-  });
-
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 900) {
-      submenuItems.forEach((item) => item.classList.remove('open'));
-    }
-  });
-})();
-
+    })();
 
     // Skills flip cards：桌機 hover、手機滾動自動翻面
     (function () {
@@ -931,4 +930,3 @@
   </script>
 </body>
 </html>
-
