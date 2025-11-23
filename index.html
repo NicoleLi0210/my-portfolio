@@ -834,26 +834,39 @@
     })();
 
     // Nav submenu：桌機 hover、手機點擊展開
-    (function () {
-      const submenuItems = document.querySelectorAll('.nav-item.has-submenu');
+    // Nav submenu：桌機 hover、手機點擊展開
+(function () {
+  const submenuItems = document.querySelectorAll('.nav-item.has-submenu');
 
-      submenuItems.forEach((item) => {
-        const trigger = item.querySelector('.nav-link');
+  submenuItems.forEach((item) => {
+    const trigger = item.querySelector('.nav-link');
+    const links = item.querySelectorAll('.submenu a');
 
-        trigger.addEventListener('click', (e) => {
-          if (window.innerWidth <= 900) {
-            e.preventDefault();
-            item.classList.toggle('open');
-          }
-        });
-      });
+    // 手機：點主選單展開 / 收起
+    trigger.addEventListener('click', (e) => {
+      if (window.innerWidth <= 900) {
+        e.preventDefault();
+        item.classList.toggle('open');
+      }
+    });
 
-      window.addEventListener('resize', () => {
-        if (window.innerWidth > 900) {
-          submenuItems.forEach((item) => item.classList.remove('open'));
+    // 手機：點子選單連結後，自動把選單收起
+    links.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 900) {
+          item.classList.remove('open');
         }
       });
-    })();
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) {
+      submenuItems.forEach((item) => item.classList.remove('open'));
+    }
+  });
+})();
+
 
     // Skills flip cards：桌機 hover、手機滾動自動翻面
     (function () {
@@ -918,3 +931,4 @@
   </script>
 </body>
 </html>
+
