@@ -6,8 +6,9 @@ body {
   margin: 0;
   padding: 0;
   max-width: 100%;
-  overflow-x: hidden;  /* ✅ 防止任何區塊把畫面往右撐出去 */
+  overflow-x: hidden;
 }
+
 :root {
   --primary-text: #333333;
   --secondary-text: #666666;
@@ -55,7 +56,7 @@ body {
   }
 }
 
-/* 工作風格區塊掃光：60 秒跑一次，前 2% 做掃光，剩下停留在右側 */
+/* 工作風格區塊掃光：60 秒跑一次 */
 @keyframes frameworkSweep {
   0% {
     transform: translateX(-120%);
@@ -71,7 +72,7 @@ body {
 body {
   font-family: 'Noto Sans TC', sans-serif;
   margin: 0;
-  padding: 0;
+  padding: 60px 0 0; /* 給 fixed header 騰出空間 */
   line-height: 1.6;
   color: var(--secondary-text);
   background-color: var(--background-white);
@@ -93,8 +94,10 @@ body {
   background: var(--background-white);
   border-bottom: 1px solid var(--border-light);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  position: sticky;
+  position: fixed;        /* 固定在頂端 */
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 1000;
 }
 
@@ -530,58 +533,42 @@ body {
   text-align: left;
 }
 
-.work-style-eyebrow {
+/* 上方白底小標（兩行合在一起） */
+.work-style-eyebrow-block {
+  display: inline-block;
+  padding: 10px 16px;
+  background: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
   font-size: 1.05em;
   font-weight: 500;
   color: var(--primary-text);
-  margin: 0 0 14px;
+  margin-bottom: 22px;
 }
 
 .work-style-title {
   font-size: 2.2em;
   font-weight: 700;
   color: var(--primary-text);
-  margin: 0 0 10px;
+  margin: 0;
+}
+
+/* 標題下方黃色底線 */
+.work-style-underline {
+  width: 80px;
+  height: 4px;
+  background: var(--accent-yellow);
+  margin: 16px 0 20px;
 }
 
 .work-style-sub {
   max-width: 760px;
   font-size: 1.02em;
   line-height: 1.9;
-  margin-top: 8px;
+  margin-top: 0;
 }
 
-/* ----------------------
-   工作風格與思考框架
----------------------- */
-.work-style-section {
-  background: #fff7da;
-  padding: 80px 0 70px;
-  text-align: left;
-}
-
-.work-style-eyebrow {
-  font-size: 1.05em;
-  font-weight: 500;
-  color: var(--primary-text);
-  margin: 0 0 14px;
-}
-
-.work-style-title {
-  font-size: 2.2em;
-  font-weight: 700;
-  color: var(--primary-text);
-  margin: 0 0 10px;
-}
-
-.work-style-sub {
-  max-width: 760px;
-  font-size: 1.02em;
-  line-height: 1.9;
-  margin-top: 8px;
-}
-
-/* 四象限黃色條狀卡片 - 完全比齊你的版型 */
+/* 四象限黃色條狀卡片 - 比齊你的版型 */
 .framework-grid {
   margin-top: 32px;
   display: grid;
@@ -593,7 +580,7 @@ body {
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
 }
 
-/* 掃光 overlay（維持原本效果，只是套在新的黃底上） */
+/* 掃光 overlay */
 .framework-grid::after {
   content: '';
   position: absolute;
@@ -619,7 +606,7 @@ body {
   line-height: 1.8;
 }
 
-/* 產生卡片之間的斜切分隔線（除第一張以外） */
+/* 產生卡片之間的斜切分隔線 */
 .framework-card + .framework-card::before {
   content: '';
   position: absolute;
@@ -632,7 +619,7 @@ body {
   transform-origin: center;
 }
 
-/* 右側加一條非常淡的邊界，讓每格有一點分割感 */
+/* 右側淡淡分割線 */
 .framework-card:not(:last-child) {
   box-shadow: 1px 0 0 rgba(255, 255, 255, 0.4);
 }
@@ -654,7 +641,6 @@ body {
   color: var(--light-text);
   text-align: center;
 }
-
 
 /* ----------------------
    Core Competence
@@ -736,8 +722,8 @@ body {
 .skill-card-back {
   background: #ffffff;
   transform: rotateY(180deg);
-   padding: 20px 24px;
-   overflow: visible; 
+  padding: 20px 24px;
+  overflow: visible;
   text-align: left;
   color: var(--primary-text);
 }
@@ -804,7 +790,6 @@ body {
   max-width: 680px;
 }
 
-/* Desktop grid */
 /* Desktop 矩陣版：用途 × 流程 × 型態 × 工具 */
 .tool-matrix-grid {
   margin-top: 30px;
@@ -813,7 +798,6 @@ body {
   gap: 10px;
 }
 
-/* 每一列（含 4 個欄位） */
 .tool-matrix-row {
   display: grid;
   grid-template-columns: 1.1fr 1.4fr 1.4fr 2.1fr;
@@ -830,7 +814,7 @@ body {
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
 }
 
-/* 標題列（用途／流程或手法／型態／工具） */
+/* 標題列 */
 .tool-row-header .tool-cell {
   background: transparent;
   box-shadow: none;
@@ -842,7 +826,7 @@ body {
   text-align: center;
 }
 
-/* 交錯底色：淺黃／灰，對齊你原本設計 */
+/* 交錯底色 */
 .tool-row-light .tool-cell {
   background: #fffaf0;
 }
@@ -851,37 +835,18 @@ body {
   background: #e7e7e7;
 }
 
-/* 用途欄位字稍微粗一點 */
 .tool-purpose {
   font-weight: 600;
 }
 
-/* 主要標題（Schema、SEO、優先度模型）＋黃線 */
-.tool-main-label {
-  position: relative;
-  display: inline-block;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.tool-main-label::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: #ffd700;
-  bottom: -3px;
-}
-
-/* 流程／工具的「黃線文字」 */
+/* 黃線標籤 */
 .tool-line-tag {
   position: relative;
   display: inline-block;
   margin-right: 14px;
   margin-bottom: 4px;
   font-size: 0.9em;
-  white-space: nowrap;      /* ✅ 避免 CI/CD、Scrum 之類被拆行 */
+  white-space: nowrap;
 }
 
 .tool-line-tag::after {
@@ -893,7 +858,6 @@ body {
   background: #ffd700;
   bottom: -3px;
 }
-
 
 /* Mobile slider wrapper */
 .tool-mobile-wrapper {
@@ -1097,11 +1061,6 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .skill-card-inner {
-    height: 380px;
-    min-height: 380px;
-  }
-   
   /* 手機不需要掃光效果 */
   .framework-grid::after {
     display: none;
@@ -1109,6 +1068,11 @@ body {
 
   .skills-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skill-card-inner {
+    height: 380px;
+    min-height: 380px;
   }
 
   .tool-matrix-grid {
@@ -1154,9 +1118,3 @@ body {
     min-width: 88%;
   }
 }
-
-
-
-
-
-
