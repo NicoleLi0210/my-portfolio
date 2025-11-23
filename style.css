@@ -16,6 +16,18 @@
     100% { background-position-y: 0%; }
 }
 
+@keyframes floatText {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-10px); }   /* 往上 */
+    100% { transform: translateY(0); }
+}
+
+@keyframes floatBg {
+    0%   { transform: translate(-50%, 0); }
+    50%  { transform: translate(-50%, 10px); }  /* 往下，方向相反 */
+    100% { transform: translate(-50%, 0); }
+}
+
 @keyframes float {
     0%   { transform: translateY(0px); }
     50%  { transform: translateY(-5px); }
@@ -81,8 +93,9 @@ body {
 /* ---------------------- */
 /* Hero / Profile */
 /* ---------------------- */
+/* Hero 區塊 */
 .hero-landing {
-    padding: 80px 0 90px;
+    padding: 80px 0 60px;   /* 原本 80px 0 90px → 把底部縮小 */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,8 +125,8 @@ body {
     position: relative;
     text-align: center;
     z-index: 10;
-    animation: float 3s ease-in-out infinite;
     min-width: 300px;
+    /* 原本有 animation: float ... 這行請刪掉 */
 }
 
 /* 名片背後圖 */
@@ -180,18 +193,19 @@ body {
     width: 1px;
     height: 100px;
     display: block;
-    margin: 40px auto;
+    margin: 24px auto;
     background: linear-gradient(
         to bottom,
-        var(--animated-line-color) 0%,
-        var(--animated-line-color) 50%,
-        var(--border-light) 50%,
-        var(--border-light) 100%
+        #111111 0%,      /* 深灰幾乎接近黑 */
+        #111111 40%,
+        #f3f3f3 40%,     /* 很淺的灰，對比明顯 */
+        #f3f3f3 100%
     );
-    background-size: 1px 200px;
+    background-size: 1px 120px;
     background-position-y: 100%;
-    animation: lineFlow 3s linear infinite;
+    animation: lineFlow 2s linear infinite;  /* 從 3s → 2s，流動更明顯 */
 }
+
 
 .first-line { animation-delay: 0s; }
 .second-line { animation-delay: -1.5s; }
@@ -230,10 +244,9 @@ body {
 }
 
 /* ---------------------- */
-/* 我的職涯演進 */
-/* ---------------------- */
+/* 我的職涯演進 區塊 */
 .career-evolution-section {
-    padding: 60px 0 50px;
+    padding: 40px 0 50px;   /* 原本 60px 0 50px → 上方再拉近一點 */
     text-align: left;
     max-width: 800px;
     margin: 0 auto;
@@ -544,5 +557,30 @@ body {
         font-size: 2.3em;
     }
 }
+/* 背後底圖：往下漂 */
+.card-back-bg {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px;
+    height: 200px;
+    background-image: url('cardback.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8;
+    z-index: -1;
+
+    animation: floatBg 3s ease-in-out infinite;
+}
+
+/* 文字本體：往上漂 */
+.name-title,
+.job-title,
+.keyword-tags {
+    animation: floatText 3s ease-in-out infinite;
+}
+
 
 
