@@ -558,6 +558,7 @@ body {
   gap: 16px;
 }
 
+/* PNG 卡片本體 */
 .framework-img {
   width: 100%;
   height: auto;
@@ -573,6 +574,20 @@ body {
   color: var(--light-text);
   text-align: center;
 }
+
+/* RWD：平板變兩欄、手機單欄 */
+@media (max-width: 900px) {
+  .framework-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .framework-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 /* ----------------------
    Core Competence
@@ -1046,3 +1061,4 @@ body {
     min-width: 88%;
   }
 }
+
