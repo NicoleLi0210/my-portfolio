@@ -1,32 +1,30 @@
 /* ------------------------------------------- */
-/* 樣式 V4.5：動畫與圖片樣式最終修正 */
+/* Base Style & Variables */
 /* ------------------------------------------- */
 
-/* 核心變數 */
 :root {
-    --primary-text: #333333;       
-    --secondary-text: #666666;      
-    --light-text: #aaaaaa;         
-    --accent-yellow: #FFD700;      
+    --primary-text: #333333;
+    --secondary-text: #666666;
+    --light-text: #aaaaaa;
+    --accent-yellow: #FFD700;
     --background-white: #ffffff;
-    --border-light: #e0e0e0;        
-    --animated-line-color: #cacaca; /* 動畫垂直線的深色/滑動色 */
+    --border-light: #e0e0e0;
+    --animated-line-color: #cacaca;
 }
 
-/* 動畫定義 - 垂直線流動 (修正為由下往上循環) */
+/* Animation keyframes */
 @keyframes lineFlow {
-    0% { background-position-y: 100%; }
+    0%   { background-position-y: 100%; }
     100% { background-position-y: 0%; }
 }
 
-/* 動畫定義 - 輕微浮動 */
 @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-5px); }
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-5px); }
     100% { transform: translateY(0px); }
 }
 
-/* 基礎設定 */
+/* Layout helpers */
 body {
     font-family: 'Noto Sans TC', sans-serif;
     margin: 0;
@@ -39,14 +37,16 @@ body {
     text-align: center;
 }
 
-/* 可共用的 container，如果之後有需要可以打開
 .container {
-    max-width: 960px;
+    max-width: 1040px;
     margin: 0 auto;
+    padding: 0 24px;
 }
-*/
 
-/* 導航列 */
+/* ------------------------------------------- */
+/* Header */
+/* ------------------------------------------- */
+
 .header {
     background: var(--background-white);
     border-bottom: 1px solid var(--border-light);
@@ -82,16 +82,18 @@ body {
     color: var(--accent-yellow);
 }
 
-/* 首屏簡介區 (Hero/Landing) */
+/* ------------------------------------------- */
+/* Hero / Profile */
+/* ------------------------------------------- */
+
 .hero-landing {
-    padding: 80px 30px 100px;
+    padding: 80px 0 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 90vh;
 }
 
-/* 個人名片區塊 */
 .card-section {
     position: relative;
     display: flex;
@@ -119,7 +121,7 @@ body {
     min-width: 300px;
 }
 
-/* 名片背後的斜線圖 */
+/* 名片背後圖 */
 .card-back-bg {
     position: absolute;
     top: -35px;
@@ -156,7 +158,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* 關鍵字標籤 */
+/* 關鍵字標籤（右側垂直） */
 .keyword-tags {
     position: absolute;
     top: 75%;
@@ -175,8 +177,6 @@ body {
     margin: 0;
     font-size: 0.9em;
     font-weight: 300;
-    position: relative;
-    z-index: 10;
     white-space: nowrap;
 }
 
@@ -206,7 +206,7 @@ body {
     animation-delay: -1.5s;
 }
 
-/* Just a quick intro about me 圖片樣式 */
+/* intro 圖片 */
 .intro-title-image {
     width: 200px;
     height: auto;
@@ -216,7 +216,7 @@ body {
     margin-right: auto;
 }
 
-/* 個人簡介文字區塊 */
+/* 個人簡介 */
 .bio-section {
     max-width: 500px;
     text-align: center;
@@ -240,9 +240,12 @@ body {
     margin: 25px auto;
 }
 
-/* 我的職涯演進區塊 */
+/* ------------------------------------------- */
+/* Career Evolution */
+/* ------------------------------------------- */
+
 .career-evolution-section {
-    padding: 80px 30px;
+    padding: 80px 0 60px;
     text-align: left;
     max-width: 800px;
     margin: 0 auto;
@@ -272,82 +275,133 @@ body {
 }
 
 /* ------------------------------------------- */
-/* Scroll Reveal 動畫樣式 */
+/* 2025-2025 Experience Section */
 /* ------------------------------------------- */
 
-.reveal-on-scroll {
+.experience-section {
+    padding: 70px 0 80px;
+    background-color: #ffffff;
+}
+
+.experience-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.experience-left {
+    text-align: left;
+}
+
+.experience-badge {
+    position: relative;
+    padding-left: 26px;
+    font-weight: 500;
+    color: var(--primary-text);
+    margin-bottom: 8px;
+}
+
+.experience-badge::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 14px solid var(--accent-yellow);
+}
+
+.experience-year {
+    font-size: 1.1em;
+}
+
+.experience-company {
+    font-size: 1.1em;
+    color: var(--secondary-text);
+    line-height: 1.5;
+}
+
+.experience-right {
+    text-align: left;
+}
+
+.experience-title {
+    font-size: 1.05em;
+    font-weight: 500;
+    color: var(--primary-text);
+    margin: 0 0 6px;
+}
+
+.experience-list {
+    margin: 0 0 16px 0;
+    padding-left: 20px;
+    font-size: 0.96em;
+    color: var(--secondary-text);
+}
+
+.experience-list li {
+    margin-bottom: 6px;
+}
+
+/* 能力小卡 */
+.ability-cards-row {
+    margin-top: 40px;
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.ability-card {
+    flex: 1 1 0;
+    min-width: 220px;
+    max-width: 320px;
+    background: #FFD84A;
+    background: linear-gradient(135deg, #FFD84A 0%, #FFE76B 45%, #FFD84A 100%);
+    border-radius: 8px;
+    padding: 18px 20px;
+    text-align: left;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    color: #222;
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(32px);
     transition:
-        opacity 0.8s ease-out,
-        transform 0.8s ease-out;
-    will-change: opacity, transform;
+        opacity 0.7s ease-out,
+        transform 0.7s ease-out,
+        box-shadow 0.2s ease-out,
+        transform 0.2s ease-out;
 }
 
-.reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+.ability-card h4 {
+    margin: 0 0 8px;
+    font-size: 1.02em;
+    font-weight: 600;
 }
 
-/* RWD 調整 */
-@media (max-width: 768px) {
-    .header-content {
-        justify-content: space-between;
-        padding: 0 15px;
-    }
-
-    .logo {
-        margin-right: 0;
-    }
-
-    .header nav a {
-        margin-left: 15px;
-    }
-
-    .hero-landing {
-        padding: 60px 15px 80px;
-    }
-
-    .name-title {
-        font-size: 2em;
-    }
-
-    .job-title {
-        font-size: 1.2em;
-    }
-
-    .tag {
-        font-size: 0.8em;
-    }
-
-    .animated-vertical-line {
-        height: 80px;
-        margin: 30px auto;
-    }
-
-    .intro-title-image {
-        width: 180px;
-        margin-bottom: 30px;
-    }
-
-    .bio-section p {
-        font-size: 1em;
-    }
-
-    .keyword-tags {
-        top: 70%;
-        transform: translateX(40px);
-    }
-
-    .career-evolution-section {
-        padding: 60px 15px;
-    }
-
-    .section-title-left {
-        font-size: 2em;
-    }
-
-    .section-description-left {
-        font-size: 1em;
-    }
+.ability-card p {
+    margin: 0;
+    font-size: 0.92em;
+    line-height: 1.7;
 }
+
+/* 卡片 hover */
+.ability-card:hover {
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+    transform: translateY(-4px);
+}
+
+/* 卡片逐張延遲 */
+.ability-cards-row .ability-card:nth-child(1) {
+    transition-delay: 0.0s;
+}
+.ability-cards-row .ability-card:nth-child(2) {
+    transition-delay: 0.12s;
+}
+.ability-cards-row .ability-card:nth-child(3) {
+    transition-delay: 0.24s;
+}
+
+/* P*
