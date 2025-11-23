@@ -1070,7 +1070,7 @@ body {
    Portfolio – Chicony
 ---------------------- */
 .portfolio-page {
-  padding: 80px 0 70px;
+  padding: 90px 0 70px; /* 上方留空給固定 header */
   background: #ffffff;
 }
 
@@ -1095,6 +1095,7 @@ body {
   margin: 0 4px;
 }
 
+/* Hero 區塊 */
 .portfolio-hero {
   text-align: left;
   margin-bottom: 40px;
@@ -1123,6 +1124,7 @@ body {
   margin: 0 0 20px;
 }
 
+/* 頁面毛點 */
 .portfolio-topics {
   display: flex;
   flex-wrap: wrap;
@@ -1146,14 +1148,16 @@ body {
   background: #ffe76b;
 }
 
+/* Hero 圖片 */
 .portfolio-hero-image img {
   width: 100%;
   height: auto;
   border-radius: 12px;
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+  margin-top: 8px;
 }
 
-/* Case section */
+/* Case 區塊 */
 .case-section {
   padding: 40px 0;
   border-top: 1px solid #f0f0f0;
@@ -1167,7 +1171,10 @@ body {
 }
 
 .case-layout-reverse {
+  display: grid;
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+  gap: 26px;
+  align-items: flex-start;
 }
 
 .case-title {
@@ -1211,6 +1218,7 @@ body {
   margin-bottom: 4px;
 }
 
+/* 右側圖片 */
 .case-image img {
   width: 100%;
   height: auto;
@@ -1219,6 +1227,7 @@ body {
   background: #ffffff;
 }
 
+/* 回上一頁 */
 .portfolio-back {
   margin-top: 32px;
   text-align: left;
@@ -1242,17 +1251,3 @@ body {
     grid-template-columns: 1fr;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
