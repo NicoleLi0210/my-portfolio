@@ -538,157 +538,177 @@
   </section>
 
   <!-- 我常運用的工具與流程 -->
-  <section id="tool-matrix" class="tools-section reveal-on-scroll">
-    <div class="container">
-      <h2 class="tools-title">我常運用的工具與流程。</h2>
-      <div class="work-style-underline"></div>
-      <p class="tools-subtitle">搭配專案情境，在產品生命週期不同階段選用對應的工具與方法。</p>
-      <!-- Desktop / Tablet 矩陣 -->
-      <div class="tool-matrix-grid">
-        <!-- 標題列 -->
-        <div class="tool-matrix-row tool-row-header">
-          <div class="tool-cell tool-cell-head">用途</div>
-          <div class="tool-cell tool-cell-head">流程或手法</div>
-          <div class="tool-cell tool-cell-head">型態</div>
-          <div class="tool-cell tool-cell-head">工具</div>
-        </div>
+  <section id="tools" class="tools-section">
+  <div class="container">
+    <h2 class="tools-title">我常運用的工具與流程。</h2>
+    <p class="tools-subtitle">
+      搭配專案情境，在產品生命週期不同階段選用對應的工具與方法。
+    </p>
 
-        <!-- 數據觀測 -->
-        <div class="tool-matrix-row tool-row-light">
-          <div class="tool-cell tool-purpose">數據觀測</div>
-          <div class="tool-cell tool-method"></div>
-          <div class="tool-cell tool-type"></div>
-          <div class="tool-cell tool-tools">
-            <span class="tool-line-tag">Clarity</span>
-            <span class="tool-line-tag">Hotjar</span>
-            <span class="tool-line-tag">PowerBI</span>
-            <span class="tool-line-tag">SQL</span>
-            <span class="tool-line-tag">Grafana</span>
-            <span class="tool-line-tag">GA</span>
-            <span class="tool-line-tag">Tableau</span>
-          </div>
-        </div>
+    <!-- 🖥 桌機版：矩陣表格 -->
+    <div class="tool-matrix-grid">
+      <div class="tool-matrix-row tool-row-header">
+        <div class="tool-cell">用途</div>
+        <div class="tool-cell">流程或手法</div>
+        <div class="tool-cell">型態</div>
+        <div class="tool-cell">工具</div>
+      </div>
 
-        <!-- 產品 / 行銷 -->
-        <div class="tool-matrix-row tool-row-dark">
-          <div class="tool-cell tool-purpose">產品／行銷</div>
-          <div class="tool-cell tool-method">
-            <span class="tool-line-tag">SEO</span>
-          </div>
-          <div class="tool-cell tool-type"></div>
-          <div class="tool-cell tool-tools">
-            <span class="tool-line-tag">GTM</span>
-            <span class="tool-line-tag">WordPress</span>
-          </div>
+      <!-- 1. 數據觀測 -->
+      <div class="tool-matrix-row tool-row-light">
+        <div class="tool-cell tool-purpose">數據觀測</div>
+        <div class="tool-cell">
+          使用者行為追蹤、轉換漏斗、成效追蹤
         </div>
-
-        <!-- 系統整合與工程協作 -->
-        <div class="tool-matrix-row tool-row-light">
-          <div class="tool-cell tool-purpose">系統整合與工程協作</div>
-          <div class="tool-cell tool-method">
-            <span class="tool-line-tag">CI/CD</span>
-            <span class="tool-line-tag">Scrum</span>
-          </div>
-          <div class="tool-cell tool-type">
-            <span class="tool-line-tag">API／JSON</span>
-            <span class="tool-line-tag">Flowchart</span>
-          </div>
-          <div class="tool-cell tool-tools">
-            <span class="tool-line-tag">Google Colab</span>
-            <span class="tool-line-tag">github</span>
-            <span class="tool-line-tag">Postman</span>
-            <span class="tool-line-tag">Jira</span>
-            <span class="tool-line-tag">Jenkins</span>
-          </div>
+        <div class="tool-cell">
+          儀表板、報表、高頻指標
         </div>
-
-        <!-- 產品規劃與決策 -->
-        <div class="tool-matrix-row tool-row-dark">
-          <div class="tool-cell tool-purpose">產品規劃與決策</div>
-          <div class="tool-cell tool-method"></div>
-          <div class="tool-cell tool-type">
-            <span class="tool-line-tag">優先度模型</span>
-            <span class="tool-line-tag">Schema</span>
-          </div>
-          <div class="tool-cell tool-tools">
-            <span class="tool-line-tag">confluence</span>
-            <span class="tool-line-tag">Figma</span>
-            <span class="tool-line-tag">Axure</span>
-            <span class="tool-line-tag">Miro</span>
-          </div>
+        <div class="tool-cell">
+          <span class="tool-line-tag">Clarity</span>
+          <span class="tool-line-tag">Hotjar</span>
+          <span class="tool-line-tag">PowerBI</span>
+          <span class="tool-line-tag">SQL</span>
+          <span class="tool-line-tag">Grafana</span>
+          <span class="tool-line-tag">GA</span>
+          <span class="tool-line-tag">Tableau</span>
         </div>
       </div>
 
-      <!-- Mobile Slider -->
-      <div class="tool-mobile-wrapper">
-        <button class="tool-slider-nav prev" type="button" aria-label="上一個">&lsaquo;</button>
-
-        <div class="tool-mobile-slider">
-          <div class="tool-mobile-card">
-            <div class="tool-matrix-title">問題釐清與需求發現</div>
-            <div class="tool-matrix-tags">
-              <span>訪談與觀察</span>
-              <span>UJM</span>
-              <span>Workshop</span>
-              <span>痛點地圖</span>
-            </div>
-          </div>
-
-          <div class="tool-mobile-card">
-            <div class="tool-matrix-title">產品與資訊架構</div>
-            <div class="tool-matrix-tags">
-              <span>Sitemap</span>
-              <span>Wireframe</span>
-              <span>Flowchart</span>
-              <span>State Mapping</span>
-            </div>
-          </div>
-
-          <div class="tool-mobile-card">
-            <div class="tool-matrix-title">指標與數據分析</div>
-            <div class="tool-matrix-tags">
-              <span>GA / GTM</span>
-              <span>PowerBI</span>
-              <span>SQL</span>
-              <span>Grafana</span>
-            </div>
-          </div>
-
-          <div class="tool-mobile-card">
-            <div class="tool-matrix-title">協作與追蹤</div>
-            <div class="tool-matrix-tags">
-              <span>Jira</span>
-              <span>Notion</span>
-              <span>Confluence</span>
-              <span>共編文件</span>
-            </div>
-          </div>
-
-          <div class="tool-mobile-card">
-            <div class="tool-matrix-title">開發流程與品質</div>
-            <div class="tool-matrix-tags">
-              <span>CI/CD</span>
-              <span>Scrum</span>
-              <span>API／JSON 流程設計</span>
-              <span>Test Case</span>
-            </div>
-          </div>
-
-          <div class="tool-mobile-card">
-            <div class="tool-matrix-title">營運與持續優化</div>
-            <div class="tool-matrix-tags">
-              <span>A/B Test</span>
-              <span>問卷與回饋</span>
-              <span>營運儀表板</span>
-              <span>成效追蹤</span>
-            </div>
-          </div>
+      <!-- 2. 產品 / 行銷 -->
+      <div class="tool-matrix-row tool-row-dark">
+        <div class="tool-cell tool-purpose">產品／行銷</div>
+        <div class="tool-cell">
+          SEO 架構規劃、內容優化
         </div>
+        <div class="tool-cell">
+          Landing Page、活動頁
+        </div>
+        <div class="tool-cell">
+          <span class="tool-line-tag">GTM</span>
+          <span class="tool-line-tag">WordPress</span>
+        </div>
+      </div>
 
-        <button class="tool-slider-nav next" type="button" aria-label="下一個">&rsaquo;</button>
+      <!-- 3. 系統整合與工程協作 -->
+      <div class="tool-matrix-row tool-row-light">
+        <div class="tool-cell tool-purpose">系統整合與工程協作</div>
+        <div class="tool-cell">
+          CI/CD 流程、需求拆解與介面協作
+        </div>
+        <div class="tool-cell">
+          <span class="tool-line-tag">API / JSON</span>
+          <span class="tool-line-tag">Flowchart</span>
+        </div>
+        <div class="tool-cell">
+          <span class="tool-line-tag">Google Colab</span>
+          <span class="tool-line-tag">github</span>
+          <span class="tool-line-tag">Postman</span>
+          <span class="tool-line-tag">Jira</span>
+          <span class="tool-line-tag">Jenkins</span>
+        </div>
+      </div>
+
+      <!-- 4. 產品規劃與決策 -->
+      <div class="tool-matrix-row tool-row-dark">
+        <div class="tool-cell tool-purpose">產品規劃與決策</div>
+        <div class="tool-cell">
+          Roadmap、需求優先度評估
+        </div>
+        <div class="tool-cell">
+          <span class="tool-line-tag">優先度模型</span>
+          <span class="tool-line-tag">Schema</span>
+        </div>
+        <div class="tool-cell">
+          <span class="tool-line-tag">Confluence</span>
+          <span class="tool-line-tag">Figma</span>
+          <span class="tool-line-tag">Axure</span>
+          <span class="tool-line-tag">Miro</span>
+        </div>
       </div>
     </div>
-  </section>
+
+    <!-- 📱 手機版：大卡片 Slider -->
+    <div class="tool-mobile-wrapper">
+      <button class="tool-slider-nav" id="toolPrev">‹</button>
+
+      <div class="tool-mobile-slider" id="toolSlider">
+        <!-- Card 1 -->
+        <div class="tool-mobile-card">
+          <p class="tool-mobile-tag">用途</p>
+          <h3 class="tool-mobile-title">數據觀測</h3>
+          <p class="tool-mobile-label">流程或手法</p>
+          <p class="tool-mobile-text">
+            使用者行為追蹤、轉換漏斗、成效追蹤
+          </p>
+          <p class="tool-mobile-label">型態</p>
+          <p class="tool-mobile-text">
+            儀表板、報表、高頻指標
+          </p>
+          <p class="tool-mobile-label">工具</p>
+          <p class="tool-mobile-text">
+            Clarity / Hotjar / PowerBI / SQL / Grafana / GA / Tableau
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="tool-mobile-card">
+          <p class="tool-mobile-tag">用途</p>
+          <h3 class="tool-mobile-title">產品／行銷</h3>
+          <p class="tool-mobile-label">流程或手法</p>
+          <p class="tool-mobile-text">
+            SEO 架構規劃、內容優化
+          </p>
+          <p class="tool-mobile-label">型態</p>
+          <p class="tool-mobile-text">
+            Landing Page、活動頁
+          </p>
+          <p class="tool-mobile-label">工具</p>
+          <p class="tool-mobile-text">
+            GTM / WordPress
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="tool-mobile-card">
+          <p class="tool-mobile-tag">用途</p>
+          <h3 class="tool-mobile-title">系統整合與工程協作</h3>
+          <p class="tool-mobile-label">流程或手法</p>
+          <p class="tool-mobile-text">
+            CI/CD 流程、需求拆解與介面協作
+          </p>
+          <p class="tool-mobile-label">型態</p>
+          <p class="tool-mobile-text">
+            API / JSON、Flowchart
+          </p>
+          <p class="tool-mobile-label">工具</p>
+          <p class="tool-mobile-text">
+            Google Colab / github / Postman / Jira / Jenkins
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="tool-mobile-card">
+          <p class="tool-mobile-tag">用途</p>
+          <h3 class="tool-mobile-title">產品規劃與決策</h3>
+          <p class="tool-mobile-label">流程或手法</p>
+          <p class="tool-mobile-text">
+            Roadmap、需求優先度評估
+          </p>
+          <p class="tool-mobile-label">型態</p>
+          <p class="tool-mobile-text">
+            優先度模型、Schema
+          </p>
+          <p class="tool-mobile-label">工具</p>
+          <p class="tool-mobile-text">
+            Confluence / Figma / Axure / Miro
+          </p>
+        </div>
+      </div>
+
+      <button class="tool-slider-nav" id="toolNext">›</button>
+    </div>
+  </div>
+</section>
 
   <!-- Contact -->
   <section id="contact" class="contact-section">
@@ -884,6 +904,7 @@
   </script>
 </body>
 </html>
+
 
 
 
