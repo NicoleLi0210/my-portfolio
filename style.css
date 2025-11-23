@@ -433,6 +433,200 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+/* ---------------------- */
+/* 方法論 / 工作風格區塊 */
+/* ---------------------- */
+
+.method-section {
+    padding: 70px 0 80px;
+    background-color: #FFFEF8; /* 很淺的米黃色，跟你的黃系一致 */
+}
+
+.method-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: left;
+}
+
+.method-tagline {
+    font-size: 1.4em;
+    font-weight: 500;
+    color: var(--primary-text);
+    margin-bottom: 8px;
+}
+
+.method-subcopy {
+    font-size: 1.02em;
+    line-height: 1.8;
+    color: var(--secondary-text);
+    margin-top: 4px;
+}
+
+/* Define / Structure / Operationalize / Extend */
+
+.method-steps {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.method-step {
+    background: linear-gradient(135deg, #FFD84A 0%, #FFE76B 45%, #FFD84A 100%);
+    border-radius: 8px;
+    padding: 16px 18px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.method-step-label {
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    margin-bottom: 6px;
+    color: #222;
+}
+
+/* Core Competence */
+
+.core-competence {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.core-title {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: var(--primary-text);
+    margin-bottom: 8px;
+}
+
+.core-subtitle {
+    font-size: 0.95em;
+    color: var(--light-text);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 14px;
+}
+
+.core-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 0.98em;
+    line-height: 1.8;
+    color: var(--secondary-text);
+}
+
+.core-list li + li {
+    margin-top: 4px;
+}
+
+/* Skills Overview 四大區塊 */
+
+.skills-overview {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.skill-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+    padding: 20px 22px;
+    text-align: left;
+}
+
+.skill-card-title {
+    font-size: 1.02em;
+    font-weight: 600;
+    color: var(--primary-text);
+    margin-bottom: 10px;
+}
+
+.skill-card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.92em;
+    line-height: 1.7;
+    color: var(--secondary-text);
+}
+
+.skill-card-list li + li {
+    margin-top: 4px;
+}
+
+/* 工具矩陣：用途 / 流程或手法 / 工具 */
+
+.tool-matrix {
+    margin-top: 40px;
+    background-color: #FFF9E6;
+    border-radius: 14px;
+    padding: 20px 22px 24px;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+}
+
+.tool-row {
+    display: grid;
+    grid-template-columns: minmax(110px, 150px) minmax(140px, 200px) minmax(0, 1fr);
+    gap: 16px;
+    align-items: flex-start;
+    padding: 10px 6px;
+    border-top: 1px solid rgba(0, 0, 0, 0.03);
+    font-size: 0.9em;
+}
+
+.tool-row:first-child {
+    border-top: none;
+    font-weight: 600;
+    color: var(--primary-text);
+}
+
+.tool-purpose {
+    font-weight: 500;
+    color: var(--primary-text);
+}
+
+.tool-label {
+    font-size: 0.85em;
+    color: var(--light-text);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+/* RWD for 方法論 */
+
+@media (max-width: 900px) {
+    .method-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .skills-overview {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-row {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .method-section {
+        padding: 56px 0 64px;
+    }
+
+    .method-tagline {
+        font-size: 1.2em;
+    }
+}
 
 /* ---------------------- */
 /* RWD */
@@ -544,6 +738,7 @@ body {
 
     animation: floatBg 3s ease-in-out infinite;
 }
+
 
 
 
