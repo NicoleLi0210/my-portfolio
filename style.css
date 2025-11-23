@@ -545,6 +545,19 @@ body {
   color: var(--primary-text);
   margin-bottom: 22px;
 }
+.work-style-eyebrow {
+  font-size: 1.05em;
+  font-weight: 500;
+  color: var(--primary-text);
+  margin: 0 0 14px;
+
+  /* 把所有「卡片感」洗掉，確保是純文字 */
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
 
 .work-style-title {
   font-size: 2.2em;
@@ -1118,3 +1131,4 @@ body {
     min-width: 88%;
   }
 }
+
