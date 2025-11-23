@@ -1070,9 +1070,10 @@ body {
    Portfolio – Chicony
 ---------------------- */
 .portfolio-page {
-  padding: 90px 0 70px; /* 上方留空給固定 header */
+  padding: 48px 0 70px;
   background: #ffffff;
 }
+
 
 .breadcrumb {
   font-size: 0.82em;
@@ -1124,6 +1125,32 @@ body {
   margin: 0 0 20px;
 }
 
+/* 浮動錨點（能源管理平台 / 微星統包案） */
+.floating-topics {
+  position: fixed;
+  top: 50%;
+  right: 32px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 50;
+}
+
+.floating-topics .portfolio-topic {
+  padding: 8px 14px;
+}
+
+/* 手機版不要浮動，改回一般排版 */
+@media (max-width: 900px) {
+  .floating-topics {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    margin: 16px 0 0;
+  }
+}
+
 /* 頁面毛點 */
 .portfolio-topics {
   display: flex;
@@ -1152,11 +1179,10 @@ body {
 .portfolio-hero-image img {
   width: 100%;
   height: auto;
-  border-radius: 12px;
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+  border-radius: 0;
+  box-shadow: none;
   margin-top: 8px;
 }
-
 /* Case 區塊 */
 .case-section {
   padding: 40px 0;
@@ -1222,9 +1248,9 @@ body {
 .case-image img {
   width: 100%;
   height: auto;
-  border-radius: 10px;
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
-  background: #ffffff;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
 }
 
 /* 回上一頁 */
@@ -1251,3 +1277,4 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
