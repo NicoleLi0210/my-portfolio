@@ -1069,6 +1069,7 @@ body {
 /* ----------------------
    Portfolio – Chicony
 ---------------------- */
+
 .portfolio-page {
   padding: 48px 0 70px;
   background: #ffffff;
@@ -1134,81 +1135,73 @@ body {
   margin-top: 8px;
 }
 
-/* Case 區塊 */
+/* Case section general */
 .case-section {
   padding: 40px 0;
   border-top: 1px solid #f0f0f0;
+  text-align: left;
 }
 
+/* 讓「文字 + 圖片」整組置中、左右排列 */
 .case-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
   gap: 26px;
-  align-items: flex-start;
+  align-items: center;   /* 讓文字區和圖片區垂直置中 */
+  max-width: 1100px;
+  margin: 0 auto;        /* 整組置中 */
 }
 
-.case-layout-reverse {
-  display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
-  gap: 26px;
-  align-items: flex-start;
+/* 文字區塊 */
+.case-text {
+  text-align: left;
 }
 
+/* 標題置中（如 PDF） */
 .case-title {
   font-size: 1.5em;
   font-weight: 700;
   color: var(--primary-text);
-  margin: 0 0 6px;
+  margin: 0 0 18px;
+  text-align: center;
 }
 
-.case-tagline {
-  font-size: 0.92em;
-  color: var(--secondary-text);
-  margin-bottom: 18px;
-}
-
-.case-block {
-  margin-bottom: 14px;
-}
-
+/* 小標（S/T/A/R）置中 */
 .case-block h3 {
   font-size: 0.9em;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #b0b0b0;
-  margin: 0 0 4px;
+  margin: 0 0 6px;
+  text-align: center;
 }
 
-.case-block p,
-.case-block ul {
+/* 內文段落 */
+.case-text p {
   font-size: 0.95em;
   color: var(--secondary-text);
   line-height: 1.8;
-  margin: 0;
+  margin: 0 0 8px;
 }
 
-.case-block ul {
-  padding-left: 18px;
+/* 區塊間距 */
+.case-block {
+  margin-bottom: 18px;
 }
-
-.case-block li {
-  margin-bottom: 4px;
-}
-.case-text p {
-  margin-bottom: 14px;
-}
-
 
 /* 右側圖片 */
 .case-image img {
+  display: block;
   width: 100%;
+  max-width: 420px;      /* 圖片大小 */
   height: auto;
+  margin: 0 auto;        /* 圖片置中 */
   border-radius: 0;
   box-shadow: none;
   background: transparent;
 }
 
-/* 回上一頁 */
+/* 返回按鈕 */
 .portfolio-back {
   margin-top: 32px;
   text-align: left;
@@ -1225,11 +1218,22 @@ body {
   text-decoration: underline;
 }
 
-/* RWD */
+/* 手機版 RWD */
 @media (max-width: 900px) {
-  .case-layout,
-  .case-layout-reverse {
+  .case-layout {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .case-title {
+    text-align: left;   /* 手機版可改為靠左，你也可以選擇 keep center */
+  }
+
+  .case-block h3 {
+    text-align: left;
+  }
+
+  .case-image img {
+    max-width: 100%;    /* 手機版圖放大 */
   }
 }
-
