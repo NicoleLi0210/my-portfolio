@@ -976,7 +976,7 @@ body {
 
 @media (max-width: 768px) {
   .header-content {
-    padding: 0 15px;
+    padding: 0 18px;
   }
 
   .main-nav {
@@ -1102,6 +1102,7 @@ body {
     min-width: 88%;
   }
 }
+
 
 
 
