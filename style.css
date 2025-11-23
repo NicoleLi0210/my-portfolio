@@ -355,4 +355,194 @@ body {
 .ability-card h4 {
     margin: 0 0 8px;
     font-size: 1.02em;
-    font-weight
+    font-weight: 600;
+}
+
+.ability-card p {
+    margin: 0;
+    font-size: 0.92em;
+    line-height: 1.7;
+}
+
+.ability-card:hover {
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+    transform: translateY(-4px);
+}
+
+/* 逐張延遲（只控制動畫延遲，顯示與否交給 .reveal-on-scroll） */
+.ability-cards-row .ability-card:nth-child(1) {
+    transition-delay: 0.00s;
+}
+.ability-cards-row .ability-card:nth-child(2) {
+    transition-delay: 0.12s;
+}
+.ability-cards-row .ability-card:nth-child(3) {
+    transition-delay: 0.24s;
+}
+
+/* Portfolio CTA */
+.portfolio-cta {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.portfolio-word {
+    font-size: 4.2em;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #000000;
+    margin-bottom: 16px;
+}
+
+/* 按鈕本體 */
+.portfolio-button {
+    display: inline-block;
+    cursor: pointer;
+    transform-origin: center;
+    transition:
+        transform 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        filter 0.18s ease-out;
+}
+
+.portfolio-button img {
+    display: block;
+    max-width: 230px;
+    width: 100%;
+    height: auto;
+}
+
+/* 讓「整個區塊」變成觸發區：滑到 Portfolio 一帶就會放大 */
+.portfolio-cta:hover .portfolio-button {
+    transform: translateY(-4px) scale(1.06);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+    filter: brightness(1.02);
+}
+
+.portfolio-button:active {
+    transform: translateY(-1px) scale(0.99);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* ---------------------- */
+/* Scroll Reveal 共用 */
+/* ---------------------- */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out;
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ---------------------- */
+/* RWD */
+/* ---------------------- */
+@media (max-width: 900px) {
+    .experience-layout {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .experience-left {
+        text-align: left;
+    }
+
+    .portfolio-word {
+        font-size: 3.2em;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        justify-content: space-between;
+        padding: 0 15px;
+    }
+
+    .logo {
+        margin-right: 0;
+    }
+
+    .header nav a {
+        margin-left: 15px;
+        font-size: 0.9em;
+    }
+
+    .hero-landing {
+        padding: 60px 0 70px;
+    }
+
+    .name-title {
+        font-size: 2em;
+    }
+
+    .job-title {
+        font-size: 1.2em;
+    }
+
+    .tag {
+        font-size: 0.8em;
+    }
+
+    .animated-vertical-line {
+        height: 80px;
+        margin: 30px auto;
+    }
+
+    .intro-title-image {
+        width: 180px;
+        margin-bottom: 30px;
+    }
+
+    .bio-section p {
+        font-size: 1em;
+    }
+
+    .keyword-tags {
+        top: 70%;
+        transform: translateX(40px);
+    }
+
+    .career-evolution-section {
+        padding: 50px 0;
+    }
+
+    .section-title-left {
+        font-size: 2em;
+    }
+
+    .section-description-left {
+        font-size: 1em;
+    }
+
+    .ability-cards-row {
+        gap: 14px;
+    }
+
+    .portfolio-word {
+        font-size: 2.6em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .keyword-tags {
+        position: static;
+        transform: none;
+        margin-top: 10px;
+        align-items: center;
+    }
+
+    .portfolio-word {
+        font-size: 2.3em;
+    }
+}
