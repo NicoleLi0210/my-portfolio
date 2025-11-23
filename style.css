@@ -11,8 +11,9 @@
   --animated-line-color: #cacaca;
 }
 
+/* 垂直線流動 */
 @keyframes lineFlow {
-  0%   { transform: translateY(-100%); }
+  0% { transform: translateY(-100%); }
   100% { transform: translateY(100%); }
 }
 
@@ -30,11 +31,10 @@
   100% { transform: translate(-50%, 0); }
 }
 
-/* 結構圖上的掃光效果 */
+/* 方法論掃光 */
 @keyframes methodShine {
-  0%   { transform: translateX(-120%); }
-  30%  { transform: translateX(120%); }
-  100% { transform: translateX(120%); }
+  0%   { transform: translateX(-40%); }
+  100% { transform: translateX(140%); }
 }
 
 body {
@@ -56,7 +56,7 @@ body {
 }
 
 /* ---------------------- */
-/* Header */
+/* Header + Nav */
 /* ---------------------- */
 .header {
   background: var(--background-white);
@@ -81,21 +81,32 @@ body {
 }
 
 /* 主選單 */
-.main-nav ul {
+.main-nav {
+  display: flex;
+  align-items: center;
+}
+
+.main-nav > ul {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
-  gap: 30px;
-  font-size: 0.95em;
+}
+
+.main-nav li {
+  position: relative;
+}
+
+.main-nav > ul > li + li {
+  margin-left: 24px;
 }
 
 .main-nav a {
   text-decoration: none;
   color: var(--secondary-text);
+  font-size: 0.95em;
   padding: 4px 0;
-  display: inline-block;
   transition: color 0.2s ease;
 }
 
@@ -103,14 +114,10 @@ body {
   color: var(--accent-yellow);
 }
 
-/* 下拉選單 */
-.main-nav li {
-  position: relative;
-}
-
+/* 二階選單 */
 .main-nav .submenu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 4px);
   left: 0;
   min-width: 150px;
   background: #ffffff;
@@ -118,7 +125,7 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   padding: 8px 0;
   list-style: none;
-  margin: 8px 0 0;
+  margin: 0;
   display: none;
   z-index: 1200;
 }
@@ -128,12 +135,13 @@ body {
 }
 
 .main-nav .submenu a {
+  display: block;
   padding: 6px 16px;
   white-space: nowrap;
   font-size: 0.9em;
 }
 
-.main-nav li.has-submenu:hover > .submenu,
+/* li 上有 submenu-open 就顯示 */
 .main-nav li.has-submenu.submenu-open > .submenu {
   display: block;
 }
@@ -176,6 +184,7 @@ body {
   animation: floatText 2.6s ease-in-out infinite;
 }
 
+/* 名片文字 */
 .name-title {
   font-size: 2.5em;
   font-weight: 700;
@@ -195,6 +204,23 @@ body {
   color: var(--secondary-text);
   margin-top: 5px;
   margin-bottom: 15px;
+}
+
+/* 名片背後底圖：往下飄 */
+.card-back-bg {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
+  height: 200px;
+  background-image: url('cardback.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.8;
+  z-index: -1;
+  animation: floatBg 3s ease-in-out infinite;
 }
 
 /* 關鍵字標籤 */
@@ -219,7 +245,7 @@ body {
   white-space: nowrap;
 }
 
-/* 垂直線 */
+/* 垂直線（Hero & 分隔用） */
 .animated-vertical-line {
   position: relative;
   width: 1px;
@@ -306,7 +332,7 @@ body {
 }
 
 /* ---------------------- */
-/* Experience 區塊 */
+/* Experience 共用 */
 /* ---------------------- */
 .experience-section {
   padding: 60px 0 60px;
@@ -414,7 +440,7 @@ body {
   transform: translateY(-4px);
 }
 
-/* 小卡 reveal 延遲 */
+/* 逐張延遲（只控制動畫延遲） */
 .ability-cards-row .ability-card:nth-child(1) {
   transition-delay: 0.00s;
 }
@@ -431,7 +457,6 @@ body {
   margin-top: 40px;
 }
 
-/* 按鈕本體 */
 .portfolio-button {
   display: inline-block;
   cursor: pointer;
@@ -446,12 +471,10 @@ body {
   height: auto;
 }
 
-/* 滑到 Portfolio 那一帶就放大 */
 .portfolio-cta:hover .portfolio-button {
   transform: scale(1.12);
 }
 
-/* 按下去時微縮一下就好 */
 .portfolio-button:active {
   transform: scale(1.02);
 }
@@ -472,7 +495,7 @@ body {
 }
 
 .method-eyebrow {
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 500;
   color: var(--primary-text);
   margin: 0 0 10px;
@@ -482,26 +505,26 @@ body {
   font-size: 2em;
   font-weight: 700;
   color: var(--primary-text);
-  margin: 6px 0 6px;
+  margin: 0 0 4px;
 }
 
 .method-title-underline {
   width: 90px;
   height: 4px;
   background: var(--accent-yellow);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .method-subtitle {
   font-size: 1.02em;
   line-height: 1.8;
   color: var(--secondary-text);
-  margin-bottom: 24px;
+  margin: 0 0 24px;
 }
 
-/* Define / Structure / Operationalize / Extend */
+/* 四階段卡片＋掃光 */
 .method-steps {
-  margin-top: 20px;
+  margin-top: 10px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 10px;
@@ -513,14 +536,17 @@ body {
   content: "";
   position: absolute;
   top: 0;
-  left: -20%;
-  width: 30%;
+  left: -30%;
+  width: 28%;
   height: 100%;
-  background: linear-gradient(120deg,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.7) 50%,
-    rgba(255,255,255,0) 100%);
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
   pointer-events: none;
+  z-index: 2;
   animation: methodShine 4s ease-in-out infinite;
 }
 
@@ -548,54 +574,69 @@ body {
   color: var(--light-text);
 }
 
+/* ---------------------- */
 /* Core Competence */
-.core-competence {
-  margin-top: 40px;
+/* ---------------------- */
+.core-competence-section {
+  padding: 60px 0 40px;
+  background-color: #FFFBEE;
+}
+
+.core-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px;
   text-align: center;
 }
 
-.core-subtitle {
-  font-size: 0.95em;
+.core-label {
+  font-size: 0.85em;
+  letter-spacing: 0.22em;
   color: var(--light-text);
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .core-title {
-  font-size: 1.4em;
+  font-size: 1.5em;
   font-weight: 600;
   color: var(--primary-text);
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .core-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  max-width: 720px;
-  margin: 0 auto;
   text-align: left;
-  font-size: 0.98em;
+  font-size: 1em;
   line-height: 1.8;
   color: var(--secondary-text);
 }
 
-.core-list li + li {
-  margin-top: 4px;
+.core-list p {
+  margin: 6px 0;
 }
 
 /* ---------------------- */
-/* Skills Overview flip cards */
+/* Skills Overview */
 /* ---------------------- */
+.skills-section {
+  padding: 40px 0 70px;
+  background-color: #FFFBEE;
+}
+
+.skills-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: left;
+}
 
 .skills-overview-block {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .skills-overview-title {
   text-align: center;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   font-size: 1.4em;
   font-weight: 600;
   color: var(--primary-text);
@@ -603,17 +644,21 @@ body {
 
 .skills-overview-subtitle {
   text-align: center;
-  font-size: 0.95em;
+  font-size: 0.9em;
   color: var(--light-text);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
+/* 2×3 grid */
 .skills-grid {
   margin-top: 24px;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
+/* Flip card */
 .skill-card-outer {
   perspective: 1000px;
 }
@@ -623,75 +668,86 @@ body {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
-}
-
-.skill-card-outer:hover .skill-card-inner,
-.skill-card-outer.is-open .skill-card-inner {
-  transform: rotateY(180deg);
+  transition: transform 0.6s;
 }
 
 .skill-card-face {
-  position: relative;
-  background-color: #ffffff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 160px;
   border-radius: 12px;
-  border: 1px solid #f0f0f0;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
-  padding: 18px 20px;
-  text-align: left;
-  min-height: 150px;
   backface-visibility: hidden;
-}
-
-.skill-card-front {
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 18px 20px;
+  box-sizing: border-box;
 }
 
-.skill-card-front h4 {
-  margin: 0;
-  font-size: 1.02em;
+.skill-card-front {
   font-weight: 600;
   color: var(--primary-text);
 }
 
 .skill-card-back {
-  position: absolute;
-  top: 0;
-  left: 0;
   transform: rotateY(180deg);
-}
-
-.skill-card-back h4 {
-  margin: 0 0 8px;
-  font-size: 1.02em;
-  font-weight: 600;
-  color: var(--primary-text);
-}
-
-.skill-card-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 0.92em;
+  text-align: left;
+  font-size: 0.9em;
   line-height: 1.7;
   color: var(--secondary-text);
 }
 
-.skill-card-list li + li {
-  margin-top: 4px;
+/* 桌機 hover flip */
+@media (hover: hover) and (pointer: fine) {
+  .skill-card-outer:hover .skill-card-inner {
+    transform: rotateY(180deg);
+  }
 }
 
-/* 最下面那張卡：獨佔一列 */
-.skills-grid .skill-card-outer:nth-child(5) {
-  grid-column: 1 / -1;
+/* 手機／小螢幕：用 class 控制 flip */
+.skill-card-outer.is-flipped .skill-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* 第六張保留空位但隱藏內容 */
+.skills-grid .skill-card-outer:nth-child(6) .skill-card-face {
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ---------------------- */
-/* 工具 / 流程矩陣（用途 / 流程或手法 / 工具） */
+/* 工具 / 流程矩陣 */
 /* ---------------------- */
+.tools-section {
+  padding: 60px 0 80px;
+  background-color: #FFFFFF;
+}
 
+.tools-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: left;
+}
+
+.tools-title {
+  font-size: 1.6em;
+  font-weight: 600;
+  color: var(--primary-text);
+  margin-bottom: 8px;
+}
+
+.tools-subtitle {
+  font-size: 0.95em;
+  color: var(--secondary-text);
+  margin-bottom: 22px;
+}
+
+/* 桌機矩陣外框 */
 .tool-matrix {
   margin-top: 40px;
   background-color: #FFF9E6;
@@ -700,6 +756,7 @@ body {
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
 }
 
+/* 三欄列 */
 .tool-row {
   display: grid;
   grid-template-columns: minmax(110px, 150px) minmax(140px, 200px) minmax(0, 1fr);
@@ -716,15 +773,21 @@ body {
   color: var(--primary-text);
 }
 
+.tool-row-header {
+  font-weight: 600;
+}
+
 .tool-purpose {
   font-weight: 500;
   color: var(--primary-text);
 }
 
+.tool-process {}
+.tool-tools {}
+
 /* ---------------------- */
 /* Scroll Reveal 共用 */
 /* ---------------------- */
-
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(40px);
@@ -740,9 +803,17 @@ body {
 }
 
 /* ---------------------- */
+/* Footer / Contact */
+/* ---------------------- */
+footer {
+  padding: 40px 0 30px;
+  font-size: 0.85em;
+  color: var(--light-text);
+}
+
+/* ---------------------- */
 /* RWD */
 /* ---------------------- */
-
 @media (max-width: 900px) {
   .experience-layout {
     grid-template-columns: 1fr;
@@ -753,31 +824,18 @@ body {
     text-align: left;
   }
 
-  .method-steps {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .skills-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .tool-row {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .main-nav ul {
-    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 768px) {
   .header-content {
-    justify-content: space-between;
     padding: 0 15px;
   }
 
-  .logo {
-    margin-right: 0;
+  .main-nav > ul > li + li {
+    margin-left: 16px;
   }
 
   .hero-landing {
@@ -796,11 +854,6 @@ body {
     font-size: 0.8em;
   }
 
-  .keyword-tags {
-    top: 70%;
-    transform: translateX(40px);
-  }
-
   .animated-vertical-line {
     margin: 20px auto;
   }
@@ -812,6 +865,11 @@ body {
 
   .bio-section p {
     font-size: 1em;
+  }
+
+  .keyword-tags {
+    top: 70%;
+    transform: translateX(40px);
   }
 
   .career-evolution-section {
@@ -830,16 +888,12 @@ body {
     gap: 14px;
   }
 
-  .method-section {
-    padding: 56px 0 64px;
-  }
-
-  .method-title {
-    font-size: 1.7em;
+  .method-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .container {
     padding: 0 16px;
   }
@@ -851,24 +905,51 @@ body {
     align-items: center;
   }
 
-  .method-steps {
+  .skills-grid {
     grid-template-columns: 1fr;
   }
-}
 
-/* 背後底圖：往下漂 */
-.card-back-bg {
-  position: absolute;
-  top: -35px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 350px;
-  height: 200px;
-  background-image: url('cardback.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.8;
-  z-index: -1;
-  animation: floatBg 3s ease-in-out infinite;
+  /* 工具矩陣改成一張張小卡 */
+  .tool-matrix {
+    background-color: transparent;
+    box-shadow: none;
+    padding: 16px 0 0;
+  }
+
+  .tool-row-header {
+    display: none;
+  }
+
+  .tool-row {
+    grid-template-columns: 1fr;
+    border-top: none;
+    margin-bottom: 12px;
+    padding: 12px 14px 14px;
+    border-radius: 12px;
+    background-color: #FFF9E6;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  }
+
+  .tool-purpose {
+    margin-bottom: 6px;
+    font-size: 0.95em;
+  }
+
+  .tool-process::before,
+  .tool-tools::before {
+    display: block;
+    font-size: 0.78em;
+    color: var(--light-text);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 2px;
+  }
+
+  .tool-process::before {
+    content: "流程或手法";
+  }
+
+  .tool-tools::before {
+    content: "工具";
+  }
 }
