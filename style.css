@@ -1237,3 +1237,38 @@ body {
     max-width: 100%;    /* 手機版圖放大 */
   }
 }
+/* ----------------------
+   動畫效果
+---------------------- */
+
+/* 元素初始狀態 */
+.fade-in-left,
+.fade-in-right {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 左進場 */
+.fade-in-left.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 右進場 */
+.fade-in-right.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 左邊起始狀態 */
+.fade-in-left {
+  transform: translateX(-40px);
+}
+
+/* 右邊起始狀態 */
+.fade-in-right {
+  transform: translateX(40px);
+}
+
+
