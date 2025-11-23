@@ -560,7 +560,7 @@ body {
 
 /* PNG 卡片本體 */
 .framework-img {
-  width: 100%;
+  width: 114%;
   height: auto;
   display: block;
   border-radius: 8px;
@@ -1037,6 +1037,7 @@ body {
     min-width: 88%;
   }
 }
+
 
 
 
