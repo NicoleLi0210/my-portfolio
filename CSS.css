@@ -1,0 +1,221 @@
+/* 核心重置與字體設定 */
+body {
+    font-family: 'SF Pro Display', 'Helvetica Neue', 'PingFang TC', 'Noto Sans TC', sans-serif; /* 模擬 Apple 字體 */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #1d1d1f; /* Apple 深灰色文字 */
+    background-color: #f5f5f7; /* 淺灰色背景 */
+    scroll-behavior: smooth; /* 捲動動畫 */
+}
+
+/* 核心顏色與佈局 */
+:root {
+    --primary-text: #1d1d1f;
+    --secondary-text: #6e6e73;
+    --background-color: #ffffff; /* 主要區塊白色 */
+    --accent-color: #007aff; /* Apple 藍色 */
+    --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 讓所有區塊居中並限制寬度 */
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* 導覽列 (模擬 Mac 頂部選單) */
+.header {
+    background: rgba(255, 255, 255, 0.8); /* 輕微透明效果 */
+    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #eaeaec;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+}
+
+.header nav a {
+    text-decoration: none;
+    color: var(--primary-text);
+    margin-left: 30px;
+    font-size: 0.95em;
+    padding: 10px 0;
+    transition: color 0.3s ease;
+}
+
+.header nav a:hover {
+    color: var(--accent-color);
+}
+
+/* 英雄區塊/簡介區 */
+.hero-section {
+    text-align: center;
+    padding: 80px 24px 100px;
+    background-color: var(--background-color);
+}
+
+.hero-section h1 {
+    font-size: 3.5em;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.hero-section h2 {
+    font-size: 1.5em;
+    color: var(--secondary-text);
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.profile-photo img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* 柔和陰影 */
+}
+
+/* 作品集總覽區 */
+.portfolio-section {
+    padding: 80px 0;
+}
+
+.portfolio-section h2 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 600;
+}
+
+.project-card {
+    display: flex;
+    margin-bottom: 40px;
+    background-color: var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+    flex: 1;
+    min-width: 300px;
+    /* 這裡使用作品集附件的縮圖來替代 */
+    background-size: cover;
+    background-position: center;
+}
+
+.card-content {
+    flex: 2;
+    padding: 30px;
+}
+
+.card-content h3 {
+    font-size: 1.8em;
+    margin-top: 0;
+    font-weight: 600;
+}
+
+.card-content p {
+    color: var(--secondary-text);
+    margin-bottom: 20px;
+}
+
+.card-content a {
+    display: inline-block;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s;
+}
+
+.card-content a:hover {
+    opacity: 0.8;
+}
+
+/* 頁腳 */
+footer {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--secondary-text);
+    font-size: 0.9em;
+    border-top: 1px solid #eaeaec;
+    background-color: var(--background-color);
+}
+
+/* 專案詳情頁通用樣式 (針對 project-*.html) */
+.project-detail-header {
+    background-color: #f0f0f5;
+    padding: 80px 0 50px;
+    text-align: center;
+}
+
+.project-detail-header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.project-detail-content {
+    padding: 50px 0;
+    text-align: left;
+}
+
+.detail-section {
+    margin-bottom: 60px;
+    padding: 40px;
+    background-color: var(--background-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+}
+
+.detail-section h3 {
+    color: var(--accent-color);
+    font-size: 1.5em;
+    border-bottom: 2px solid #eaeaec;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* RWD 調整 */
+@media (max-width: 768px) {
+    .header-content {
+        height: 40px;
+    }
+    .header nav a {
+        margin-left: 15px;
+    }
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+    .project-card {
+        flex-direction: column; /* 手機上垂直堆疊 */
+    }
+    .card-image {
+        min-height: 200px;
+    }
+    .card-content {
+        padding: 20px;
+    }
+}
