@@ -285,3 +285,89 @@ body {
         transform: translateX(40px); 
     }
 }
+/* ------------------------------------------- */
+/* 我的職涯演進區塊 (Career Evolution Section) */
+/* ------------------------------------------- */
+.career-evolution-section {
+    padding: 80px 30px;
+    text-align: left; /* 內容靠左對齊 */
+    max-width: 800px; /* 限制內容最大寬度 */
+    margin: 0 auto; /* 整個區塊置中 */
+}
+
+.section-title-left {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--primary-text);
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.title-underline-left {
+    width: 80px; /* 底線長度 */
+    height: 4px;
+    background: var(--accent-yellow);
+    margin-bottom: 25px;
+    /* 這裡不需要 text-align，因為它不是文字，且父層 text-align: left 已經足夠 */
+}
+
+.section-description-left {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: var(--secondary-text);
+    max-width: 600px; /* 限制說明文字的寬度 */
+    text-align: left;
+}
+
+
+/* RWD 調整 */
+@media (max-width: 768px) {
+    .header-content {
+        justify-content: space-between;
+        padding: 0 15px;
+    }
+    .logo {
+        margin-right: 0;
+    }
+    .header nav a {
+        margin-left: 15px;
+    }
+    .hero-landing {
+        padding: 60px 15px 80px;
+    }
+    .name-title {
+        font-size: 2em;
+    }
+    .job-title {
+        font-size: 1.2em;
+    }
+    .tag {
+        font-size: 0.8em;
+    }
+    .animated-vertical-line {
+        height: 80px;
+        margin: 30px auto; 
+    }
+    .intro-title-image {
+        width: 180px; 
+        margin-bottom: 30px;
+    }
+    .bio-section p {
+        font-size: 1em;
+    }
+    .keyword-tags {
+        top: 70%;
+        transform: translateX(40px); 
+    }
+
+    /* 職涯演進區塊 RWD 調整 */
+    .career-evolution-section {
+        padding: 60px 15px;
+    }
+    .section-title-left {
+        font-size: 2em;
+    }
+    .section-description-left {
+        font-size: 1em;
+    }
+}
