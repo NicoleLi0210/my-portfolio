@@ -856,12 +856,6 @@ body {
 
 /* RWD：手機時改用 slider，關掉矩陣 */
 @media (max-width: 768px) {
-  .tool-matrix-grid {
-    display: none;
-  }
-  .tool-mobile-wrapper {
-    display: flex;
-  }
 }
 
 /* ----------------------
@@ -1050,32 +1044,6 @@ body {
     grid-template-columns: 1fr;
   }
 }
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 16px;
-  }
-
-  .keyword-tags {
-    position: static;
-    transform: none;
-    margin-top: 10px;
-    align-items: center;
-  }
-
-  .work-style-section {
-    padding: 60px 0 60px;
-  }
-
-  .tools-section {
-    padding-bottom: 60px;
-  }
-
-  .tool-mobile-card {
-    min-width: 88%;
-  }
-}
-
 
 
 
