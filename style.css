@@ -588,30 +588,6 @@ body {
   }
 }
 
-
-/* ----------------------
-   Core Competence
----------------------- */
-.core-competence-section {
-  background: var(--soft-ivory);
-  padding: 60px 0 50px;
-  text-align: left;
-}
-
-.caps-label {
-  font-size: 0.9em;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #b0b0b0;
-  font-weight: 400;
-  margin-bottom: 18px;
-}
-
-.core-line {
-  margin: 6px 0;
-  font-size: 1em;
-}
-
 /* ----------------------
    Skills Overview
 ---------------------- */
@@ -1061,5 +1037,6 @@ body {
     min-width: 88%;
   }
 }
+
 
 
