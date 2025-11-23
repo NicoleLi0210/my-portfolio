@@ -383,16 +383,11 @@ body {
 /* Portfolio CTA */
 .portfolio-cta {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 40px; /* 可以再微調 */
 }
 
-.portfolio-word {
-    font-size: 4.2em;
-    font-weight: 800;
-    letter-spacing: 0.05em;
-    color: #000000;
-    margin-bottom: 16px;
-}
+
+
 
 /* 按鈕本體 */
 .portfolio-button {
@@ -413,16 +408,17 @@ body {
 }
 
 /* 讓「整個區塊」變成觸發區：滑到 Portfolio 一帶就會放大 */
+/* 滑到 Portfolio 那一帶就放大 */
 .portfolio-cta:hover .portfolio-button {
-    transform: translateY(-4px) scale(1.06);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
-    filter: brightness(1.02);
+    transform: scale(1.08);
+    filter: none;
 }
 
+/* 按下去時微縮一下就好 */
 .portfolio-button:active {
-    transform: translateY(-1px) scale(0.99);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.18);
+    transform: scale(1.02);
 }
+
 
 /* ---------------------- */
 /* Scroll Reveal 共用 */
@@ -548,4 +544,5 @@ body {
         font-size: 2.3em;
     }
 }
+
 
