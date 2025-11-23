@@ -551,17 +551,49 @@ body {
   margin-top: 8px;
 }
 
-/* 四象限卡片 */
+/* ----------------------
+   工作風格與思考框架
+---------------------- */
+.work-style-section {
+  background: #fff7da;
+  padding: 80px 0 70px;
+  text-align: left;
+}
+
+.work-style-eyebrow {
+  font-size: 1.05em;
+  font-weight: 500;
+  color: var(--primary-text);
+  margin: 0 0 14px;
+}
+
+.work-style-title {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--primary-text);
+  margin: 0 0 10px;
+}
+
+.work-style-sub {
+  max-width: 760px;
+  font-size: 1.02em;
+  line-height: 1.9;
+  margin-top: 8px;
+}
+
+/* 四象限黃色條狀卡片 - 完全比齊你的版型 */
 .framework-grid {
   margin-top: 32px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  gap: 0;
   position: relative;
   overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
 }
 
-/* 掃光 overlay */
+/* 掃光 overlay（維持原本效果，只是套在新的黃底上） */
 .framework-grid::after {
   content: '';
   position: absolute;
@@ -579,30 +611,50 @@ body {
 }
 
 .framework-card {
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 18px 18px 20px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
-  color: var(--primary-text);
+  position: relative;
+  background: #ffd84a;
+  color: #111111;
+  padding: 18px 20px 22px;
+  font-size: 0.94em;
+  line-height: 1.8;
+}
+
+/* 產生卡片之間的斜切分隔線（除第一張以外） */
+.framework-card + .framework-card::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 0;
+  width: 36px;
+  height: 100%;
+  background: #ffd84a;
+  transform: skewX(-32deg);
+  transform-origin: center;
+}
+
+/* 右側加一條非常淡的邊界，讓每格有一點分割感 */
+.framework-card:not(:last-child) {
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.4);
 }
 
 .framework-card h3 {
   margin: 0 0 8px;
-  font-size: 1.05em;
+  font-size: 1.02em;
   font-weight: 600;
 }
 
 .framework-card p {
   margin: 0;
-  font-size: 0.95em;
-  line-height: 1.8;
 }
 
+/* 底下那行小字說明 */
 .framework-note {
-  margin-top: 20px;
+  margin-top: 16px;
   font-size: 0.9em;
   color: var(--light-text);
+  text-align: center;
 }
+
 
 /* ----------------------
    Core Competence
@@ -1102,6 +1154,7 @@ body {
     min-width: 88%;
   }
 }
+
 
 
 
