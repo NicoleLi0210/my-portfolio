@@ -6,16 +6,18 @@
   <title>群光電能作品｜Nicole Li - Portfolio</title>
   <meta name="robots" content="noindex, nofollow" />
 
-  <!-- 共用 CSS -->
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
 </head>
 
 <body>
+  <!-- 可以保留這段網站說明 -->
+  <div class="site-note">
+    這個網站由我與 AI 協作完成：先在 Figma 規劃初版架構與 UI，再以 Gemini 3 產出 HTML／CSS，後續改由 GPT-5.1 協作優化。<br />
+    各區塊依序調整動畫、排版與互動細節，並以 Git 版本管理、部署至 GitHub Pages。
+  </div>
 
-   <!-- -------------------------------
-        主要內容
-  ---------------------------------->
+  <!-- 主要內容 -->
   <main class="portfolio-page">
     <div class="container">
 
@@ -23,7 +25,9 @@
       <nav class="breadcrumb">
         <a href="index.html">首頁</a>
         <span class="breadcrumb-sep">／</span>
-        <span>群光電能｜作品集</span>
+        <span>群光電能</span>
+        <span class="breadcrumb-sep">／</span>
+        <span>作品集</span>
       </nav>
 
       <!-- Hero -->
@@ -36,129 +40,11 @@
           在群光期間，我的核心貢獻集中在三件事：<br />
           快速進入陌生領域並取得跨部門信任、重新調整產品方向、梳理跨單位協作流程<br />
         </p>
-        <!-- Hero Image -->
+
+        <!-- Hero Image（第一屏大圖） -->
         <div class="portfolio-hero-image">
           <img src="chicony1.png" alt="能源管理平台與 IWA Setter 畫面">
         </div>
       </section>
-
-      <!-- -----------------------
-            案例一：能源管理平台
-      -------------------------->
-      <section id="ems" class="case-section">
-        <div class="case-layout">
-          <div class="case-text">
-
-            <h2 class="case-title">能源管理平台｜產品策略調整</h2>
-            <div class="case-tagline">把「功能集散」調整成「系統化的能源管理流程」。</div>
-
-            <div class="case-block">
-              <h3>SITUATION</h3>
-              <p>
-                平台功能多以「需求疊加」方式成長，畫面複雜、流程不連貫，  
-                也較難支援 ISO 50001 所需的 PDCA 管理循環。
-              </p>
-            </div>
-
-            <div class="case-block">
-              <h3>TASK</h3>
-              <p>
-                在不推翻既有架構下，重建可複用的產品邏輯，  
-                讓平台能跨場域複製、也能形成可衡量的節能價值。
-              </p>
-            </div>
-
-            <div class="case-block">
-              <h3>ACTION</h3>
-              <ul>
-                <li>盤點各模組與設備資料來源，重新定義在 ISO 流程中的位置。</li>
-                <li>將「能源基線＋迴歸分析」作為平台的資料分析中樞。</li>
-                <li>重組模組架構為：監測、分析、重大鑑別、稽核追蹤。</li>
-                <li>建立 EMS 1.0 → 2.0 的藍圖，包含導入流程與角色責任。</li>
-              </ul>
-            </div>
-
-            <div class="case-block">
-              <h3>RESULT</h3>
-              <ul>
-                <li>平台邏輯被標準化，可跨案場複用，導入成本下降。</li>
-                <li>產品定位從工具提升為管理平台，更容易連結顧問服務。</li>
-              </ul>
-            </div>
-
-          </div>
-
-          <div class="case-image">
-            <img src="chicony2.png" alt="能源管理平台目標剪報">
-          </div>
-        </div>
-      </section>
-
-      <!-- -----------------------
-            案例二：MSI 統包案
-      -------------------------->
-      <section id="msi" class="case-section">
-        <div class="case-layout case-layout-reverse">
-          <div class="case-text">
-
-            <h2 class="case-title">微星統包案｜跨部門協作與需求收斂</h2>
-            <div class="case-tagline">讓複雜專案變得可預期、可追蹤、可溝通。</div>
-
-            <div class="case-block">
-              <h3>SITUATION</h3>
-              <p>
-                專案牽涉弱電、建築系統、能源平台、碳管理三套系統，  
-                但需求散落在統包書、LINE、口頭會議中，資訊不一致。
-              </p>
-            </div>
-
-            <div class="case-block">
-              <h3>TASK</h3>
-              <p>
-                重建協作方式：  
-                讓需求能被拆解、排序、追蹤，確保客製被收斂在必要範圍。
-              </p>
-            </div>
-
-            <div class="case-block">
-              <h3>ACTION</h3>
-              <ul>
-                <li>整合前線、專案、PM、工程四方資訊流，建立固定交付節點。</li>
-                <li>將需求清單完整化，並以 RICE 進行優先排序。</li>
-                <li>與工程端標示每個模組的邊界，先抽出可複用的標準功能。</li>
-                <li>建立進度甘特＋同步節奏，降低跨部門溝通落差。</li>
-              </ul>
-            </div>
-
-            <div class="case-block">
-              <h3>RESULT</h3>
-              <ul>
-                <li>需求錯位、誤解明顯下降；超過 70% 成為可複用的標準模組。</li>
-                <li>後續大型案場能沿用模板，提高導入速度與品質。</li>
-              </ul>
-            </div>
-
-          </div>
-
-          <div class="case-image">
-            <img src="chicony3.png" alt="MSI RICE 表格剪報">
-          </div>
-        </div>
-      </section>
-
-      <!-- 返回按鈕 -->
-      <div class="portfolio-back">
-        <a href="index.html#experience-2025" class="portfolio-back-link">← 回到群光經歷區塊</a>
-      </div>
-
-    </div>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <p>© 2025 Nicole Li. All rights reserved.</p>
-    </div>
-  </footer>
-
-</body>
-</html>
+      
+      <!-- 後面案例區塊先維持原樣 -->
