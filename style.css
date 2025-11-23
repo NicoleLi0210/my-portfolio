@@ -35,6 +35,21 @@
     100% { transform: translateY(0px); }
 }
 
+/* 名片文字往上飄 */
+@keyframes floatText {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-14px); }  /* 往上幅度加大一點 */
+  100% { transform: translateY(0); }
+}
+
+/* 黃色底圖往下飄（反方向） */
+@keyframes floatBg {
+  0%   { transform: translate(-50%, 0); }
+  50%  { transform: translate(-50%, 14px); }  /* 明顯往下 */
+  100% { transform: translate(-50%, 0); }
+}
+
+
 body {
     font-family: 'Noto Sans TC', sans-serif;
     margin: 0;
@@ -123,34 +138,36 @@ body {
 }
 
 .name-card-container {
-    position: relative;
-    text-align: center;
-    z-index: 10;
-    min-width: 300px;
+  position: relative;
+  text-align: center;
+  z-index: 10;
+  min-width: 300px;
 
-    /* 整張名片往上微微漂 */
-    animation: floatText 3s ease-in-out infinite;
+  /* 整張名片往上飄 */
+  animation: floatText 2.6s ease-in-out infinite;
 }
+
 
 
 /* 名片背後圖 */
 .card-back-bg {
-    position: absolute;
-    top: -35px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 350px;
-    height: 200px;
-    background-image: url('cardback.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.8;
-    z-index: -1;
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  width: 350px;
+  height: 200px;
+  transform: translateX(-50%);
+  background-image: url('cardback.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.8;
+  z-index: -1;
 
-    /* 底圖往下漂，跟整張名片方向相反 */
-    animation: floatBg 3s ease-in-out infinite;
+  /* 跟文字反方向、同節奏飄動 */
+  animation: floatBg 2.6s ease-in-out infinite;
 }
+
 
 
 .name-title {
@@ -585,6 +602,7 @@ body {
 
     animation: floatBg 3s ease-in-out infinite;
 }
+
 
 
 
