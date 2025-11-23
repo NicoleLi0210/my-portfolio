@@ -1039,6 +1039,16 @@ body {
     grid-template-columns: 1fr;
   }
 }
+.site-note {
+  width: 100%;
+  background: #fafafa;
+  color: #999;
+  font-size: 0.75em;
+  letter-spacing: 0.02em;
+  padding: 6px 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
 
 
 
