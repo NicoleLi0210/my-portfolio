@@ -295,7 +295,7 @@ body {
 }
 
 .intro-title-image {
-  width: 200px;
+  width: 300px;
   height: auto;
   margin-bottom: 40px;
   display: block;
@@ -1042,4 +1042,5 @@ body {
     min-width: 88%;
   }
 }
+
 
