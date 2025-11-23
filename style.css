@@ -1194,6 +1194,10 @@ body {
 .case-block li {
   margin-bottom: 4px;
 }
+.case-text p {
+  margin-bottom: 14px;
+}
+
 
 /* 右側圖片 */
 .case-image img {
@@ -1228,3 +1232,4 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
