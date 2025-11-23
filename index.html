@@ -9,664 +9,886 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo">李晏慈 Nicole</div>
+      <nav class="main-nav">
+        <div class="nav-item">
+          <a href="#profile" class="nav-link">簡介</a>
+        </div>
 
-<header class="header">
-  <div class="container header-content">
-    <div class="logo">李晏慈 Nicole</div>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="#profile">簡介</a></li>
+        <div class="nav-item has-submenu">
+          <button class="nav-link" type="button">經歷</button>
+          <div class="submenu">
+            <a href="#experience-2025">群光電能</a>
+            <a href="#experience-104">104 資訊科技</a>
+            <a href="#experience-payeasy">PayEasy 康迅數位整合</a>
+            <a href="#experience-vitality">活力台灣科技</a>
+          </div>
+        </div>
 
-        <li class="has-submenu">
-          <a href="#">經歷</a>
-          <ul class="submenu">
-            <li><a href="#experience-2025">群光電能</a></li>
-            <li><a href="#experience-104">104 資訊科技</a></li>
-            <li><a href="#experience-payeasy">PayEasy 康迅數位整合</a></li>
-            <li><a href="#experience-vitality">活力台灣科技</a></li>
-          </ul>
-        </li>
+        <div class="nav-item has-submenu">
+          <button class="nav-link" type="button">關於我</button>
+          <div class="submenu">
+            <a href="#work-style">工作風格</a>
+            <a href="#skills-overview">技能</a>
+            <a href="#tool-matrix">工具／流程</a>
+          </div>
+        </div>
 
-        <li class="has-submenu">
-          <a href="#">關於我</a>
-          <ul class="submenu">
-            <li><a href="#methodology">工作風格</a></li>
-            <li><a href="#skills-overview">技能</a></li>
-            <li><a href="#tools-process">工具 / 流程</a></li>
-          </ul>
-        </li>
+        <div class="nav-item">
+          <a href="#contact" class="nav-link">聯絡</a>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-        <li><a href="#contact">聯絡</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+  <!-- Hero / Profile -->
+  <section id="profile" class="hero-landing">
+    <div class="container landing-content">
+      <!-- 個人名片 -->
+      <div class="card-section reveal-on-scroll">
+        <img src="profileheadpic.png" alt="李晏慈 Nicole 頭像" class="profile-photo" />
+        <div class="name-card-container">
+          <div class="card-back-bg"></div>
+          <h1 class="name-title">李晏慈 <span class="nicole-en">Nicole</span></h1>
+          <h2 class="job-title">產品經理</h2>
 
-<!-- Hero / Profile -->
-<section id="profile" class="hero-landing">
-  <div class="container landing-content">
-
-    <!-- 個人名片 -->
-    <div class="card-section reveal-on-scroll">
-      <img src="profileheadpic.png" alt="李晏慈 Nicole 頭像" class="profile-photo" />
-      <div class="name-card-container">
-        <div class="card-back-bg"></div>
-        <h1 class="name-title">
-          李晏慈 <span class="nicole-en">Nicole</span>
-        </h1>
-        <h2 class="job-title">產品經理</h2>
-
-        <div class="keyword-tags">
-          <span class="tag">跨領域</span>
-          <span class="tag">系統整合</span>
-          <span class="tag">可延續價值打造</span>
+          <div class="keyword-tags">
+            <span class="tag">跨領域</span>
+            <span class="tag">系統整合</span>
+            <span class="tag">可延續價值打造</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- 垂直線＋intro -->
-    <div class="animated-vertical-line first-line reveal-on-scroll"></div>
+      <!-- 垂直線＋intro -->
+      <div class="animated-vertical-line first-line reveal-on-scroll"></div>
 
-    <img src="introtitle.png" alt="Just a quick intro about me" class="intro-title-image reveal-on-scroll" />
+      <img
+        src="introtitle.png"
+        alt="Just a quick intro about me"
+        class="intro-title-image reveal-on-scroll"
+      />
 
-    <!-- 個人簡介 -->
-    <div class="bio-section reveal-on-scroll">
-      <p>1993 年生，並於2015年自<span class="highlight-bold">輔仁大學</span>餐旅管理系畢業</p>
+      <!-- 個人簡介 -->
+      <div class="bio-section reveal-on-scroll">
+        <p>1993 年生，並於 2015 年自<span class="highlight-bold">輔仁大學</span>餐旅管理系畢業</p>
 
-      <div class="small-divider"></div>
+        <div class="small-divider"></div>
 
-      <p>今年 <span class="highlight-bold">32 歲</span></p>
-      <p>工作年資邁入第 <span class="highlight-bold">10 年</span></p>
+        <p>今年 <span class="highlight-bold">32 歲</span></p>
+        <p>工作年資邁入第 <span class="highlight-bold">10 年</span></p>
 
-      <div class="small-divider"></div>
+        <div class="small-divider"></div>
 
-      <p>職涯起於服務現場</p>
-      <p>累積對「情境」、「問題解決」、與「人」的觀察</p>
-      <p>後來逐漸轉向產品與系統領域，一路走出自己的專業方向</p>
-    </div>
-
-    <div class="animated-vertical-line second-line reveal-on-scroll"></div>
-  </div>
-</section>
-
-<!-- 我的職涯演進 -->
-<section class="career-evolution-section reveal-on-scroll">
-  <div class="container">
-    <h2 class="section-title-left">我的職涯演進。</h2>
-    <div class="title-underline-left"></div>
-    <p class="section-description-left">
-      從行銷思維出發，<br />
-      逐步深化至數據分析、商業策略、AI 技術與軟硬整合，<br />
-      累積 PM 能力鏈。
-    </p>
-  </div>
-</section>
-
-<!-- 2025-2025 群光電能 -->
-<section id="experience-2025" class="experience-section reveal-on-scroll">
-  <div class="container experience-layout">
-    <!-- 左側 -->
-    <div class="experience-left">
-      <div class="experience-badge">
-        <span class="experience-year">2025 - 2025</span>
+        <p>職涯起於服務現場</p>
+        <p>累積對「情境」、「問題解決」、與「人」的觀察</p>
+        <p>後來逐漸轉向產品與系統領域，一路走出自己的專業方向</p>
       </div>
-      <div class="experience-company">
-        群光電能<br />產品經理
+
+      <div class="animated-vertical-line second-line reveal-on-scroll"></div>
+    </div>
+  </section>
+
+  <!-- 我的職涯演進 -->
+  <section class="career-evolution-section reveal-on-scroll">
+    <div class="container">
+      <h2 class="section-title-left">我的職涯演進。</h2>
+      <div class="title-underline-left"></div>
+      <p class="section-description-left">
+        從行銷思維出發，<br />
+        逐步深化至數據分析、商業策略、AI 技術與軟硬整合，<br />
+        累積 PM 能力鏈。
+      </p>
+    </div>
+  </section>
+
+  <!-- 2025-2025 群光電能 -->
+  <section id="experience-2025" class="experience-section reveal-on-scroll">
+    <div class="container experience-layout">
+      <!-- 左側 -->
+      <div class="experience-left">
+        <div class="experience-badge">
+          <span class="experience-year">2025 - 2025</span>
+        </div>
+        <div class="experience-company">
+          群光電能<br />產品經理
+        </div>
       </div>
-    </div>
 
-    <!-- 右側 -->
-    <div class="experience-right">
-      <h3 class="experience-title">建築管理系統（BMS）｜建築能源、設備與碳排整合平台</h3>
-      <ul class="experience-list">
-        <li>管理多個案場的系統上線與維運流程，負責處理中國與泰國工廠、政府公宅等建案的系統反饋與優化；協調工程與業務團隊，確保上線品質與案場系統運作的穩定性</li>
-        <li>主導微星桃園廠弱電合作案，負責能源管理、建築管理、碳管理三大系統的需求分析、功能整合、可行性評估與時程規劃，使三套系統能順利整合至弱電架構並符合廠務實際需求</li>
-        <li>規劃官網改版方向與架構，並制定 SEO 策略，協同行銷與設計進行前期概念驗證</li>
-      </ul>
+      <!-- 右側 -->
+      <div class="experience-right">
+        <h3 class="experience-title">建築管理系統（BMS）｜建築能源、設備與碳排整合平台</h3>
+        <ul class="experience-list">
+          <li>
+            管理多個案場的系統上線與維運流程，負責處理中國與泰國工廠、政府公宅等建案的系統反饋與優化；協調工程與業務團隊，確保上線品質與案場系統運作的穩定性
+          </li>
+          <li>
+            主導微星桃園廠弱電合作案，負責能源管理、建築管理、碳管理三大系統的需求分析、功能整合、可行性評估與時程規劃，使三套系統能順利整合至弱電架構並符合廠務實際需求
+          </li>
+          <li>規劃官網改版方向與架構，並制定 SEO 策略，協同行銷與設計進行前期概念驗證</li>
+        </ul>
 
-      <h3 class="experience-title">能源管理系統（ISO 50001 EMS）｜企業能耗分析與節能決策系統</h3>
-      <ul class="experience-list">
-        <li>主導產品規劃與核心模組設計，包括能源基線邏輯、重大鑑別管理、稽核追蹤流程與可視化儀表板等</li>
-        <li>制定產品 Roadmap 與商業模式方向，協同行銷、顧問與業務重新定位產品與使用者角色，並規劃驗證方式與導入流程</li>
-        <li>協助顧問團隊執行 ISO 50001 導入，包含工廠訪談、需求驗證、試點合作與系統導入支援</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- 能力小卡 -->
-  <div class="container ability-cards-row">
-    <div class="ability-card reveal-on-scroll">
-      <h4>系統整合能力</h4>
-      <p>能梳理跨系統的資料流、流程依賴與權責邏輯，並設計可整合的運作方式</p>
-    </div>
-    <div class="ability-card reveal-on-scroll">
-      <h4>專案推進能力</h4>
-      <p>能在多依賴、多角色、多限制的場域中找到卡點、拆掉阻礙，讓專案在不確定與資源受限的情況下仍能前進</p>
-    </div>
-    <div class="ability-card reveal-on-scroll">
-      <h4>跨域協作與利害管理</h4>
-      <p>能把工程、廠務、業務、軟體團隊之間的資訊轉成共同語言，協調時程與優先順序，使各方能順利對齊與合作</p>
-    </div>
-  </div>
-
-  <!-- Portfolio CTA -->
-  <div class="portfolio-cta reveal-on-scroll">
-    <a href="portfolio.html" class="portfolio-button">
-      <img src="portfolio.png" alt="View Portfolio" />
-    </a>
-  </div>
-</section>
-
-<!-- 分隔線：群光 → 104 -->
-<div class="animated-vertical-line reveal-on-scroll"></div>
-
-<!-- 2022 - 2025｜104 資訊科技 -->
-<section id="experience-104" class="experience-section reveal-on-scroll">
-  <div class="container experience-layout">
-    <div class="experience-left">
-      <div class="experience-badge">
-        <span class="experience-year">2022 - 2025</span>
-      </div>
-      <div class="experience-company">
-        104 資訊科技<br />產品經理
+        <h3 class="experience-title">能源管理系統（ISO 50001 EMS）｜企業能耗分析與節能決策系統</h3>
+        <ul class="experience-list">
+          <li>
+            主導產品規劃與核心模組設計，包括能源基線邏輯、重大鑑別管理、稽核追蹤流程與可視化儀表板等
+          </li>
+          <li>
+            制定產品 Roadmap 與商業模式方向，協同行銷、顧問與業務重新定位產品與使用者角色，並規劃驗證方式與導入流程
+          </li>
+          <li>協助顧問團隊執行 ISO 50001 導入，包含工廠訪談、需求驗證、試點合作與系統導入支援</li>
+        </ul>
       </div>
     </div>
 
-    <div class="experience-right">
-      <h3 class="experience-title">104 高年級 50+｜中高齡求職者選訓與媒合服務</h3>
-      <ul class="experience-list">
-        <li>導入 AI 技術於選訓流程，主導 4 項 AI 功能從 0→1 的規劃與落地，涵蓋需求分析、功能設計、模型選用、Prompt 撰寫與系統串接</li>
-        <li>打造結合 Avatar、GPT 語意判斷與 STT 的虛擬顧問面談工具，上線三個月覆蓋率達 36%，面試工時下降 67%</li>
-        <li>規劃履歷摘要、履歷亮點生成與面談紀錄摘要等功能，提升媒合效率與企業使用體驗</li>
-        <li>策劃 DEI「友善壯世代」活動，成功邀請 100+ 家企業響應，為團隊帶來穩定轉單並貢獻約 40% 年度營收</li>
-      </ul>
-
-      <h3 class="experience-title">104 外籍專區｜外籍人士在台求職的國際化生態系</h3>
-      <ul class="experience-list">
-        <li>建構 104 多語生態，推動履歷與全站多語化，整合跨語系資料結構與前端架構，讓產品具備可擴張的國際化能力</li>
-        <li>主導外籍專區網站改版，改版後 YOY 流量成長 60%，提升外籍求職者的求職體驗</li>
-        <li>透過 UJM 與訪談洞察痛點，提出 AI 即時翻譯功能，並整合語系分析、用戶分群與成本優化，使滿意度由 3.9 提升至 4.5</li>
-        <li>以關鍵數據建立企業分群模型並優化職缺排序，使外籍求職者更精準匹配高意願企業</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- 能力小卡 -->
-  <div class="container ability-cards-row">
-    <div class="ability-card reveal-on-scroll">
-      <h4>AI 成功導入產品</h4>
-      <p>能將 AI 導入產品應用，並從 POC 成功推向「可維運、可迭代」的產品結果</p>
-    </div>
-    <div class="ability-card reveal-on-scroll">
-      <h4>多語跨文化產品設計</h4>
-      <p>能處理多語、多文化、不同角色使用者的資料整合一致性與互動完整性</p>
-    </div>
-    <div class="ability-card reveal-on-scroll">
-      <h4>指標／數據導向決策</h4>
-      <p>能依據真實行為數據、使用成本與營運效益收斂產品方向</p>
-    </div>
-  </div>
-
-  <!-- Portfolio CTA -->
-  <div class="portfolio-cta reveal-on-scroll">
-    <a href="portfolio-104.html" class="portfolio-button">
-      <img src="portfolio.png" alt="View 104 Portfolio" />
-    </a>
-  </div>
-</section>
-
-<!-- 分隔線：104 → PayEasy -->
-<div class="animated-vertical-line reveal-on-scroll"></div>
-
-<!-- 2022 - 2022｜PayEasy -->
-<section id="experience-payeasy" class="experience-section reveal-on-scroll">
-  <div class="container experience-layout">
-    <div class="experience-left">
-      <div class="experience-badge">
-        <span class="experience-year">2022 - 2022</span>
+    <!-- 能力小卡 -->
+    <div class="container ability-cards-row">
+      <div class="ability-card reveal-on-scroll">
+        <h4>系統整合能力</h4>
+        <p>能梳理跨系統的資料流、流程依賴與權責邏輯，並設計可整合的運作方式</p>
       </div>
-      <div class="experience-company">
-        PayEasy 康迅數位整合<br />產品經理
+      <div class="ability-card reveal-on-scroll">
+        <h4>專案推進能力</h4>
+        <p>能在多依賴、多角色、多限制的場域中找到卡點、拆掉阻礙，讓專案在不確定與資源受限的情況下仍能前進</p>
+      </div>
+      <div class="ability-card reveal-on-scroll">
+        <h4>跨域協作與利害管理</h4>
+        <p>能把工程、廠務、業務、軟體團隊之間的資訊轉成共同語言，協調時程與優先順序，使各方能順利對齊與合作</p>
       </div>
     </div>
 
-    <div class="experience-right">
-      <h3 class="experience-title">PayEasy 企業福利網｜Web & App 維運與體驗優化</h3>
-      <ul class="experience-list">
-        <li>負責 Web 與 App 之維運，協調開發與營運，改善使用體驗與流程穩定性</li>
-        <li>規劃「買貴通報」功能，梳理通報流程、欄位設計與通知機制</li>
-        <li>參與多項前後台功能優化，包含流程調整、UI 建議與需求驗證，提升系統穩定與易用性</li>
-      </ul>
+    <!-- Portfolio CTA -->
+    <div class="portfolio-cta reveal-on-scroll">
+      <a href="portfolio.html" class="portfolio-button">
+        <img src="portfolio.png" alt="View Portfolio" />
+      </a>
     </div>
-  </div>
+  </section>
 
-  <div class="container ability-cards-row">
-    <div class="ability-card reveal-on-scroll">
-      <h4>跨部溝通與優先度管理</h4>
-      <p>能在 Sales / RD / CS / UI 之間協調需求優先級，兼顧資源與營運效率</p>
-    </div>
-    <div class="ability-card reveal-on-scroll">
-      <h4>敏捷拆解與迭代能力</h4>
-      <p>將需求拆成可交付的小單位，以低風險、小步迭代方式推進功能改善</p>
-    </div>
-    <div class="ability-card reveal-on-scroll">
-      <h4>利害關係人需求探索</h4>
-      <p>能透過對話與情境深挖，判斷陳述問題與真實需求之間的差異</p>
-    </div>
-  </div>
+  <!-- 分隔線：群光 → 104 -->
+  <div class="animated-vertical-line reveal-on-scroll"></div>
 
-  <div class="portfolio-cta reveal-on-scroll">
-    <a href="portfolio-payeasy.html" class="portfolio-button">
-      <img src="portfolio.png" alt="View PayEasy Portfolio" />
-    </a>
-  </div>
-</section>
-
-<!-- 分隔線：PayEasy → 活力台灣 -->
-<div class="animated-vertical-line reveal-on-scroll"></div>
-
-<!-- 2019 - 2022｜活力台灣 -->
-<section id="experience-vitality" class="experience-section reveal-on-scroll">
-  <div class="container experience-layout">
-    <div class="experience-left">
-      <div class="experience-badge">
-        <span class="experience-year">2019 - 2022</span>
+  <!-- 2022 - 2025｜104 資訊科技 -->
+  <section id="experience-104" class="experience-section reveal-on-scroll">
+    <div class="container experience-layout">
+      <!-- 左側 -->
+      <div class="experience-left">
+        <div class="experience-badge">
+          <span class="experience-year">2022 - 2025</span>
+        </div>
+        <div class="experience-company">
+          104 資訊科技<br />產品經理
+        </div>
       </div>
-      <div class="experience-company">
-        活力台灣科技<br />產品企劃 → 產品經理
-      </div>
-    </div>
 
-    <div class="experience-right">
-      <h3 class="experience-title">數據引擎｜中小企業專屬 SaaS 數據中台</h3>
-      <ul class="experience-list">
-        <li>主導數據引擎從 0→1 的產品規劃，結合 CDP 與 BI，打造中小企業專屬數據中台</li>
-        <li>規劃原生 Dashboard 與核心指標模型，將跨來源資料轉為可視化決策工具</li>
-        <li>負責競品研究、Roadmap 制定與產品募資提案，並規劃導入流程以協助企業落地使用</li>
-        <li>主持產品發表與企業教育訓練，協助中小企業建立數位轉型與基礎數據分析能力</li>
-      </ul>
-    </div>
-  </div>
+      <!-- 右側 -->
+      <div class="experience-right">
+        <h3 class="experience-title">104 高年級 50+｜中高齡求職者選訓與媒合服務</h3>
+        <ul class="experience-list">
+          <li>
+            導入 AI 技術於選訓流程，主導 4 項 AI 功能從 0→1 的規劃與落地，涵蓋需求分析、功能設計、模型選用、Prompt 撰寫與系統串接
+          </li>
+          <li>
+            打造結合 Avatar、GPT 語意判斷與 STT 的虛擬顧問面談工具，上線三個月覆蓋率達 36%，面試工時下降 67%
+          </li>
+          <li>規劃履歷摘要、履歷亮點生成與面談紀錄摘要等功能，提升媒合效率與企業使用體驗</li>
+          <li>策劃 DEI「友善壯世代」活動，成功邀請 100+ 家企業響應，為團隊帶來穩定轉單並貢獻約 40% 年度營收</li>
+        </ul>
 
-  <div class="container ability-cards-row">
-    <div class="ability-card reveal-on-scroll">
-      <h4>資料架構思維</h4>
-      <p>將需求拆解為功能，並規劃欄位、流程與資料，建立跨來源整合邏輯</p>
-    </div>
-    <div class="ability-card reveal-on-scroll">
-      <h4>產品 0→1 經歷</h4>
-      <p>推動以驗證落地為基礎的流程：需求假設、MVP、導入驗證與迭代</p>
-    </div>
-    <div class="ability-card reveal-on-scroll">
-      <h4>產品思維培養</h4>
-      <p>對系統延展性與可維運性產生意識，開始建立產品決策框架</p>
-    </div>
-  </div>
-
-  <div class="portfolio-cta reveal-on-scroll">
-    <a href="portfolio-vitality.html" class="portfolio-button">
-      <img src="portfolio.png" alt="View Vitality Portfolio" />
-    </a>
-  </div>
-</section>
-
-<!-- 分隔線：活力台灣 → 大八（沒有放在選單） -->
-<div class="animated-vertical-line reveal-on-scroll"></div>
-
-<!-- 2017 - 2019｜大八餐飲 -->
-<section id="experience-daba" class="experience-section reveal-on-scroll">
-  <div class="container experience-layout">
-    <div class="experience-left">
-      <div class="experience-badge">
-        <span class="experience-year">2017 - 2019</span>
-      </div>
-      <div class="experience-company">
-        大八餐飲集團<br />營運助理
+        <h3 class="experience-title">104 外籍專區｜外籍人士在台求職的國際化生態系</h3>
+        <ul class="experience-list">
+          <li>建構 104 多語生態，推動履歷與全站多語化，整合跨語系資料結構與前端架構，讓產品具備可擴張的國際化能力</li>
+          <li>主導外籍專區網站改版，改版後 YOY 流量成長 60%，提升外籍求職者的求職體驗</li>
+          <li>
+            透過 UJM 與訪談洞察痛點，提出 AI 即時翻譯功能，並整合語系分析、用戶分群與成本優化，使滿意度由 3.9 提升至 4.5
+          </li>
+          <li>以關鍵數據建立企業分群模型並優化職缺排序，使外籍求職者更精準匹配高意願企業</li>
+        </ul>
       </div>
     </div>
 
-    <div class="experience-right">
-      <h3 class="experience-title">品牌營運與行銷協作</h3>
-      <ul class="experience-list">
-        <li>配合執行部落客合作與口碑行銷專案，協助提升品牌曝光與流量</li>
-        <li>協助籌辦線下活動與新店開幕，包含媒體活動、文宣規劃與現場支援</li>
-        <li>擔任網站小編，負責內容撰寫與基本維運</li>
-        <li>配合行銷 SEO 操作，依目標關鍵字調整內容策略，提高曝光</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="container ability-cards-row">
-    <div class="ability-card reveal-on-scroll">
-      <h4>使用者洞察</h4>
-      <p>從第一線服務情境培養同理能力與問題識別</p>
-    </div>
-    <div class="ability-card reveal-on-scroll">
-      <h4>初步分析能力</h4>
-      <p>從內容企劃與流量中建立 PDCA 的假設與驗證習慣</p>
-    </div>
-    <div class="ability-card reveal-on-scroll">
-      <h4>系統化思維</h4>
-      <p>看見流程斷點，開始關注系統化解方</p>
-    </div>
-  </div>
-</section>
-
-<!-- ---------------------- -->
-<!-- 方法論 / 工作風格 -->
-<!-- ---------------------- -->
-<section id="methodology" class="method-section reveal-on-scroll">
-  <div class="method-inner">
-    <p class="method-eyebrow">
-      不只追求事情完成，<br />
-      更讓成果可被理解、可被延續、可被移轉。
-    </p>
-
-    <h2 class="method-title">關於我的工作風格與思考框架。</h2>
-    <div class="method-title-underline"></div>
-
-    <p class="method-subtitle">
-      我擅長在陌生或複雜領域中，透過結構化與共識建立，讓需求能被正確落地並持續擴展。<br />
-      無論是技術整合、流程優化，或是跨部門協作，我都能將抽象需求轉化為可執行的系統方案。
-    </p>
-
-    <div class="method-steps">
-      <div class="method-step">
-        <div class="method-step-label">Define</div>
-        <p>優先將時間投入在拆解問題，對齊所有利害關係人對「真正要解決的核心問題」的理解，透過假設驗證、限制條件分析與需求澄清，讓團隊能具備一致、可被討論、也可被決策的基礎。</p>
+    <!-- 能力小卡 -->
+    <div class="container ability-cards-row">
+      <div class="ability-card reveal-on-scroll">
+        <h4>AI 成功導入產品</h4>
+        <p>能將 AI 導入產品應用，並從 POC 成功推向「可維運、可迭代」的產品結果</p>
       </div>
-      <div class="method-step">
-        <div class="method-step-label">Structure</div>
-        <p>當問題被定義後，我會把資訊整理成清晰的架構：流程、角色、依賴、資訊與案例狀況。明確的結構讓利害關係人都能用同一套語言討論，也讓後續的溝通與迭代更有具體可推進性。</p>
+      <div class="ability-card reveal-on-scroll">
+        <h4>多語跨文化產品設計</h4>
+        <p>能處理多語、多文化、不同角色使用者的資料整合一致性與互動完整性</p>
       </div>
-      <div class="method-step">
-        <div class="method-step-label">Operationalize</div>
-        <p>在設計解決方案時，我會特別注意使用場景，把複雜流程拆成標準化、可重複的步驟，製作 SOP 與驗收方式，並清楚標明協作節點，使方案具有實際可行性。</p>
-      </div>
-      <div class="method-step">
-        <div class="method-step-label">Extend</div>
-        <p>當方案成功跑起來後，我會把流程模型化、系統化，讓未來專案、其他場域或新專案都能複製成果，而不是依賴個人經驗。重點是建立「可延展」的結構，而不只是一次性的專案交付。</p>
+      <div class="ability-card reveal-on-scroll">
+        <h4>指標／數據導向決策</h4>
+        <p>能依據真實行為數據、使用成本與營運效益收斂產品方向</p>
       </div>
     </div>
 
-    <p class="method-note">
-      這是在跨產業、跨系統專案後，逐漸形成的一套工作方法論。
-    </p>
-  </div>
-</section>
-
-<!-- ---------------------- -->
-<!-- Core Competence -->
-<!-- ---------------------- -->
-<section class="core-competence-section reveal-on-scroll">
-  <div class="core-inner">
-    <div class="core-label">CORE COMPETENCE</div>
-
-    <div class="core-list">
-      <p><strong>模糊變清晰：</strong>能把零散需求與模糊問題拆成可決策的框架，快速收斂方向。</p>
-      <p><strong>多角色協作：</strong>擅長在工程、設計、業務、現場間找到折衷並推動對齊。</p>
-      <p><strong>系統化與建模能力：</strong>將日常流程與現場習慣轉成模型，例如 API 的規格語言。</p>
-      <p><strong>高度自我驅動：</strong>遇到問題會連根拆解，建模並製成可複製的方法與文件。</p>
+    <!-- Portfolio CTA -->
+    <div class="portfolio-cta reveal-on-scroll">
+      <a href="portfolio-104.html" class="portfolio-button">
+        <img src="portfolio.png" alt="View 104 Portfolio" />
+      </a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ---------------------- -->
-<!-- Skills Overview -->
-<!-- ---------------------- -->
-<section id="skills-overview" class="skills-section reveal-on-scroll">
-  <div class="skills-inner">
-    <div class="skills-overview-block">
-      <h3 class="skills-overview-title">SKILLS OVERVIEW</h3>
+  <!-- 分隔線：104 → PayEasy -->
+  <div class="animated-vertical-line reveal-on-scroll"></div>
+
+  <!-- 2022 - 2022｜PayEasy 康迅數位整合 -->
+  <section id="experience-payeasy" class="experience-section reveal-on-scroll">
+    <div class="container experience-layout">
+      <div class="experience-left">
+        <div class="experience-badge">
+          <span class="experience-year">2022 - 2022</span>
+        </div>
+        <div class="experience-company">
+          PayEasy 康迅數位整合<br />產品經理
+        </div>
+      </div>
+
+      <div class="experience-right">
+        <h3 class="experience-title">PayEasy 企業福利網｜Web &amp; App 維運與體驗優化</h3>
+        <ul class="experience-list">
+          <li>負責 Web 與 App 之維運，協調開發與營運，改善使用體驗與流程穩定性</li>
+          <li>規劃「買貴通報」功能，梳理通報流程、欄位設計與通知機制</li>
+          <li>參與多項前後台功能優化，包含流程調整、UI 建議與需求驗證，提升系統穩定與易用性</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container ability-cards-row">
+      <div class="ability-card reveal-on-scroll">
+        <h4>跨部溝通與優先度管理</h4>
+        <p>能在 Sales / RD / CS / UI 之間協調需求優先級，兼顧資源與營運效率</p>
+      </div>
+      <div class="ability-card reveal-on-scroll">
+        <h4>敏捷拆解與迭代能力</h4>
+        <p>將需求拆成可交付的小單位，以低風險、小步迭代方式推進功能改善</p>
+      </div>
+      <div class="ability-card reveal-on-scroll">
+        <h4>利害關係人需求探索</h4>
+        <p>能透過對話與情境深挖，判斷陳述問題與真實需求之間的差異</p>
+      </div>
+    </div>
+
+    <div class="portfolio-cta reveal-on-scroll">
+      <a href="portfolio-payeasy.html" class="portfolio-button">
+        <img src="portfolio.png" alt="View PayEasy Portfolio" />
+      </a>
+    </div>
+  </section>
+
+  <!-- 分隔線：PayEasy → 活力台灣 -->
+  <div class="animated-vertical-line reveal-on-scroll"></div>
+
+  <!-- 2019 - 2022｜活力台灣科技 -->
+  <section id="experience-vitality" class="experience-section reveal-on-scroll">
+    <div class="container experience-layout">
+      <div class="experience-left">
+        <div class="experience-badge">
+          <span class="experience-year">2019 - 2022</span>
+        </div>
+        <div class="experience-company">
+          活力台灣科技<br />產品企劃 → 產品經理
+        </div>
+      </div>
+
+      <div class="experience-right">
+        <h3 class="experience-title">數據引擎｜中小企業專屬 SaaS 數據中台</h3>
+        <ul class="experience-list">
+          <li>主導數據引擎從 0→1 的產品規劃，結合 CDP 與 BI，打造中小企業專屬數據中台</li>
+          <li>規劃原生 Dashboard 與核心指標模型，將跨來源資料轉為可視化決策工具</li>
+          <li>負責競品研究、Roadmap 制定與產品募資提案，並規劃導入流程以協助企業落地使用</li>
+          <li>主持產品發表與企業教育訓練，協助中小企業建立數位轉型與基礎數據分析能力</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container ability-cards-row">
+      <div class="ability-card reveal-on-scroll">
+        <h4>資料架構思維</h4>
+        <p>將需求拆解為功能，並規劃欄位、流程與資料，建立跨來源整合邏輯</p>
+      </div>
+      <div class="ability-card reveal-on-scroll">
+        <h4>產品 0→1 經歷</h4>
+        <p>推動以驗證落地為基礎的流程：需求假設、MVP、導入驗證與迭代</p>
+      </div>
+      <div class="ability-card reveal-on-scroll">
+        <h4>產品思維培養</h4>
+        <p>對系統延展性與可維運性產生意識，開始建立產品決策框架</p>
+      </div>
+    </div>
+
+    <div class="portfolio-cta reveal-on-scroll">
+      <a href="portfolio-vitality.html" class="portfolio-button">
+        <img src="portfolio.png" alt="View Vitality Portfolio" />
+      </a>
+    </div>
+  </section>
+
+  <!-- 2017 - 2019｜大八餐飲集團（只有經歷區塊，可不放在選單） -->
+  <section id="experience-daba" class="experience-section reveal-on-scroll">
+    <div class="container experience-layout">
+      <div class="experience-left">
+        <div class="experience-badge">
+          <span class="experience-year">2017 - 2019</span>
+        </div>
+        <div class="experience-company">
+          大八餐飲集團<br />營運助理
+        </div>
+      </div>
+
+      <div class="experience-right">
+        <h3 class="experience-title">品牌營運與行銷協作</h3>
+        <ul class="experience-list">
+          <li>配合執行部落客合作與口碑行銷專案，協助提升品牌曝光與流量</li>
+          <li>協助籌辦線下活動與新店開幕，包含媒體活動、文宣規劃與現場支援</li>
+          <li>擔任網站小編，負責內容撰寫與基本維運</li>
+          <li>配合行銷 SEO 操作，依目標關鍵字調整內容策略，提高曝光</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 關於我的工作風格與思考框架 -->
+  <section id="work-style" class="work-style-section reveal-on-scroll">
+    <div class="container">
+      <p class="work-style-eyebrow">不只追求事情完成，<br />更讓成果可被理解、可被延續、可被移轉。</p>
+      <h2 class="work-style-title">關於我的工作風格與思考框架。</h2>
+      <div class="title-underline-left"></div>
+      <p class="work-style-sub">
+        我擅長在陌生或複雜領域中，透過結構化與共識建立，讓需求能被正確落地並持續擴展。<br />
+        無論是技術整合、流程優化，或是跨部門協作，我都能將抽象需求轉化為可執行的系統方案。
+      </p>
+
+      <div class="framework-grid">
+        <article class="framework-card">
+          <h3>Define</h3>
+          <p>
+            優先將時間投入在拆解問題，對齊所有利害關係人對「真正要解決的核心問題」的理解。透過假設驗證、限制條件分析與邊界釐清，讓團隊在同一個問題上討論，也可檢核決策。
+          </p>
+        </article>
+        <article class="framework-card">
+          <h3>Structure</h3>
+          <p>
+            當問題被定義後，我會把資訊整理成清晰的架構：流程、角色、依賴、資料流與例外狀況。目的是讓大家都能用同一套語言討論，同時也能作為規格與設計的基礎，具備可推進性。
+          </p>
+        </article>
+        <article class="framework-card">
+          <h3>Operationalize</h3>
+          <p>
+            在設計解決方案時，我會特別注意使用場景，把複雜流程拆成標準化、可重複的步驟，製作 SOP 與驗收方式，並清楚跨部門協作節點，使方案具有真正的可行性。
+          </p>
+        </article>
+        <article class="framework-card">
+          <h3>Extend</h3>
+          <p>
+            當方案成功跑起來後，我會把流程模組化、系統化，讓未來專案、其他場域或新專案都能複製成果，而不是依賴個人經驗。重點是建立「可延展」的結構，而不只是一次性的專案交付。
+          </p>
+        </article>
+      </div>
+
+      <p class="framework-note">
+        這是我在跨產業、跨系統推專案後，逐漸形成的一套工作方法論。
+      </p>
+    </div>
+  </section>
+
+  <!-- CORE COMPETENCE -->
+  <section class="core-competence-section reveal-on-scroll">
+    <div class="container">
+      <div class="caps-label">CORE COMPETENCE</div>
+
+      <p class="core-line">
+        模糊變清晰：能把零散需求與模糊問題拆成可討論、可決策的框架，快速找出執行方向。
+      </p>
+      <p class="core-line">
+        多角協作：擅長在工程、設計、業務、現場與利害關係人之間折衝並對齊。
+      </p>
+      <p class="core-line">
+        系統化與建模能力：將口語流程與現場習慣轉成欄位、例如 API 的規格語言。
+      </p>
+      <p class="core-line">
+        高度自我驅動：遇到問題會連根拆解，建模並製成可複製的方法與文件。
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills Overview -->
+  <section id="skills-overview" class="skills-section reveal-on-scroll">
+    <div class="container">
+      <div class="caps-label">SKILLS OVERVIEW</div>
 
       <div class="skills-grid">
         <!-- 1 系統化產品思維 -->
-        <div class="skill-card-outer">
+        <div class="skill-card">
           <div class="skill-card-inner">
             <div class="skill-card-face skill-card-front">
-              系統化產品思維
+              <div class="skill-front-title">系統化產品思維</div>
             </div>
             <div class="skill-card-face skill-card-back">
-              <p>陌生領域建構能力：能在短時間掌握新領域（弱電、能源、AI、多語、媒合）的整體架構，建立可延展的產品藍圖。</p>
-              <p>需求拆解與目標定義：把模糊需求拆成可討論、可交付、可驗證的單位；落實成指標、限制條件與決策準則。</p>
-              <p>資料流與系統視角整合：用資料結構、欄位規劃、資料流程將跨系統共識，讓 UI、API、資料表能順暢運作。</p>
+              <h4>系統化產品思維</h4>
+
+              <div class="skill-item">
+                <div class="skill-item-title">陌生領域建構能力</div>
+                <p>
+                  能在短時間掌握新領域（弱電、能源、AI、多語、媒合）的邏輯，建立可延展的產品結構。
+                </p>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-title">需求拆解與目標定義</div>
+                <p>
+                  把模糊需求拆成可討論、可交付、可驗證的單位；釐清成功指標、限制條件、邊界。
+                </p>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-title">資料流與系統視角整合</div>
+                <p>
+                  用資料結構、欄位規則、資料流建立跨系統共識；讓 UI、API、資料表能順暢運作。
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 2 使用者體驗與流程設計 -->
-        <div class="skill-card-outer">
+        <div class="skill-card">
           <div class="skill-card-inner">
             <div class="skill-card-face skill-card-front">
-              使用者體驗與流程設計
+              <div class="skill-front-title">使用者體驗與流程設計</div>
             </div>
             <div class="skill-card-face skill-card-back">
-              <p>從使用情境出發，透過訪談、UJM 與實際操作觀察，找到流程斷點與認知落差。</p>
-              <p>能將複雜流程拆成清晰步驟，兼顧前台體驗、後台維運與跨角色協作需求。</p>
+              <h4>使用者體驗與流程設計</h4>
+
+              <div class="skill-item">
+                <div class="skill-item-title">使用者旅程 &amp; User Flow 設計</div>
+                <p>把用戶行為與系統流程縫合成連續性的體驗。</p>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-title">資訊架構、內容規格化</div>
+                <p>建立前後台一致的資訊結構、規則、意圖。</p>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-title">跨系統流程銜接 &amp; 辦公環境導入</div>
+                <p>能處理建管、能源、弱電這種多模組＋多角色＋多系統的流程。</p>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 3 資料分析與決策 -->
-        <div class="skill-card-outer">
+        <div class="skill-card">
           <div class="skill-card-inner">
             <div class="skill-card-face skill-card-front">
-              資料分析與決策
+              <div class="skill-front-title">資料分析與決策</div>
             </div>
             <div class="skill-card-face skill-card-back">
-              <p>熟悉事件追蹤、指標設計與儀表板規劃，能把數字變成決策依據，而不是僅止於報表。</p>
-              <p>習慣用數據驗證假設、調整優先序與產品方向。</p>
+              <h4>資料分析與決策</h4>
+
+              <div class="skill-item">
+                <div class="skill-item-title">資料清洗與 Mapping</div>
+                <p>擅長「資料問題推動產品改善」：格式不一、資料缺失、錯誤欄位、即時監控。</p>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-title">能源／弱電領域的數據能力</div>
+                <p>能源基線、迴歸模型、監測邏輯、設備數據特性。</p>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-title">數據驅動與決策框架</div>
+                <p>
+                  以使用成本、行為數據、效益模型引導產品 roadmap，確保產品功能能帶來實質效益與可衡量的價值。
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 4 協作與推動能力 -->
-        <div class="skill-card-outer">
+        <div class="skill-card">
           <div class="skill-card-inner">
             <div class="skill-card-face skill-card-front">
-              協作與推動能力
+              <div class="skill-front-title">協作與推動能力</div>
             </div>
             <div class="skill-card-face skill-card-back">
-              <p>擅長把各方語言翻譯成共同語言，協調工程、業務、營運、廠務與管理階層的期待。</p>
-              <p>能在資源受限與時程壓力下，找到可落地的解方並持續往前推進。</p>
+              <h4>協作與推動能力</h4>
+
+              <div class="skill-item">
+                <div class="skill-item-title">多角色協調與資訊對齊</div>
+                <p>能把工程、業務、營運、管理階層與 end user 的需求翻譯成共同語言。</p>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-title">卡點排除、路徑選擇</div>
+                <p>在資源有限、資訊不完全時，找出最能落地的路徑。</p>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-title">專案落地與優先度管理</div>
+                <p>能在多依賴、多角色、多限制之下仍推動專案前進。</p>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- 5 規格與工程協作 -->
-        <div class="skill-card-outer">
+        <div class="skill-card">
           <div class="skill-card-inner">
             <div class="skill-card-face skill-card-front">
-              規格與工程協作
+              <div class="skill-front-title">規格與工程協作</div>
             </div>
             <div class="skill-card-face skill-card-back">
-              <p>能以 API / JSON / 欄位定義與 RD 溝通需求，理解工程限制與系統架構。</p>
-              <p>習慣將規格文檔結構化，方便維護、迭代與跨團隊傳承。</p>
+              <h4>規格與工程協作</h4>
+
+              <div class="skill-item">
+                <div class="skill-item-title">規格文件產出</div>
+                <p>User Story、API 對接、欄位 mapping、資料規則、edge case。</p>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-title">資訊架構、內容規格化</div>
+                <p>Test Case、UAT、版本策略、快速 POC 驗證。</p>
+              </div>
+
+              <div class="skill-item">
+                <div class="skill-item-title">跨部門開發協作</div>
+                <p>Sales、營運、RD、UI、外部廠商的語言轉換與決策整合。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 我常運用的工具與流程 -->
+  <section id="tool-matrix" class="tools-section reveal-on-scroll">
+    <div class="container">
+      <h2 class="tools-title">我常運用的工具與流程。</h2>
+      <p class="tools-subtitle">搭配專案情境，在產品生命週期不同階段選用對應的工具與方法。</p>
+
+      <!-- Desktop / Tablet 矩陣 -->
+      <div class="tool-matrix-grid">
+        <div class="tool-matrix-card">
+          <div class="tool-matrix-title">問題釐清與需求發現</div>
+          <div class="tool-matrix-tags">
+            <span>訪談與觀察</span>
+            <span>UJM</span>
+            <span>Workshop</span>
+            <span>痛點地圖</span>
+          </div>
+        </div>
+
+        <div class="tool-matrix-card">
+          <div class="tool-matrix-title">產品與資訊架構</div>
+          <div class="tool-matrix-tags">
+            <span>Sitemap</span>
+            <span>Wireframe</span>
+            <span>Flowchart</span>
+            <span>State Mapping</span>
+          </div>
+        </div>
+
+        <div class="tool-matrix-card">
+          <div class="tool-matrix-title">指標與數據分析</div>
+          <div class="tool-matrix-tags">
+            <span>GA / GTM</span>
+            <span>PowerBI</span>
+            <span>SQL</span>
+            <span>Grafana</span>
+          </div>
+        </div>
+
+        <div class="tool-matrix-card">
+          <div class="tool-matrix-title">協作與追蹤</div>
+          <div class="tool-matrix-tags">
+            <span>Jira</span>
+            <span>Notion</span>
+            <span>Confluence</span>
+            <span>共編文件</span>
+          </div>
+        </div>
+
+        <div class="tool-matrix-card">
+          <div class="tool-matrix-title">開發流程與品質</div>
+          <div class="tool-matrix-tags">
+            <span>CI/CD</span>
+            <span>Scrum</span>
+            <span>API／JSON 流程設計</span>
+            <span>Test Case</span>
+          </div>
+        </div>
+
+        <div class="tool-matrix-card">
+          <div class="tool-matrix-title">營運與持續優化</div>
+          <div class="tool-matrix-tags">
+            <span>A/B Test</span>
+            <span>問卷與回饋</span>
+            <span>營運儀表板</span>
+            <span>成效追蹤</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Slider -->
+      <div class="tool-mobile-wrapper">
+        <button class="tool-slider-nav prev" type="button" aria-label="上一個">&lsaquo;</button>
+
+        <div class="tool-mobile-slider">
+          <div class="tool-mobile-card">
+            <div class="tool-matrix-title">問題釐清與需求發現</div>
+            <div class="tool-matrix-tags">
+              <span>訪談與觀察</span>
+              <span>UJM</span>
+              <span>Workshop</span>
+              <span>痛點地圖</span>
+            </div>
+          </div>
+
+          <div class="tool-mobile-card">
+            <div class="tool-matrix-title">產品與資訊架構</div>
+            <div class="tool-matrix-tags">
+              <span>Sitemap</span>
+              <span>Wireframe</span>
+              <span>Flowchart</span>
+              <span>State Mapping</span>
+            </div>
+          </div>
+
+          <div class="tool-mobile-card">
+            <div class="tool-matrix-title">指標與數據分析</div>
+            <div class="tool-matrix-tags">
+              <span>GA / GTM</span>
+              <span>PowerBI</span>
+              <span>SQL</span>
+              <span>Grafana</span>
+            </div>
+          </div>
+
+          <div class="tool-mobile-card">
+            <div class="tool-matrix-title">協作與追蹤</div>
+            <div class="tool-matrix-tags">
+              <span>Jira</span>
+              <span>Notion</span>
+              <span>Confluence</span>
+              <span>共編文件</span>
+            </div>
+          </div>
+
+          <div class="tool-mobile-card">
+            <div class="tool-matrix-title">開發流程與品質</div>
+            <div class="tool-matrix-tags">
+              <span>CI/CD</span>
+              <span>Scrum</span>
+              <span>API／JSON 流程設計</span>
+              <span>Test Case</span>
+            </div>
+          </div>
+
+          <div class="tool-mobile-card">
+            <div class="tool-matrix-title">營運與持續優化</div>
+            <div class="tool-matrix-tags">
+              <span>A/B Test</span>
+              <span>問卷與回饋</span>
+              <span>營運儀表板</span>
+              <span>成效追蹤</span>
             </div>
           </div>
         </div>
 
-        <!-- 6 空位，維持 2×3 排版 -->
-        <div class="skill-card-outer">
-          <div class="skill-card-inner">
-            <div class="skill-card-face skill-card-front"></div>
-            <div class="skill-card-face skill-card-back"></div>
-          </div>
-        </div>
+        <button class="tool-slider-nav next" type="button" aria-label="下一個">&rsaquo;</button>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ---------------------- -->
-<!-- 工具 / 流程矩陣 -->
-<!-- ---------------------- -->
-<section id="tools-process" class="tools-section reveal-on-scroll">
-  <div class="tools-inner">
-    <h2 class="tools-title">我常運用的工具與流程。</h2>
-    <p class="tools-subtitle">
-      依照用途拆成「數據觀測」、「產品／行銷」、「系統整合與工程協作」、「產品規劃與決策」四個面向。
-    </p>
+  <!-- Contact -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2 class="contact-title">Contact</h2>
+      <p class="contact-text">如果你對我的經驗與作品有興趣，歡迎聯絡我。</p>
 
-    <div class="tool-matrix">
-      <div class="tool-row tool-row-header">
-        <div>用途</div>
-        <div>流程或手法</div>
-        <div>工具</div>
-      </div>
+      <div class="contact-links">
+        <a href="mailto:sue02102580@gmail.com" class="contact-link">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">sue02102580@gmail.com</span>
+        </a>
 
-      <div class="tool-row">
-        <div class="tool-purpose">數據觀測</div>
-        <div class="tool-process">Schema 設計、事件與行為追蹤</div>
-        <div class="tool-tools">Clarity、Hotjar、PowerBI、SQL、Grafana、GA、Tableau</div>
-      </div>
-
-      <div class="tool-row">
-        <div class="tool-purpose">產品／行銷</div>
-        <div class="tool-process">SEO 與成效追蹤配置</div>
-        <div class="tool-tools">GTM、WordPress</div>
-      </div>
-
-      <div class="tool-row">
-        <div class="tool-purpose">系統整合與工程協作</div>
-        <div class="tool-process">CI/CD、Scrum、API／JSON 流程設計</div>
-        <div class="tool-tools">Flowchart、Google Colab、Postman、Jira、Jenkins</div>
-      </div>
-
-      <div class="tool-row">
-        <div class="tool-purpose">產品規劃與決策</div>
-        <div class="tool-process">優先度模型與決策紀錄</div>
-        <div class="tool-tools">Confluence、Figma、Axure、Miro</div>
+        <a
+          href="https://www.linkedin.com/in/%E6%99%8F%E6%85%88-%E6%9D%8E-183172212"
+          class="contact-link contact-link-inline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value with-icon">
+            <svg class="linkedin-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="11" />
+              <path
+                d="M9 17H7V10h2v7zm-.9-8.1a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4zM18 17h-2v-3.6c0-.9-.4-1.5-1.2-1.5-.7 0-1.1.5-1.3.9-.1.2-.1.4-.1.7V17h-2s.1-6 0-7h2v1.1c.1-.4.8-1.3 2-1.3 1.5 0 2.6 1 2.6 3.1V17z"
+              />
+            </svg>
+            晏慈 Lee
+          </span>
+        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Contact / Footer -->
-<section id="contact" class="reveal-on-scroll">
-  <div class="container">
-    <p>若你希望進一步了解我的經歷或作品，歡迎來信：</p>
-    <p><strong>nicole@example.com</strong></p>
-  </div>
-</section>
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Nicole Li. All rights reserved.</p>
+    </div>
+  </footer>
 
-<footer>
-  <div class="container">
-    © 2025 Nicole Li. All rights reserved.
-  </div>
-</footer>
-
-<!-- Scroll Reveal & Nav / Skills Script -->
-<script>
-(function () {
-  /* Scroll Reveal */
-  const revealElements = document.querySelectorAll('.reveal-on-scroll');
-
-  if (!('IntersectionObserver' in window)) {
-    revealElements.forEach(el => el.classList.add('is-visible'));
-  } else {
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0,
-      rootMargin: '0px 0px -5% 0px'
-    });
-
-    revealElements.forEach(el => observer.observe(el));
-  }
-
-  /* 一階選單點擊展開 / 收起二階（只負責展開） */
-  const submenuLinks = document.querySelectorAll('.main-nav li.has-submenu > a');
-
-  submenuLinks.forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      const li = this.parentElement;
-      const alreadyOpen = li.classList.contains('submenu-open');
-
-      // 關掉其他
-      document.querySelectorAll('.main-nav li.has-submenu')
-        .forEach(item => item.classList.remove('submenu-open'));
-
-      if (!alreadyOpen) {
-        li.classList.add('submenu-open');
-      }
-    });
-  });
-
-  // 點頁面其他地方就收起二階
-  document.addEventListener('click', function (e) {
-    const nav = document.querySelector('.main-nav');
-    if (!nav.contains(e.target)) {
-      document.querySelectorAll('.main-nav li.has-submenu')
-        .forEach(item => item.classList.remove('submenu-open'));
-    }
-  });
-
-  /* 錨點平滑滾動（含一階與二階連結） */
-  const header = document.querySelector('.header');
-  const headerHeight = header ? header.offsetHeight : 0;
-
-  function smoothScrollToId(id) {
-    if (!id || id === '#') return;
-    const target = document.querySelector(id);
-    if (!target) return;
-
-    const rect = target.getBoundingClientRect();
-    const offsetTop = window.pageYOffset + rect.top - headerHeight - 8;
-
-    window.scrollTo({
-      top: offsetTop,
-      behavior: 'smooth'
-    });
-  }
-
-  const anchorLinks = document.querySelectorAll('a[href^="#"]');
-
-  anchorLinks.forEach(link => {
-    link.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      // 有 submenu 的一階 anchor 已經在上面處理展開，這裡只負責真正的錨點
-      if (this.parentElement.classList.contains('has-submenu') && href === '#') {
+  <!-- Scripts -->
+  <script>
+    // Scroll Reveal
+    (function () {
+      const revealElements = document.querySelectorAll('.reveal-on-scroll');
+      if (!('IntersectionObserver' in window)) {
+        revealElements.forEach((el) => el.classList.add('is-visible'));
         return;
       }
-      e.preventDefault();
-      smoothScrollToId(href);
 
-      // 收起所有二階
-      document.querySelectorAll('.main-nav li.has-submenu')
-        .forEach(item => item.classList.remove('submenu-open'));
-    });
-  });
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              obs.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0,
+          rootMargin: '0px 0px -5% 0px',
+        }
+      );
 
-  /* Skills Overview：手機 / 小螢幕自動翻牌 */
-  if ('IntersectionObserver' in window) {
-    const skillCards = document.querySelectorAll('.skill-card-outer');
+      revealElements.forEach((el) => observer.observe(el));
+    })();
 
-    const flipObserver = new IntersectionObserver((entries) => {
-      if (window.innerWidth > 900) return; // 大螢幕用 hover，不用自動 flip
+    // Smooth scroll for anchor links（含次選單）
+    (function () {
+      const header = document.querySelector('.header');
 
-      entries.forEach(entry => {
-        const card = entry.target;
-        if (entry.intersectionRatio > 0.45) {
-          card.classList.add('is-flipped');
-        } else {
-          card.classList.remove('is-flipped');
+      function smoothScrollTo(targetId) {
+        const target = document.getElementById(targetId);
+        if (!target) return;
+
+        const headerOffset = header ? header.offsetHeight + 8 : 0;
+        const rect = target.getBoundingClientRect();
+        const offset = rect.top + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offset,
+          behavior: 'smooth',
+        });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          const id = href.slice(1);
+          if (!id) return;
+          if (document.getElementById(id)) {
+            e.preventDefault();
+            smoothScrollTo(id);
+          }
+        });
+      });
+    })();
+
+    // Nav submenu：桌機 hover、手機點擊展開
+    (function () {
+      const submenuItems = document.querySelectorAll('.nav-item.has-submenu');
+
+      submenuItems.forEach((item) => {
+        const trigger = item.querySelector('.nav-link');
+
+        trigger.addEventListener('click', (e) => {
+          if (window.innerWidth <= 900) {
+            e.preventDefault();
+            item.classList.toggle('open');
+          }
+        });
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 900) {
+          submenuItems.forEach((item) => item.classList.remove('open'));
         }
       });
-    }, {
-      threshold: [0, 0.45, 1],
-      rootMargin: '-10% 0px -10% 0px'
-    });
+    })();
 
-    skillCards.forEach(card => flipObserver.observe(card));
-  }
-})();
-</script>
+    // Skills flip cards：桌機 hover、手機滾動自動翻面
+    (function () {
+      const cards = document.querySelectorAll('.skill-card');
+      if (!cards.length) return;
+
+      // Desktop hover
+      cards.forEach((card) => {
+        card.addEventListener('mouseenter', () => {
+          if (window.innerWidth > 768) {
+            card.classList.add('is-flipped');
+          }
+        });
+        card.addEventListener('mouseleave', () => {
+          if (window.innerWidth > 768) {
+            card.classList.remove('is-flipped');
+          }
+        });
+      });
+
+      // Mobile：IntersectionObserver 控制翻面
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            if (window.innerWidth > 768) return;
+            entries.forEach((entry) => {
+              entry.target.classList.toggle('is-flipped', entry.isIntersecting);
+            });
+          },
+          { threshold: 0.6 }
+        );
+
+        cards.forEach((card) => io.observe(card));
+      }
+    })();
+
+    // Tools mobile slider arrows
+    (function () {
+      const slider = document.querySelector('.tool-mobile-slider');
+      if (!slider) return;
+
+      const cards = slider.querySelectorAll('.tool-mobile-card');
+      const prev = document.querySelector('.tool-slider-nav.prev');
+      const next = document.querySelector('.tool-slider-nav.next');
+      const gap = 16;
+
+      function getAmount() {
+        if (!cards.length) return slider.clientWidth * 0.8;
+        return cards[0].offsetWidth + gap;
+      }
+
+      prev &&
+        prev.addEventListener('click', () => {
+          slider.scrollBy({ left: -getAmount(), behavior: 'smooth' });
+        });
+
+      next &&
+        next.addEventListener('click', () => {
+          slider.scrollBy({ left: getAmount(), behavior: 'smooth' });
+        });
+    })();
+  </script>
 </body>
 </html>
