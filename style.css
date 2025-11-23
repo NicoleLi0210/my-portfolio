@@ -151,24 +151,37 @@ body {
     margin-bottom: 15px;
 }
 
-/* 關鍵字標籤 (移除底色和傾斜) */
+/* 關鍵字標籤 (使用絕對定位與背景圖重疊) */
 .keyword-tags {
-    margin-top: 10px;
+    position: absolute; /* 絕對定位 */
+    top: 50%; /* 垂直向下移動 */
+    right: 0; /* 水平向右對齊 (基於名片容器) */
+    transform: translateY(-50%); /* 垂直居中對齊 */
+    display: flex;
+    flex-direction: column; /* 讓標籤垂直堆疊 */
+    text-align: right; /* 文字右對齊 */
+    line-height: 1.2;
 }
 
 .tag {
-    display: inline-block;
-    /* 移除黃色底色和傾斜效果 */
+    /* 保持 tag 樣式簡潔，只為文字 */
     background-color: transparent; 
-    color: var(--primary-text);
-    padding: 3px 10px;
-    margin: 0 5px;
+    color: var(--secondary-text); /* 標籤文字使用中灰色 */
+    padding: 0; /* 移除 padding */
+    margin: 0; /* 移除 margin */
     font-size: 0.9em;
-    font-weight: 500;
-    transform: none; /* 取消傾斜 */
+    font-weight: 300;
+    transform: none; 
     position: relative;
     z-index: 10;
 }
+
+/* 為了讓文字更符合截圖的緊湊感，我們需要覆寫 font-size 和 line-height */
+.tag:nth-child(1) { font-size: 0.8em; } /* 跨領域 (最小) */
+.tag:nth-child(2) { font-size: 0.85em; } /* 系統整合 (中間) */
+.tag:nth-child(3) { font-size: 0.9em; } /* 可延續價值打造 (最大) */
+
+/* 名片標題和職稱居中，不需要調整 */
 
 /* 垂直線動畫 (修正置中和循環邏輯) */
 .animated-vertical-line {
@@ -238,4 +251,5 @@ body {
 @media (max-width: 768px) {
     /* ... 保持 RWD 樣式不變 ... */
 }
+
 
