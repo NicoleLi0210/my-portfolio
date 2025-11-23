@@ -2,120 +2,170 @@
 /* 變數與基底 */
 /* ---------------------- */
 :root {
-    --primary-text: #333333;
-    --secondary-text: #666666;
-    --light-text: #aaaaaa;
-    --accent-yellow: #FFD700;
-    --background-white: #ffffff;
-    --border-light: #e0e0e0;
-    --animated-line-color: #cacaca;
+  --primary-text: #333333;
+  --secondary-text: #666666;
+  --light-text: #aaaaaa;
+  --accent-yellow: #FFD700;
+  --background-white: #ffffff;
+  --border-light: #e0e0e0;
+  --animated-line-color: #cacaca;
 }
 
 @keyframes lineFlow {
-    0%   { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
 }
 
 /* 名片文字往上飄 */
 @keyframes floatText {
   0%   { transform: translateY(0); }
-  50%  { transform: translateY(-14px); }  /* 往上幅度加大一點 */
+  50%  { transform: translateY(-14px); }
   100% { transform: translateY(0); }
 }
 
 /* 黃色底圖往下飄（反方向） */
 @keyframes floatBg {
   0%   { transform: translate(-50%, 0); }
-  50%  { transform: translate(-50%, 14px); }  /* 明顯往下 */
+  50%  { transform: translate(-50%, 14px); }
   100% { transform: translate(-50%, 0); }
 }
 
+/* 結構圖上的掃光效果 */
+@keyframes methodShine {
+  0%   { transform: translateX(-120%); }
+  30%  { transform: translateX(120%); }
+  100% { transform: translateX(120%); }
+}
 
 body {
-    font-family: 'Noto Sans TC', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    color: var(--secondary-text);
-    background-color: var(--background-white);
-    scroll-behavior: smooth;
-    font-weight: 300;
-    text-align: center;
+  font-family: 'Noto Sans TC', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  color: var(--secondary-text);
+  background-color: var(--background-white);
+  scroll-behavior: smooth;
+  font-weight: 300;
+  text-align: center;
 }
 
 .container {
-    max-width: 1040px;
-    margin: 0 auto;
-    padding: 0 24px;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 /* ---------------------- */
 /* Header */
 /* ---------------------- */
 .header {
-    background: var(--background-white);
-    border-bottom: 1px solid var(--border-light);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  background: var(--background-white);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .header-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 55px;
 }
 
 .logo {
-    font-weight: 500;
-    font-size: 1.1em;
-    color: var(--primary-text);
-    margin-right: 50px;
+  font-weight: 500;
+  font-size: 1.1em;
+  color: var(--primary-text);
 }
 
-.header nav a {
-    text-decoration: none;
-    color: var(--secondary-text);
-    margin-left: 25px;
-    font-size: 0.95em;
-    transition: color 0.2s ease;
+/* 主選單 */
+.main-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 0.95em;
 }
 
-.header nav a:hover {
-    color: var(--accent-yellow);
+.main-nav a {
+  text-decoration: none;
+  color: var(--secondary-text);
+  padding: 4px 0;
+  display: inline-block;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: var(--accent-yellow);
+}
+
+/* 下拉選單 */
+.main-nav li {
+  position: relative;
+}
+
+.main-nav .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 150px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  padding: 8px 0;
+  list-style: none;
+  margin: 8px 0 0;
+  display: none;
+  z-index: 1200;
+}
+
+.main-nav .submenu li {
+  width: 100%;
+}
+
+.main-nav .submenu a {
+  padding: 6px 16px;
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+.main-nav li.has-submenu:hover > .submenu,
+.main-nav li.has-submenu.submenu-open > .submenu {
+  display: block;
 }
 
 /* ---------------------- */
 /* Hero / Profile */
 /* ---------------------- */
-/* Hero 區塊 */
 .hero-landing {
-    padding: 80px 0 60px;   /* 原本 80px 0 90px → 把底部縮小 */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 90vh;
+  padding: 80px 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 90vh;
 }
 
 .card-section {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
 }
 
 .profile-photo {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 4px solid var(--border-light);
-    position: relative;
-    z-index: 20;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 4px solid var(--border-light);
+  position: relative;
+  z-index: 20;
 }
 
 .name-card-container {
@@ -123,626 +173,702 @@ body {
   text-align: center;
   z-index: 10;
   min-width: 300px;
-
-  /* 整張名片往上飄 */
   animation: floatText 2.6s ease-in-out infinite;
 }
+
 .name-title {
-    font-size: 2.5em;
-    font-weight: 700;
-    color: var(--primary-text);
-    margin: 0;
+  font-size: 2.5em;
+  font-weight: 700;
+  color: var(--primary-text);
+  margin: 0;
 }
 
 .nicole-en {
-    font-weight: 300;
-    color: var(--secondary-text);
-    margin-left: 5px;
+  font-weight: 300;
+  color: var(--secondary-text);
+  margin-left: 5px;
 }
 
 .job-title {
-    font-size: 1.4em;
-    font-weight: 500;
-    color: var(--secondary-text);
-    margin-top: 5px;
-    margin-bottom: 15px;
+  font-size: 1.4em;
+  font-weight: 500;
+  color: var(--secondary-text);
+  margin-top: 5px;
+  margin-bottom: 15px;
 }
 
 /* 關鍵字標籤 */
 .keyword-tags {
-    position: absolute;
-    top: 75%;
-    left: 50%;
-    transform: translateX(80px);
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    line-height: 1.2;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translateX(80px);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  line-height: 1.2;
 }
 
 .tag {
-    background-color: transparent;
-    color: var(--secondary-text);
-    padding: 0;
-    margin: 0;
-    font-size: 0.9em;
-    font-weight: 300;
-    white-space: nowrap;
+  background-color: transparent;
+  color: var(--secondary-text);
+  padding: 0;
+  margin: 0;
+  font-size: 0.9em;
+  font-weight: 300;
+  white-space: nowrap;
 }
 
 /* 垂直線 */
 .animated-vertical-line {
-    position: relative;
-    width: 1px;
-    height: 90px;
-    margin: 24px auto;
-
-    /* 淺色底線一直存在 */
-    background-color: #f2f2f2;
-    overflow: hidden;
+  position: relative;
+  width: 1px;
+  height: 90px;
+  margin: 24px auto;
+  background-color: #f2f2f2;
+  overflow: hidden;
 }
 
-/* 深色線段從上滑到下 */
 .animated-vertical-line::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 1px;
-    height: 180%;            /* 比本身高一些，滑過去更順 */
-    background-color: #111;
-    opacity: 0.7;
-    transform: translateY(-100%);
-    animation: lineFlow 2s linear infinite;
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 1px;
+  height: 180%;
+  background-color: #111;
+  opacity: 0.7;
+  transform: translateY(-100%);
+  animation: lineFlow 2s linear infinite;
 }
 
 .intro-title-image {
-    width: 200px;
-    height: auto;
-    margin-bottom: 40px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  width: 200px;
+  height: auto;
+  margin-bottom: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* 個人簡介 */
 .bio-section {
-    max-width: 500px;
-    text-align: center;
-    margin-top: 20px;
+  max-width: 500px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .bio-section p {
-    margin: 8px 0;
-    font-size: 1.1em;
+  margin: 8px 0;
+  font-size: 1.1em;
 }
 
 .highlight-bold {
-    font-weight: 500;
-    color: var(--primary-text);
+  font-weight: 500;
+  color: var(--primary-text);
 }
 
 .small-divider {
-    width: 30px;
-    height: 2px;
-    background: var(--secondary-text);
-    margin: 25px auto;
+  width: 30px;
+  height: 2px;
+  background: var(--secondary-text);
+  margin: 25px auto;
 }
 
 /* ---------------------- */
 /* 我的職涯演進 區塊 */
+/* ---------------------- */
 .career-evolution-section {
-    padding: 40px 0 50px;   /* 原本 60px 0 50px → 上方再拉近一點 */
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
+  padding: 40px 0 50px;
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .section-title-left {
-    font-size: 2.5em;
-    font-weight: 700;
-    color: var(--primary-text);
-    margin-bottom: 10px;
+  font-size: 2.5em;
+  font-weight: 700;
+  color: var(--primary-text);
+  margin-bottom: 10px;
 }
 
 .title-underline-left {
-    width: 80px;
-    height: 4px;
-    background: var(--accent-yellow);
-    margin-bottom: 25px;
+  width: 80px;
+  height: 4px;
+  background: var(--accent-yellow);
+  margin-bottom: 25px;
 }
 
 .section-description-left {
-    font-size: 1.1em;
-    line-height: 1.8;
-    color: var(--secondary-text);
-    max-width: 600px;
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: var(--secondary-text);
+  max-width: 600px;
 }
 
 /* ---------------------- */
-/* 2025-2025 Experience */
+/* Experience 區塊 */
 /* ---------------------- */
 .experience-section {
-    padding: 60px 0 60px;
-    background-color: #ffffff;
+  padding: 60px 0 60px;
+  background-color: #ffffff;
 }
 
 .experience-layout {
-    display: grid;
-    grid-template-columns: minmax(140px, 190px) minmax(0, 1fr);
-    gap: 24px;              /* 收掉你左側圈起來的留白 */
-    align-items: flex-start;
+  display: grid;
+  grid-template-columns: minmax(140px, 190px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: flex-start;
 }
 
 .experience-left {
-    text-align: left;
+  text-align: left;
 }
 
 .experience-badge {
-    position: relative;
-    padding-left: 26px;
-    font-weight: 500;
-    color: var(--primary-text);
-    margin-bottom: 8px;
+  position: relative;
+  padding-left: 26px;
+  font-weight: 500;
+  color: var(--primary-text);
+  margin-bottom: 8px;
 }
 
 .experience-badge::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 5px;
-    width: 0;
-    height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 14px solid var(--accent-yellow);
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 14px solid var(--accent-yellow);
 }
 
 .experience-year {
-    font-size: 1.1em;
+  font-size: 1.1em;
 }
 
 .experience-company {
-    font-size: 1.1em;
-    color: var(--secondary-text);
-    line-height: 1.5;
+  font-size: 1.1em;
+  color: var(--secondary-text);
+  line-height: 1.5;
 }
 
 .experience-right {
-    text-align: left;
+  text-align: left;
 }
 
 .experience-title {
-    font-size: 1.05em;
-    font-weight: 500;
-    color: var(--primary-text);
-    margin: 0 0 6px;
+  font-size: 1.05em;
+  font-weight: 500;
+  color: var(--primary-text);
+  margin: 0 0 6px;
 }
 
 .experience-list {
-    margin: 0 0 12px 0;
-    padding-left: 20px;
-    font-size: 0.96em;
-    color: var(--secondary-text);
+  margin: 0 0 12px 0;
+  padding-left: 20px;
+  font-size: 0.96em;
+  color: var(--secondary-text);
 }
 
 .experience-list li {
-    margin-bottom: 6px;
+  margin-bottom: 6px;
 }
 
 /* 能力小卡 */
 .ability-cards-row {
-    margin-top: 30px;       /* 收掉 Portfolio 上方大空白 */
-    display: flex;
-    gap: 18px;
-    justify-content: center;
-    flex-wrap: wrap;
+  margin-top: 30px;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .ability-card {
-    flex: 1 1 0;
-    min-width: 220px;
-    max-width: 320px;
-    background: linear-gradient(135deg, #FFD84A 0%, #FFE76B 45%, #FFD84A 100%);
-    border-radius: 8px;
-    padding: 18px 20px;
-    text-align: left;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-    color: #222;
+  flex: 1 1 0;
+  min-width: 220px;
+  max-width: 320px;
+  background: linear-gradient(135deg, #FFD84A 0%, #FFE76B 45%, #FFD84A 100%);
+  border-radius: 8px;
+  padding: 18px 20px;
+  text-align: left;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+  color: #222;
 }
 
 .ability-card h4 {
-    margin: 0 0 8px;
-    font-size: 1.02em;
-    font-weight: 600;
+  margin: 0 0 8px;
+  font-size: 1.02em;
+  font-weight: 600;
 }
 
 .ability-card p {
-    margin: 0;
-    font-size: 0.92em;
-    line-height: 1.7;
+  margin: 0;
+  font-size: 0.92em;
+  line-height: 1.7;
 }
 
 .ability-card:hover {
-    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
-    transform: translateY(-4px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
+  transform: translateY(-4px);
 }
 
-/* 逐張延遲（只控制動畫延遲，顯示與否交給 .reveal-on-scroll） */
+/* 小卡 reveal 延遲 */
 .ability-cards-row .ability-card:nth-child(1) {
-    transition-delay: 0.00s;
+  transition-delay: 0.00s;
 }
 .ability-cards-row .ability-card:nth-child(2) {
-    transition-delay: 0.12s;
+  transition-delay: 0.12s;
 }
 .ability-cards-row .ability-card:nth-child(3) {
-    transition-delay: 0.24s;
+  transition-delay: 0.24s;
 }
 
 /* Portfolio CTA */
 .portfolio-cta {
-    text-align: center;
-    margin-top: 40px; /* 可以再微調 */
+  text-align: center;
+  margin-top: 40px;
 }
-
-
-
 
 /* 按鈕本體 */
 .portfolio-button {
-    display: inline-block;
-    cursor: pointer;
-    transform-origin: center;
-    transition: transform 0.18s ease-out;
+  display: inline-block;
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.18s ease-out;
 }
 
 .portfolio-button img {
-    display: block;
-    max-width: 360px;
-    width: 100%;
-    height: auto;
+  display: block;
+  max-width: 360px;
+  width: 100%;
+  height: auto;
 }
 
-/* 讓「整個區塊」變成觸發區：滑到 Portfolio 一帶就會放大 */
 /* 滑到 Portfolio 那一帶就放大 */
 .portfolio-cta:hover .portfolio-button {
-    transform: scale(1.12);
-    filter: none;
+  transform: scale(1.12);
 }
 
 /* 按下去時微縮一下就好 */
 .portfolio-button:active {
-    transform: scale(1.02);
+  transform: scale(1.02);
 }
 
+/* ---------------------- */
+/* 方法論 / 工作風格 */
+/* ---------------------- */
+.method-section {
+  padding: 70px 0 80px;
+  background-color: #FFFEF8;
+}
+
+.method-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: left;
+}
+
+.method-eyebrow {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: var(--primary-text);
+  margin: 0 0 10px;
+}
+
+.method-title {
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--primary-text);
+  margin: 6px 0 6px;
+}
+
+.method-title-underline {
+  width: 90px;
+  height: 4px;
+  background: var(--accent-yellow);
+  margin-bottom: 16px;
+}
+
+.method-subtitle {
+  font-size: 1.02em;
+  line-height: 1.8;
+  color: var(--secondary-text);
+  margin-bottom: 24px;
+}
+
+/* Define / Structure / Operationalize / Extend */
+.method-steps {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.method-steps::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -20%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.7) 50%,
+    rgba(255,255,255,0) 100%);
+  pointer-events: none;
+  animation: methodShine 4s ease-in-out infinite;
+}
+
+.method-step {
+  background: linear-gradient(135deg, #FFD84A 0%, #FFE76B 45%, #FFD84A 100%);
+  border-radius: 8px;
+  padding: 14px 14px 16px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+  font-size: 0.9em;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.method-step-label {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+.method-note {
+  margin-top: 10px;
+  font-size: 0.8em;
+  color: var(--light-text);
+}
+
+/* Core Competence */
+.core-competence {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.core-subtitle {
+  font-size: 0.95em;
+  color: var(--light-text);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  margin-bottom: 6px;
+}
+
+.core-title {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: var(--primary-text);
+  margin-bottom: 10px;
+}
+
+.core-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 0.98em;
+  line-height: 1.8;
+  color: var(--secondary-text);
+}
+
+.core-list li + li {
+  margin-top: 4px;
+}
+
+/* ---------------------- */
+/* Skills Overview flip cards */
+/* ---------------------- */
+
+.skills-overview-block {
+  margin-top: 40px;
+}
+
+.skills-overview-title {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 1.4em;
+  font-weight: 600;
+  color: var(--primary-text);
+}
+
+.skills-overview-subtitle {
+  text-align: center;
+  font-size: 0.95em;
+  color: var(--light-text);
+}
+
+.skills-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.skill-card-outer {
+  perspective: 1000px;
+}
+
+.skill-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.skill-card-outer:hover .skill-card-inner,
+.skill-card-outer.is-open .skill-card-inner {
+  transform: rotateY(180deg);
+}
+
+.skill-card-face {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+  padding: 18px 20px;
+  text-align: left;
+  min-height: 150px;
+  backface-visibility: hidden;
+}
+
+.skill-card-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-card-front h4 {
+  margin: 0;
+  font-size: 1.02em;
+  font-weight: 600;
+  color: var(--primary-text);
+}
+
+.skill-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+}
+
+.skill-card-back h4 {
+  margin: 0 0 8px;
+  font-size: 1.02em;
+  font-weight: 600;
+  color: var(--primary-text);
+}
+
+.skill-card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.92em;
+  line-height: 1.7;
+  color: var(--secondary-text);
+}
+
+.skill-card-list li + li {
+  margin-top: 4px;
+}
+
+/* 最下面那張卡：獨佔一列 */
+.skills-grid .skill-card-outer:nth-child(5) {
+  grid-column: 1 / -1;
+}
+
+/* ---------------------- */
+/* 工具 / 流程矩陣（用途 / 流程或手法 / 工具） */
+/* ---------------------- */
+
+.tool-matrix {
+  margin-top: 40px;
+  background-color: #FFF9E6;
+  border-radius: 14px;
+  padding: 20px 22px 24px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+}
+
+.tool-row {
+  display: grid;
+  grid-template-columns: minmax(110px, 150px) minmax(140px, 200px) minmax(0, 1fr);
+  gap: 16px;
+  align-items: flex-start;
+  padding: 10px 6px;
+  border-top: 1px solid rgba(0, 0, 0, 0.03);
+  font-size: 0.9em;
+}
+
+.tool-row:first-child {
+  border-top: none;
+  font-weight: 600;
+  color: var(--primary-text);
+}
+
+.tool-purpose {
+  font-weight: 500;
+  color: var(--primary-text);
+}
 
 /* ---------------------- */
 /* Scroll Reveal 共用 */
 /* ---------------------- */
-.reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(40px);
-    /* 位移更大＋時間拉長一點，會明顯很多 */
-    transition:
-        opacity 1s cubic-bezier(0.22, 0.61, 0.36, 1),
-        transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
-    will-change: opacity, transform;
-}
 
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
 
 .reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-/* ---------------------- */
-/* 方法論 / 工作風格區塊 */
-/* ---------------------- */
-
-.method-section {
-    padding: 70px 0 80px;
-    background-color: #FFFEF8; /* 很淺的米黃色，跟你的黃系一致 */
-}
-
-.method-inner {
-    max-width: 1040px;
-    margin: 0 auto;
-    padding: 0 24px;
-    text-align: left;
-}
-
-.method-tagline {
-    font-size: 1.4em;
-    font-weight: 500;
-    color: var(--primary-text);
-    margin-bottom: 8px;
-}
-
-.method-subcopy {
-    font-size: 1.02em;
-    line-height: 1.8;
-    color: var(--secondary-text);
-    margin-top: 4px;
-}
-
-/* Define / Structure / Operationalize / Extend */
-
-.method-steps {
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 14px;
-}
-
-.method-step {
-    background: linear-gradient(135deg, #FFD84A 0%, #FFE76B 45%, #FFD84A 100%);
-    border-radius: 8px;
-    padding: 16px 18px;
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
-    font-size: 0.95em;
-    line-height: 1.6;
-}
-
-.method-step-label {
-    font-weight: 700;
-    letter-spacing: 0.03em;
-    margin-bottom: 6px;
-    color: #222;
-}
-
-/* Core Competence */
-
-.core-competence {
-    margin-top: 40px;
-    text-align: center;
-}
-
-.core-title {
-    font-size: 1.4em;
-    font-weight: 600;
-    color: var(--primary-text);
-    margin-bottom: 8px;
-}
-
-.core-subtitle {
-    font-size: 0.95em;
-    color: var(--light-text);
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    margin-bottom: 14px;
-}
-
-.core-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: left;
-    font-size: 0.98em;
-    line-height: 1.8;
-    color: var(--secondary-text);
-}
-
-.core-list li + li {
-    margin-top: 4px;
-}
-
-/* Skills Overview 四大區塊 */
-
-.skills-overview {
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-}
-
-.skill-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #f0f0f0;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
-    padding: 20px 22px;
-    text-align: left;
-}
-
-.skill-card-title {
-    font-size: 1.02em;
-    font-weight: 600;
-    color: var(--primary-text);
-    margin-bottom: 10px;
-}
-
-.skill-card-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 0.92em;
-    line-height: 1.7;
-    color: var(--secondary-text);
-}
-
-.skill-card-list li + li {
-    margin-top: 4px;
-}
-
-/* 工具矩陣：用途 / 流程或手法 / 工具 */
-
-.tool-matrix {
-    margin-top: 40px;
-    background-color: #FFF9E6;
-    border-radius: 14px;
-    padding: 20px 22px 24px;
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
-}
-
-.tool-row {
-    display: grid;
-    grid-template-columns: minmax(110px, 150px) minmax(140px, 200px) minmax(0, 1fr);
-    gap: 16px;
-    align-items: flex-start;
-    padding: 10px 6px;
-    border-top: 1px solid rgba(0, 0, 0, 0.03);
-    font-size: 0.9em;
-}
-
-.tool-row:first-child {
-    border-top: none;
-    font-weight: 600;
-    color: var(--primary-text);
-}
-
-.tool-purpose {
-    font-weight: 500;
-    color: var(--primary-text);
-}
-
-.tool-label {
-    font-size: 0.85em;
-    color: var(--light-text);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-}
-
-/* RWD for 方法論 */
-
-@media (max-width: 900px) {
-    .method-steps {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .skills-overview {
-        grid-template-columns: 1fr;
-    }
-
-    .tool-row {
-        grid-template-columns: minmax(0, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .method-section {
-        padding: 56px 0 64px;
-    }
-
-    .method-tagline {
-        font-size: 1.2em;
-    }
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ---------------------- */
 /* RWD */
 /* ---------------------- */
-@media (max-width: 900px) {
-    .experience-layout {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
 
-    .experience-left {
-        text-align: left;
-    }
+@media (max-width: 900px) {
+  .experience-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .experience-left {
+    text-align: left;
+  }
+
+  .method-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .main-nav ul {
+    gap: 18px;
+  }
 }
 
 @media (max-width: 768px) {
-    .header-content {
-        justify-content: space-between;
-        padding: 0 15px;
-    }
+  .header-content {
+    justify-content: space-between;
+    padding: 0 15px;
+  }
 
-    .logo {
-        margin-right: 0;
-    }
+  .logo {
+    margin-right: 0;
+  }
 
-    .header nav a {
-        margin-left: 15px;
-        font-size: 0.9em;
-    }
+  .hero-landing {
+    padding: 80px 0 60px;
+  }
 
-    .hero-landing {
-        padding: 80px 0 60px;
-    }
+  .name-title {
+    font-size: 2em;
+  }
 
-    .name-title {
-        font-size: 2em;
-    }
+  .job-title {
+    font-size: 1.2em;
+  }
 
-    .job-title {
-        font-size: 1.2em;
-    }
+  .tag {
+    font-size: 0.8em;
+  }
 
-    .tag {
-        font-size: 0.8em;
-    }
+  .keyword-tags {
+    top: 70%;
+    transform: translateX(40px);
+  }
 
+  .animated-vertical-line {
+    margin: 20px auto;
+  }
 
-    .animated-vertical-line {
-        margin: 20px auto;      /* 再少一點 */
-    }
+  .intro-title-image {
+    width: 180px;
+    margin-bottom: 30px;
+  }
 
-    .intro-title-image {
-        width: 180px;
-        margin-bottom: 30px;
-    }
+  .bio-section p {
+    font-size: 1em;
+  }
 
-    .bio-section p {
-        font-size: 1em;
-    }
+  .career-evolution-section {
+    padding: 36px 0 50px;
+  }
 
-    .keyword-tags {
-        top: 70%;
-        transform: translateX(40px);
-    }
+  .section-title-left {
+    font-size: 2em;
+  }
 
-    .career-evolution-section {
-        padding: 36px 0 50px;   /* 往上拉近 */
-    }
+  .section-description-left {
+    font-size: 1em;
+  }
 
-    .section-title-left {
-        font-size: 2em;
-    }
+  .ability-cards-row {
+    gap: 14px;
+  }
 
-    .section-description-left {
-        font-size: 1em;
-    }
+  .method-section {
+    padding: 56px 0 64px;
+  }
 
-    .ability-cards-row {
-        gap: 14px;
-    }
+  .method-title {
+    font-size: 1.7em;
+  }
 }
 
 @media (max-width: 480px) {
-    .container {
-        padding: 0 16px;
-    }
+  .container {
+    padding: 0 16px;
+  }
 
-    .keyword-tags {
-        position: static;
-        transform: none;
-        margin-top: 10px;
-        align-items: center;
-    }
+  .keyword-tags {
+    position: static;
+    transform: none;
+    margin-top: 10px;
+    align-items: center;
+  }
+
+  .method-steps {
+    grid-template-columns: 1fr;
+  }
 }
+
 /* 背後底圖：往下漂 */
 .card-back-bg {
-    position: absolute;
-    top: -35px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 350px;
-    height: 200px;
-    background-image: url('cardback.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.8;
-    z-index: -1;
-
-    animation: floatBg 3s ease-in-out infinite;
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
+  height: 200px;
+  background-image: url('cardback.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.8;
+  z-index: -1;
+  animation: floatBg 3s ease-in-out infinite;
 }
-
-
-
-
-
-
-
-
