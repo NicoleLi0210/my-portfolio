@@ -24,7 +24,6 @@
             <li><a href="#experience-104">104 資訊科技</a></li>
             <li><a href="#experience-payeasy">PayEasy 康迅數位整合</a></li>
             <li><a href="#experience-vitality">活力台灣科技</a></li>
-            <li><a href="#experience-daba">大八餐飲集團</a></li>
           </ul>
         </li>
 
@@ -311,7 +310,7 @@
   </div>
 </section>
 
-<!-- 分隔線：活力台灣 → 大八 -->
+<!-- 分隔線：活力台灣 → 大八（沒有放在選單） -->
 <div class="animated-vertical-line reveal-on-scroll"></div>
 
 <!-- 2017 - 2019｜大八餐飲 -->
@@ -402,7 +401,6 @@
 <section class="core-competence-section reveal-on-scroll">
   <div class="core-inner">
     <div class="core-label">CORE COMPETENCE</div>
-    <h3 class="core-title">關於我的工作風格與核心能力</h3>
 
     <div class="core-list">
       <p><strong>模糊變清晰：</strong>能把零散需求與模糊問題拆成可決策的框架，快速收斂方向。</p>
@@ -419,10 +417,7 @@
 <section id="skills-overview" class="skills-section reveal-on-scroll">
   <div class="skills-inner">
     <div class="skills-overview-block">
-      <h3 class="skills-overview-title">Skills Overview</h3>
-      <p class="skills-overview-subtitle">
-        SYSTEMIC PRODUCT · UX & FLOW · DATA · COLLABORATION · SPEC & ENGINEERING
-      </p>
+      <h3 class="skills-overview-title">SKILLS OVERVIEW</h3>
 
       <div class="skills-grid">
         <!-- 1 系統化產品思維 -->
@@ -561,7 +556,7 @@
   </div>
 </footer>
 
-<!-- Scroll Reveal & Skills Flip Script -->
+<!-- Scroll Reveal & Nav / Skills Script -->
 <script>
 (function () {
   /* Scroll Reveal */
@@ -585,12 +580,12 @@
     revealElements.forEach(el => observer.observe(el));
   }
 
-  /* 一階選單點擊展開 / 收起二階 */
+  /* 一階選單點擊展開 / 收起二階（只負責展開） */
   const submenuLinks = document.querySelectorAll('.main-nav li.has-submenu > a');
 
   submenuLinks.forEach(link => {
     link.addEventListener('click', function (e) {
-      e.preventDefault(); // 一階只負責展開，不真的捲動
+      e.preventDefault();
       const li = this.parentElement;
       const alreadyOpen = li.classList.contains('submenu-open');
 
@@ -604,15 +599,6 @@
     });
   });
 
-  // 點選單裡的二階連結：正常捲動到錨點，並收起選單
-  const submenuItems = document.querySelectorAll('.main-nav .submenu a');
-  submenuItems.forEach(a => {
-    a.addEventListener('click', function () {
-      document.querySelectorAll('.main-nav li.has-submenu')
-        .forEach(item => item.classList.remove('submenu-open'));
-    });
-  });
-
   // 點頁面其他地方就收起二階
   document.addEventListener('click', function (e) {
     const nav = document.querySelector('.main-nav');
@@ -620,6 +606,42 @@
       document.querySelectorAll('.main-nav li.has-submenu')
         .forEach(item => item.classList.remove('submenu-open'));
     }
+  });
+
+  /* 錨點平滑滾動（含一階與二階連結） */
+  const header = document.querySelector('.header');
+  const headerHeight = header ? header.offsetHeight : 0;
+
+  function smoothScrollToId(id) {
+    if (!id || id === '#') return;
+    const target = document.querySelector(id);
+    if (!target) return;
+
+    const rect = target.getBoundingClientRect();
+    const offsetTop = window.pageYOffset + rect.top - headerHeight - 8;
+
+    window.scrollTo({
+      top: offsetTop,
+      behavior: 'smooth'
+    });
+  }
+
+  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+  anchorLinks.forEach(link => {
+    link.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      // 有 submenu 的一階 anchor 已經在上面處理展開，這裡只負責真正的錨點
+      if (this.parentElement.classList.contains('has-submenu') && href === '#') {
+        return;
+      }
+      e.preventDefault();
+      smoothScrollToId(href);
+
+      // 收起所有二階
+      document.querySelectorAll('.main-nav li.has-submenu')
+        .forEach(item => item.classList.remove('submenu-open'));
+    });
   });
 
   /* Skills Overview：手機 / 小螢幕自動翻牌 */
