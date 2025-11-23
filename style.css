@@ -746,42 +746,95 @@ body {
 }
 
 /* Desktop grid */
+/* Desktop 矩陣版：用途 × 流程 × 型態 × 工具 */
 .tool-matrix-grid {
   margin-top: 30px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-.tool-matrix-card {
-  background: #fffdf8;
-  border-radius: 12px;
-  padding: 16px 18px 18px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
-}
-
-.tool-matrix-title {
-  font-size: 0.98em;
-  font-weight: 600;
-  color: var(--primary-text);
-  margin-bottom: 10px;
-}
-
-.tool-matrix-tags {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.tool-matrix-tags span {
-  display: inline-block;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: #ffffff;
-  font-size: 0.86em;
-  color: var(--secondary-text);
-  white-space: nowrap;
+/* 每一列（含 4 個欄位） */
+.tool-matrix-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1.4fr 1.4fr 2.1fr;
+  gap: 10px;
 }
+
+/* 通用 cell 樣式 */
+.tool-cell {
+  border-radius: 12px;
+  padding: 14px 16px 16px;
+  font-size: 0.9em;
+  line-height: 1.7;
+  background: #f3f3f3;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+/* 標題列（用途／流程或手法／型態／工具） */
+.tool-row-header .tool-cell {
+  background: transparent;
+  box-shadow: none;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: #c0c0c0;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* 交錯底色：淺黃／灰，對齊你原本設計 */
+.tool-row-light .tool-cell {
+  background: #fffaf0;
+}
+
+.tool-row-dark .tool-cell {
+  background: #e7e7e7;
+}
+
+/* 用途欄位字稍微粗一點 */
+.tool-purpose {
+  font-weight: 600;
+}
+
+/* 主要標題（Schema、SEO、優先度模型）＋黃線 */
+.tool-main-label {
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.tool-main-label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ffd700;
+  bottom: -3px;
+}
+
+/* 流程／工具的「黃線文字」 */
+.tool-line-tag {
+  position: relative;
+  display: inline-block;
+  margin-right: 14px;
+  margin-bottom: 4px;
+  font-size: 0.9em;
+  white-space: nowrap;      /* ✅ 避免 CI/CD、Scrum 之類被拆行 */
+}
+
+.tool-line-tag::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #ffd700;
+  bottom: -3px;
+}
+
 
 /* Mobile slider wrapper */
 .tool-mobile-wrapper {
@@ -1042,5 +1095,6 @@ body {
     min-width: 88%;
   }
 }
+
 
 
