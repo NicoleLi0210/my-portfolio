@@ -1,254 +1,182 @@
 /* ------------------------------------------- */
-/* 終極 Apple 風格 CSS V2.0 (更具質感與細節) */
+/* 樣式 V3.0：精確復刻 Figma 首屏結構 */
 /* ------------------------------------------- */
 
-/* 核心變數 (更柔和的配色) */
+/* 核心變數 (使用您的黃色和黑灰色) */
 :root {
-    --primary-text: #1d1d1f; /* 極深灰 */
-    --secondary-text: #6e6e73; /* 柔和灰 */
-    --background-light: #ffffff; /* 頁面主體白色 */
-    --background-page: #f9f9f9; /* 頁面背景淺灰 */
-    --accent-color: #007aff; /* Apple 藍色 */
-    --link-color: #0070c9; /* 連結藍 */
-    --border-color: #eaeaec; /* 邊框淺灰 */
-    --shadow-subtle: 0 1px 2px rgba(0, 0, 0, 0.04); /* 極輕微陰影 */
+    --primary-text: #333333;       /* 主要文字 (深灰) */
+    --secondary-text: #666666;      /* 內文 (中灰) */
+    --accent-yellow: #FFD700;      /* 您的黃色強調色 */
+    --background-white: #ffffff;
+    --border-light: #e0e0e0;        /* 細分隔線 */
 }
 
-/* 核心與字體 */
+/* 基礎設定 */
 body {
-    /* 保持對 SF Pro Display 的模擬，使用 PingFang TC 確保中文優雅 */
-    font-family: 'Helvetica Neue', 'PingFang TC', 'Noto Sans TC', sans-serif;
+    font-family: 'Noto Sans TC', sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.65; /* 更舒適的行高 */
-    color: var(--primary-text);
-    background-color: var(--background-page);
+    line-height: 1.6;
+    color: var(--secondary-text);
+    background-color: var(--background-white);
     scroll-behavior: smooth;
-    font-weight: 300; /* 讓整體文字更輕盈 */
+    font-weight: 300;
+    text-align: center; /* 讓所有內容預設居中 */
 }
 
-/* 內容容器 */
-.container {
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-/* 導覽列 (新增懸浮動畫) */
+/* 導航列 */
 .header {
-    background: var(--background-light);
-    box-shadow: var(--shadow-subtle);
+    background: var(--background-white);
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 0;
     z-index: 1000;
-    transition: background 0.3s ease; /* 增加過渡動畫 */
 }
 
 .header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* 導航列居中 */
     align-items: center;
-    height: 54px; /* 更精確的高度 */
+    height: 55px;
 }
 
 .logo {
-    font-weight: 600;
-    font-size: 1.15em;
-    letter-spacing: 0.2px;
+    font-weight: 500;
+    font-size: 1.1em;
+    color: var(--primary-text);
+    margin-right: 50px;
 }
 
 .header nav a {
     text-decoration: none;
     color: var(--secondary-text);
-    margin-left: 35px;
+    margin-left: 25px;
     font-size: 0.95em;
-    padding: 18px 0;
-    transition: color 0.2s ease, transform 0.2s ease;
+    transition: color 0.2s ease;
 }
 
 .header nav a:hover {
-    color: var(--primary-text);
-    transform: translateY(-1px); /* 輕微上浮效果 */
+    color: var(--accent-yellow);
 }
 
-/* 英雄區塊/簡介區 */
-.hero-section {
+
+/* 首屏簡介區 (Hero/Landing) */
+.hero-landing {
+    padding: 80px 30px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 90vh; /* 確保至少佔滿一屏高度 */
+}
+
+.main-title-block {
+    margin-bottom: 60px;
     text-align: center;
-    padding: 120px 24px 100px;
-    background-color: var(--background-light);
-    border-bottom: 1px solid var(--border-color);
 }
 
-.hero-section h1 {
-    font-size: 3.2em;
-    font-weight: 600; /* 更平衡的字重 */
-    line-height: 1.1;
-    margin-bottom: 8px;
-    letter-spacing: -0.5px;
-}
-
-.hero-section h2 {
-    font-size: 1.3em;
-    color: var(--secondary-text);
-    font-weight: 400;
-    margin-bottom: 40px;
-}
-
-.profile-photo img {
-    width: 160px;
-    height: 160px;
+.profile-photo {
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    transition: transform 0.5s ease;
+    margin-bottom: 20px;
+    border: 4px solid var(--border-light);
 }
 
-.profile-photo img:hover {
-    transform: scale(1.03); /* 滑鼠懸停時微小放大 */
-}
-
-
-/* 作品集總覽區 (更精緻的卡片) */
-.portfolio-section {
-    padding: 80px 0;
-}
-
-.portfolio-section h2 {
-    font-size: 2.2em;
-    text-align: center;
-    margin-bottom: 60px;
-    font-weight: 600;
-    letter-spacing: -0.3px;
-}
-
-.project-card {
-    display: flex;
-    margin-bottom: 40px;
-    background-color: var(--background-light);
-    border-radius: 14px; /* 更圓潤的圓角 */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-    overflow: hidden;
-    text-align: left;
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease; /* 緩進緩出動畫 */
-}
-
-.project-card:hover {
-    transform: translateY(-8px); /* 懸停時優雅上浮 */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.card-image {
-    flex: 1.2; /* 讓圖片佔比稍微大一點 */
-    min-width: 350px;
-    background-size: cover;
-    background-position: center;
-    min-height: 250px; /* 確保手機上有高度 */
-}
-
-.card-content {
-    flex: 2;
-    padding: 40px;
-}
-
-.card-content h3 {
-    font-size: 1.6em;
-    margin-top: 0;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.card-content p {
-    color: var(--secondary-text);
-    margin-bottom: 25px;
-}
-
-.card-content a {
-    color: var(--link-color);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.05em;
-    border-bottom: 1px solid transparent;
-    transition: border-bottom 0.2s ease, color 0.2s ease;
-}
-
-.card-content a:hover {
-    border-bottom: 1px solid var(--link-color);
-}
-
-/* 專案詳情頁通用樣式 (針對 project-*.html) */
-.project-detail-header {
-    background-color: var(--background-light);
-    padding: 80px 0 60px;
-    text-align: center;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.project-detail-header h1 {
-    font-size: 3em;
+.name-title {
+    font-size: 2.5em;
     font-weight: 700;
+    color: var(--primary-text);
+    margin: 0;
+}
+
+.nicole-en {
+    font-weight: 300;
+    color: var(--secondary-text);
+    margin-left: 5px;
+}
+
+.job-title {
+    font-size: 1.4em;
+    font-weight: 500;
+    color: var(--secondary-text);
+    margin-top: 5px;
     margin-bottom: 15px;
 }
 
-.project-detail-content {
-    padding: 60px 0;
+/* 關鍵字標籤 */
+.keyword-tags {
+    position: relative;
+    display: inline-block;
+    padding: 10px 0;
 }
 
-.detail-section {
-    margin-bottom: 80px;
-    padding: 40px 50px;
-    background-color: var(--background-light);
-    border-radius: 12px;
-    box-shadow: var(--shadow-subtle);
-}
-
-.detail-section h3 {
-    color: var(--accent-color);
-    font-size: 1.8em;
-    font-weight: 600;
-    margin-bottom: 25px;
-}
-
-.detail-section ul, .detail-section ol {
-    text-align: left;
-    padding-left: 25px;
-    line-height: 1.8;
-}
-
-.detail-section img {
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-}
-
-
-/* 頁腳 */
-footer {
-    text-align: center;
-    padding: 40px 0;
-    color: var(--secondary-text);
+.tag {
+    display: inline-block;
+    background-color: var(--accent-yellow);
+    color: var(--primary-text);
+    padding: 3px 10px;
+    margin: 0 5px;
     font-size: 0.9em;
-    border-top: 1px solid var(--border-color);
-    background-color: var(--background-light);
+    font-weight: 500;
+    transform: skewX(-10deg); /* 關鍵的傾斜效果 */
+    position: relative;
+    z-index: 10;
 }
 
-/* RWD 調整 */
-@media (max-width: 768px) {
-    .hero-section {
-        padding: 80px 24px 60px;
-    }
-    .hero-section h1 {
-        font-size: 2.2em;
-    }
-    .project-card {
-        flex-direction: column; 
-    }
-    .card-content {
-        padding: 30px;
-    }
-    .card-image {
-        min-height: 200px;
-    }
-    .detail-section {
-        padding: 30px;
-    }
+/* 簡介文字區塊 */
+.intro-block {
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+}
+
+.quick-intro-label {
+    font-size: 0.9em;
+    color: #aaaaaa;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+/* 垂直分隔線 */
+.quick-intro-label::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 100px;
+    background: var(--border-light);
+    margin: 10px auto 0;
+    position: absolute;
+    bottom: -110px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.bio-line {
+    padding-top: 120px;
+    margin-bottom: 40px;
+}
+
+.bio-line p, .career-summary p {
+    margin: 8px 0;
+    font-size: 1.1em;
+}
+
+.highlight-bold {
+    font-weight: 500;
+    color: var(--primary-text);
+}
+
+.line-divider {
+    width: 30px;
+    height: 2px;
+    background: var(--accent-yellow);
+    margin: 25px auto;
+}
+
+/* 讓輔大科系文字加粗 */
+.bio-line p b {
+    font-weight: 500;
+    color: var(--primary-text);
 }
