@@ -145,13 +145,10 @@ body {
   z-index: 999;
 }
 
-/* 桌機版 hover 展開：只在 min-width:901px 啟用，避免手機 hover 黏住 */
-@media (min-width: 901px) {
-  .nav-item.has-submenu:hover .submenu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
+.nav-item.has-submenu:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .nav-item.has-submenu .submenu a {
@@ -523,17 +520,12 @@ body {
   text-align: left;
 }
 
-/* 上方文字（已取消白底卡片感） */
-.work-style-eyebrow-block {
-  display: inline-block;
-  padding: 0;
-  background: transparent;
-  border-radius: 0;
-  box-shadow: none;
+/* 純文字眉標（不再有白底卡片） */
+.work-style-eyebrow {
+  margin: 0 0 18px;
   font-size: 1.05em;
   font-weight: 500;
   color: var(--primary-text);
-  margin-bottom: 22px;
 }
 
 .work-style-title {
@@ -558,58 +550,20 @@ body {
   margin-top: 0;
 }
 
-/* 四象限黃色條狀卡片 */
+/* 四象限：改用 PNG 圖片，避免文字高度問題與遮擋 */
 .framework-grid {
   margin-top: 32px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
-  position: relative;
-  overflow: hidden;
+  gap: 16px;
+}
+
+.framework-img {
+  width: 100%;
+  height: auto;
+  display: block;
   border-radius: 8px;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
-}
-
-/* 原本掃光 overlay 改為完全關閉，避免遮擋文字 */
-.framework-grid::after {
-  content: none;
-}
-
-.framework-card {
-  position: relative;
-  background: #ffd84a;
-  color: #111111;
-  padding: 18px 20px 22px;
-  font-size: 0.94em;
-  line-height: 1.8;
-}
-
-/* 產生卡片之間的斜切分隔線 */
-.framework-card + .framework-card::before {
-  content: '';
-  position: absolute;
-  left: -18px;
-  top: 0;
-  width: 36px;
-  height: 100%;
-  background: #ffd84a;
-  transform: skewX(-32deg);
-  transform-origin: center;
-}
-
-/* 右側淡淡分割線 */
-.framework-card:not(:last-child) {
-  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.4);
-}
-
-.framework-card h3 {
-  margin: 0 0 8px;
-  font-size: 1.02em;
-  font-weight: 600;
-}
-
-.framework-card p {
-  margin: 0;
 }
 
 /* 底下那行小字說明 */
@@ -1035,6 +989,7 @@ body {
     font-size: 1em;
   }
 
+  /* 四象限圖片在平板：2 欄 */
   .framework-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1059,7 +1014,7 @@ body {
 
 @media (max-width: 600px) {
   .framework-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 手機：一欄直排 */
   }
 
   .skills-grid {
