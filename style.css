@@ -815,12 +815,12 @@ body {
 
 /* 讓卡片「大張」，一頁一張 */
 .tool-mobile-card {
-  min-width: 100%;
+  min-width: 92%;
   max-width: 100%;
   background: #fffdf8;
   border-radius: 16px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
-  padding: 20px 20px 22px;
+  padding: 18px 18px 20px;
   scroll-snap-align: center;
   text-align: left;
 }
@@ -1039,6 +1039,7 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
 
 
 
