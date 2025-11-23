@@ -1,6 +1,13 @@
 /* ----------------------
    變數與基底
 ---------------------- */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;  /* ✅ 防止任何區塊把畫面往右撐出去 */
+}
 :root {
   --primary-text: #333333;
   --secondary-text: #666666;
@@ -1095,6 +1102,7 @@ body {
     min-width: 88%;
   }
 }
+
 
 
 
