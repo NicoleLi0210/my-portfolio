@@ -1,5 +1,5 @@
 /* ------------------------------------------- */
-/* 樣式 V4.1：Figma 精準復刻 (修正置中與循環) */
+/* 樣式 V4.3：最終修正 (名片定位與垂直線置中) */
 /* ------------------------------------------- */
 
 /* 核心變數 */
@@ -93,7 +93,6 @@ body {
     flex-direction: column;
     align-items: center;
     margin-bottom: 50px; 
-    animation: float 3s ease-in-out infinite; 
 }
 
 .profile-photo {
@@ -111,23 +110,24 @@ body {
     position: relative;
     text-align: center;
     z-index: 10;
+    animation: float 3s ease-in-out infinite; 
+    min-width: 300px; /* 設定最小寬度以確保絕對定位有足夠的空間 */
 }
 
 /* 名片背後的斜線圖 */
 .card-back-bg {
     position: absolute;
-    top: -20px; 
+    top: -35px; 
     left: 50%;
     transform: translateX(-50%);
-    width: 250px; 
-    height: 150px; 
+    width: 350px; 
+    height: 200px; 
     background-image: url('cardback.png'); 
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     opacity: 0.8; 
     z-index: -1; 
-    animation: float 3s ease-in-out infinite; 
 }
 
 .name-title {
@@ -151,43 +151,39 @@ body {
     margin-bottom: 15px;
 }
 
-/* 關鍵字標籤 (使用絕對定位與背景圖重疊) */
+/* 關鍵字標籤 (修正絕對定位，避開斜線並向右下方移動) */
 .keyword-tags {
-    position: absolute; /* 絕對定位 */
-    top: 50%; /* 垂直向下移動 */
-    right: 0; /* 水平向右對齊 (基於名片容器) */
-    transform: translateY(-50%); /* 垂直居中對齊 */
+    position: absolute; 
+    top: 75%; /* 垂直推低 */
+    left: 50%; /* 從中心點開始定位 */
+    transform: translateX(80px); /* 向右推 80px (大幅增加位移量，避免重疊) */
+    
     display: flex;
-    flex-direction: column; /* 讓標籤垂直堆疊 */
-    text-align: right; /* 文字右對齊 */
+    flex-direction: column; 
+    text-align: left; /* 文字靠左對齊 */
     line-height: 1.2;
 }
 
 .tag {
     /* 保持 tag 樣式簡潔，只為文字 */
     background-color: transparent; 
-    color: var(--secondary-text); /* 標籤文字使用中灰色 */
-    padding: 0; /* 移除 padding */
-    margin: 0; /* 移除 margin */
+    color: var(--secondary-text); 
+    padding: 0; 
+    margin: 0; 
     font-size: 0.9em;
     font-weight: 300;
     transform: none; 
     position: relative;
     z-index: 10;
+    white-space: nowrap; /* 確保關鍵字不換行 */
 }
 
-/* 為了讓文字更符合截圖的緊湊感，我們需要覆寫 font-size 和 line-height */
-.tag:nth-child(1) { font-size: 0.8em; } /* 跨領域 (最小) */
-.tag:nth-child(2) { font-size: 0.85em; } /* 系統整合 (中間) */
-.tag:nth-child(3) { font-size: 0.9em; } /* 可延續價值打造 (最大) */
-
-/* 名片標題和職稱居中，不需要調整 */
-
-/* 垂直線動畫 (修正置中和循環邏輯) */
+/* 垂直線動畫 (修正置中：加入 display: block 和 margin: auto) */
 .animated-vertical-line {
     width: 1px;
     height: 100px; 
-    /* 垂直線置中不需要額外定位，因為父元素是 flex column 且 align-items: center; */
+    display: block; /* 新增: 確保元素能被置中 */
+    margin: 40px auto; /* 修正置中：使用 auto */
     
     /* 深色的「滑塊」長度固定為 50% */
     background: linear-gradient(to bottom, 
@@ -196,9 +192,8 @@ body {
                 var(--border-light) 50%, 
                 var(--border-light) 100%); 
                 
-    background-size: 1px 200px; /* 確保深淺色都能顯示，總長度是線條的兩倍 */
-    animation: lineFlow 3s linear infinite; /* 循環流動動畫 */
-    margin: 40px 0; 
+    background-size: 1px 200px; 
+    animation: lineFlow 3s linear infinite; 
 }
 
 .first-line {
@@ -249,7 +244,40 @@ body {
 
 /* RWD 調整 */
 @media (max-width: 768px) {
-    /* ... 保持 RWD 樣式不變 ... */
+    .header-content {
+        justify-content: space-between;
+        padding: 0 15px;
+    }
+    .logo {
+        margin-right: 0;
+    }
+    .header nav a {
+        margin-left: 15px;
+    }
+    .hero-landing {
+        padding: 60px 15px 80px;
+    }
+    .name-title {
+        font-size: 2em;
+    }
+    .job-title {
+        font-size: 1.2em;
+    }
+    .tag {
+        font-size: 0.8em;
+    }
+    .animated-vertical-line {
+        height: 80px;
+        margin: 30px auto; /* RWD 也修正置中 */
+    }
+    .quick-intro-label {
+        margin-bottom: 30px;
+    }
+    .bio-section p {
+        font-size: 1em;
+    }
+    .keyword-tags {
+        top: 70%;
+        transform: translateX(40px); /* RWD 位移量減小 */
+    }
 }
-
-
