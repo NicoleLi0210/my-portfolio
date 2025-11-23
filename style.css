@@ -831,14 +831,14 @@ body {
 ---------------------- */
 .contact-section {
   padding: 60px 0 70px;
-  background: #fafafa;
+  background: #3E3A39;
   text-align: left;
 }
 
 .contact-title {
   font-size: 2em;
   font-weight: 700;
-  color: var(--primary-text);
+  color: #FFFFFF;
   margin-bottom: 12px;
 }
 
@@ -857,7 +857,7 @@ body {
   display: inline-flex;
   flex-direction: column;
   text-decoration: none;
-  color: var(--secondary-text);
+  color: #FFFFFF;
 }
 
 .contact-link-inline {
@@ -875,7 +875,7 @@ body {
 
 .contact-value {
   font-size: 1em;
-  color: var(--primary-text);
+  color: #FFFFFF;
 }
 
 .contact-value.with-icon {
@@ -1037,6 +1037,7 @@ body {
     min-width: 88%;
   }
 }
+
 
 
 
