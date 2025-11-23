@@ -783,53 +783,91 @@ body {
   background: #ffd700;
   bottom: -3px;
 }
-
 /* 📱 Mobile slider */
 .tool-mobile-wrapper {
-  display: none;      /* desktop 隱藏，手機再顯示 */
-  align-items: center;
-  gap: 8px;
-  margin-top: 26px;
-}
-
-.tool-slider-nav {
-  border-radius: 999px;
-  border: 1px solid #e0e0e0;
-  width: 32px;
-  height: 32px;
-  display: inline-flex;
+  display: none;          /* desktop 隱藏，手機在 media query 裡打開 */
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  position: relative;
+  margin-top: 26px;
+  padding-bottom: 8px;
+}
+
+/* 左右箭頭：壓在卡片側邊上 */
+.tool-slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
   font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
 }
 
+#toolPrev {
+  left: 6px;
+}
+
+#toolNext {
+  right: 6px;
+}
+
+.tool-slider-nav:active {
+  transform: translateY(-50%) scale(0.96);
+}
+
+/* scroll 區：像 Apple 那種寬度比例 */
 .tool-mobile-slider {
-  flex: 1;
   display: flex;
   gap: 16px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 0px 6px 12px;
+  -webkit-overflow-scrolling: touch;
+  padding: 18px 40px 24px;   /* 左右留空給箭頭壓上來 */
+  width: 100%;
+  max-width: 440px;
 }
 
+/* 隱藏捲軸 */
 .tool-mobile-slider::-webkit-scrollbar {
   display: none;
 }
+.tool-mobile-slider {
+  scrollbar-width: none;
+}
 
-/* 讓卡片「大張」，一頁一張 */
+/* 單張卡片：變大張，邊界不明顯，預設稍微在後面 */
 .tool-mobile-card {
-   flex: 0 0 92%; 
-   min-width: 92%;
+  flex: 0 0 86%;
+  min-width: 86%;
   max-width: 100%;
-  background: #fffdf8;
-  border-radius: 16px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
-  padding: 18px 18px 20px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+  padding: 20px 18px 22px;
   scroll-snap-align: center;
   text-align: left;
+
+  transform: scale(0.92) translateY(6px);
+  opacity: 0.7;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    opacity 0.4s ease;
+}
+
+/* 中間那張被「翻到前面」 */
+.tool-mobile-card.is-active {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.16);
 }
 
 .tool-mobile-tag {
@@ -860,6 +898,7 @@ body {
   font-size: 0.92em;
   line-height: 1.7;
 }
+
 /* ----------------------
    Contact
 ---------------------- */
@@ -1281,6 +1320,7 @@ body {
 .fade-in-right {
   transform: translateX(40px);
 }
+
 
 
 
