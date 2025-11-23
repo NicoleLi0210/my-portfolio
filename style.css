@@ -1074,7 +1074,7 @@ body {
   background: #ffffff;
 }
 
-
+/* Breadcrumb */
 .breadcrumb {
   font-size: 0.82em;
   color: var(--light-text);
@@ -1125,70 +1125,6 @@ body {
   margin: 0 0 20px;
 }
 
-/* 浮動錨點（能源管理平台 / 微星統包案） */
-/* 桌機：右側浮動錨點 */
-.floating-topics {
-  position: fixed;
-  top: 50%;
-  right: 32px;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 50;
-}
-
-.floating-topics .portfolio-topic {
-  padding: 8px 14px;
-}
-
-/* 手機：底部小小 tabbar */
-@media (max-width: 900px) {
-  .floating-topics {
-    position: fixed;
-    left: 50%;
-    bottom: 16px;
-    transform: translateX(-50%);
-    flex-direction: row;
-    gap: 6px;
-    padding: 4px 8px;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(8px);
-    border-radius: 999px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  }
-
-  .floating-topics .portfolio-topic {
-    font-size: 0.8em;
-    padding: 6px 10px;
-    white-space: nowrap;
-  }
-}
-
-/* 頁面毛點 */
-.portfolio-topics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 24px;
-}
-
-.portfolio-topic {
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: #fffaf0;
-  color: var(--primary-text);
-  font-size: 0.86em;
-  text-decoration: none;
-  border: 1px solid #ffe199;
-}
-
-.portfolio-topic:hover {
-  background: #ffe76b;
-}
-
 /* Hero 圖片 */
 .portfolio-hero-image img {
   width: 100%;
@@ -1197,6 +1133,7 @@ body {
   box-shadow: none;
   margin-top: 8px;
 }
+
 /* Case 區塊 */
 .case-section {
   padding: 40px 0;
@@ -1291,5 +1228,3 @@ body {
     grid-template-columns: 1fr;
   }
 }
-
-
