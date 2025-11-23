@@ -12,19 +12,20 @@
 }
 
 @keyframes lineFlow {
-    0%   { background-position-y: 100%; }
-    100% { background-position-y: 0%; }
+    0%   { transform: translateY(-100%); }
+    100% { transform: translateY(100%); }
 }
+
 
 @keyframes floatText {
     0%   { transform: translateY(0); }
-    50%  { transform: translateY(-10px); }   /* 往上 */
+    50%  { transform: translateY(-10px); }  /* 名片往上 */
     100% { transform: translateY(0); }
 }
 
 @keyframes floatBg {
     0%   { transform: translate(-50%, 0); }
-    50%  { transform: translate(-50%, 10px); }  /* 往下，方向相反 */
+    50%  { transform: translate(-50%, 10px); }  /* 底圖往下 */
     100% { transform: translate(-50%, 0); }
 }
 
@@ -126,8 +127,11 @@ body {
     text-align: center;
     z-index: 10;
     min-width: 300px;
-    /* 原本有 animation: float ... 這行請刪掉 */
+
+    /* 整張名片往上微微漂 */
+    animation: floatText 3s ease-in-out infinite;
 }
+
 
 /* 名片背後圖 */
 .card-back-bg {
@@ -143,7 +147,11 @@ body {
     background-position: center;
     opacity: 0.8;
     z-index: -1;
+
+    /* 底圖往下漂，跟整張名片方向相反 */
+    animation: floatBg 3s ease-in-out infinite;
 }
+
 
 .name-title {
     font-size: 2.5em;
@@ -190,25 +198,28 @@ body {
 
 /* 垂直線 */
 .animated-vertical-line {
+    position: relative;
     width: 1px;
-    height: 100px;
-    display: block;
+    height: 90px;
     margin: 24px auto;
-    background: linear-gradient(
-        to bottom,
-        #111111 0%,      /* 深灰幾乎接近黑 */
-        #111111 40%,
-        #f3f3f3 40%,     /* 很淺的灰，對比明顯 */
-        #f3f3f3 100%
-    );
-    background-size: 1px 120px;
-    background-position-y: 100%;
-    animation: lineFlow 2s linear infinite;  /* 從 3s → 2s，流動更明顯 */
+
+    /* 淺色底線一直存在 */
+    background-color: #f2f2f2;
+    overflow: hidden;
 }
 
-
-.first-line { animation-delay: 0s; }
-.second-line { animation-delay: -1.5s; }
+/* 深色線段從上滑到下 */
+.animated-vertical-line::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 1px;
+    height: 180%;            /* 比本身高一些，滑過去更順 */
+    background-color: #111;
+    opacity: 0.7;
+    transform: translateY(-100%);
+    animation: lineFlow 2s linear infinite;
+}
 
 .intro-title-image {
     width: 200px;
@@ -486,7 +497,7 @@ body {
     }
 
     .hero-landing {
-        padding: 60px 0 70px;
+        padding: 80px 0 60px;
     }
 
     .name-title {
@@ -501,9 +512,9 @@ body {
         font-size: 0.8em;
     }
 
+
     .animated-vertical-line {
-        height: 80px;
-        margin: 30px auto;
+        margin: 20px auto;      /* 再少一點 */
     }
 
     .intro-title-image {
@@ -521,7 +532,7 @@ body {
     }
 
     .career-evolution-section {
-        padding: 50px 0;
+        padding: 36px 0 50px;   /* 往上拉近 */
     }
 
     .section-title-left {
@@ -575,12 +586,7 @@ body {
     animation: floatBg 3s ease-in-out infinite;
 }
 
-/* 文字本體：往上漂 */
-.name-title,
-.job-title,
-.keyword-tags {
-    animation: floatText 3s ease-in-out infinite;
-}
+
 
 
 
