@@ -1,40 +1,64 @@
-/* ---------------------- */
-/* 變數與基底 */
-/* ---------------------- */
+/* ----------------------
+   變數與基底
+---------------------- */
 :root {
   --primary-text: #333333;
   --secondary-text: #666666;
   --light-text: #aaaaaa;
-  --accent-yellow: #FFD700;
+  --accent-yellow: #ffd700;
   --background-white: #ffffff;
   --border-light: #e0e0e0;
   --animated-line-color: #cacaca;
+  --soft-ivory: #fffaf0;
 }
 
-/* 垂直線流動 */
+/* 垂直線動畫 */
 @keyframes lineFlow {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
 }
 
 /* 名片文字往上飄 */
 @keyframes floatText {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-14px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /* 黃色底圖往下飄（反方向） */
 @keyframes floatBg {
-  0%   { transform: translate(-50%, 0); }
-  50%  { transform: translate(-50%, 14px); }
-  100% { transform: translate(-50%, 0); }
+  0% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 14px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
 }
 
-/* 方法論掃光 */
-@keyframes methodShine {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(200%); }
+/* 工作風格區塊掃光：60 秒跑一次，前 2% 做掃光，剩下停留在右側 */
+@keyframes frameworkSweep {
+  0% {
+    transform: translateX(-120%);
+  }
+  2% {
+    transform: translateX(120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
 }
 
 body {
@@ -55,9 +79,9 @@ body {
   padding: 0 24px;
 }
 
-/* ---------------------- */
-/* Header + Nav */
-/* ---------------------- */
+/* ----------------------
+   Header
+---------------------- */
 .header {
   background: var(--background-white);
   border-bottom: 1px solid var(--border-light);
@@ -80,75 +104,79 @@ body {
   color: var(--primary-text);
 }
 
-/* 主選單 */
+/* Nav */
 .main-nav {
   display: flex;
   align-items: center;
+  gap: 24px;
 }
 
-.main-nav > ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-
-.main-nav li {
+.nav-item {
   position: relative;
 }
 
-.main-nav > ul > li + li {
-  margin-left: 24px;
-}
-
-.main-nav a {
+.nav-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
   text-decoration: none;
   color: var(--secondary-text);
   font-size: 0.95em;
-  padding: 4px 0;
   transition: color 0.2s ease;
 }
 
-.main-nav a:hover {
+.nav-link:hover {
   color: var(--accent-yellow);
 }
 
-/* 二階選單 */
-.main-nav .submenu {
+/* Submenu */
+.submenu {
   position: absolute;
-  top: calc(100% + 4px);
+  top: 120%;
   left: 0;
-  min-width: 150px;
+  min-width: 160px;
   background: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  padding: 8px 0;
-  list-style: none;
-  margin: 0;
-  display: none;
-  z-index: 1200;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  z-index: 999;
 }
 
-.main-nav .submenu li {
-  width: 100%;
+.nav-item.has-submenu:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
-.main-nav .submenu a {
+.nav-item.has-submenu .submenu a {
   display: block;
-  padding: 6px 16px;
-  white-space: nowrap;
+  padding: 8px 16px;
+  text-align: left;
+  color: var(--secondary-text);
+  text-decoration: none;
   font-size: 0.9em;
 }
 
-/* li 上有 submenu-open 就顯示 */
-.main-nav li.has-submenu.submenu-open > .submenu {
-  display: block;
+.nav-item.has-submenu .submenu a:hover {
+  background: #f7f7f7;
 }
 
-/* ---------------------- */
-/* Hero / Profile */
-/* ---------------------- */
+/* 手機用 .open 狀態 */
+.nav-item.has-submenu.open .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ----------------------
+   Hero / Profile
+---------------------- */
 .hero-landing {
   padding: 80px 0 60px;
   display: flex;
@@ -184,7 +212,6 @@ body {
   animation: floatText 2.6s ease-in-out infinite;
 }
 
-/* 名片文字 */
 .name-title {
   font-size: 2.5em;
   font-weight: 700;
@@ -206,7 +233,7 @@ body {
   margin-bottom: 15px;
 }
 
-/* 名片背後底圖：往下飄 */
+/* 名片背後圖（黃底） */
 .card-back-bg {
   position: absolute;
   top: -35px;
@@ -245,7 +272,7 @@ body {
   white-space: nowrap;
 }
 
-/* 垂直線（Hero & 分隔用） */
+/* 垂直線 */
 .animated-vertical-line {
   position: relative;
   width: 1px;
@@ -256,7 +283,7 @@ body {
 }
 
 .animated-vertical-line::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   width: 1px;
@@ -300,9 +327,9 @@ body {
   margin: 25px auto;
 }
 
-/* ---------------------- */
-/* 我的職涯演進 區塊 */
-/* ---------------------- */
+/* ----------------------
+   我的職涯演進
+---------------------- */
 .career-evolution-section {
   padding: 40px 0 50px;
   text-align: left;
@@ -331,9 +358,9 @@ body {
   max-width: 600px;
 }
 
-/* ---------------------- */
-/* Experience 共用 */
-/* ---------------------- */
+/* ----------------------
+   Experience Blocks
+---------------------- */
 .experience-section {
   padding: 60px 0 60px;
   background-color: #ffffff;
@@ -415,12 +442,13 @@ body {
   flex: 1 1 0;
   min-width: 220px;
   max-width: 320px;
-  background: linear-gradient(135deg, #FFD84A 0%, #FFE76B 45%, #FFD84A 100%);
+  background: linear-gradient(135deg, #ffd84a 0%, #ffe76b 45%, #ffd84a 100%);
   border-radius: 8px;
   padding: 18px 20px;
   text-align: left;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
   color: #222;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .ability-card h4 {
@@ -438,17 +466,6 @@ body {
 .ability-card:hover {
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.18);
   transform: translateY(-4px);
-}
-
-/* 逐張延遲（只控制動畫延遲） */
-.ability-cards-row .ability-card:nth-child(1) {
-  transition-delay: 0.00s;
-}
-.ability-cards-row .ability-card:nth-child(2) {
-  transition-delay: 0.12s;
-}
-.ability-cards-row .ability-card:nth-child(3) {
-  transition-delay: 0.24s;
 }
 
 /* Portfolio CTA */
@@ -471,318 +488,23 @@ body {
   height: auto;
 }
 
+/* hover 放大 */
 .portfolio-cta:hover .portfolio-button {
   transform: scale(1.12);
 }
 
+/* 按下去微縮 */
 .portfolio-button:active {
   transform: scale(1.02);
 }
 
-/* ---------------------- */
-/* 方法論 / 工作風格 */
-/* ---------------------- */
-.method-section {
-  padding: 70px 0 80px;
-  background-color: #FFFEF8;
-}
-
-.method-inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0 24px;
-  text-align: left;
-}
-
-.method-eyebrow {
-  font-size: 1em;
-  font-weight: 500;
-  color: var(--primary-text);
-  margin: 0 0 10px;
-}
-
-.method-title {
-  font-size: 2em;
-  font-weight: 700;
-  color: var(--primary-text);
-  margin: 0 0 4px;
-}
-
-.method-title-underline {
-  width: 90px;
-  height: 4px;
-  background: var(--accent-yellow);
-  margin-bottom: 18px;
-}
-
-.method-subtitle {
-  font-size: 1.02em;
-  line-height: 1.8;
-  color: var(--secondary-text);
-  margin: 0 0 24px;
-}
-
-/* 四階段卡片＋掃光 */
-.method-steps {
-  margin-top: 10px;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  position: relative;
-  overflow: hidden;
-}
-
-.method-steps::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -50%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.7) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  pointer-events: none;
-  z-index: 2;
-  animation: methodShine 1s linear infinite;
-}
-
-.method-step {
-  background: linear-gradient(135deg, #FFD84A 0%, #FFE76B 45%, #FFD84A 100%);
-  border-radius: 8px;
-  padding: 14px 14px 16px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
-  font-size: 0.9em;
-  line-height: 1.6;
-  position: relative;
-  z-index: 1;
-}
-
-.method-step-label {
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  margin-bottom: 6px;
-  color: #222;
-}
-
-.method-note {
-  margin-top: 10px;
-  font-size: 0.8em;
-  color: var(--light-text);
-}
-
-/* ---------------------- */
-/* Core Competence */
-/* ---------------------- */
-.core-competence-section {
-  padding: 60px 0 40px;
-  background-color: #FFFBEE;
-}
-
-.core-inner {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 0 24px;
-  text-align: center;
-}
-
-.core-label {
-  font-size: 0.85em;
-  letter-spacing: 0.22em;
-  color: var(--light-text);
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-
-.core-list {
-  text-align: left;
-  font-size: 1em;
-  line-height: 1.8;
-  color: var(--secondary-text);
-  max-width: 640px;
-  margin: 0 auto;
-}
-
-.core-list p {
-  margin: 6px 0;
-}
-
-/* ---------------------- */
-/* Skills Overview */
-/* ---------------------- */
-.skills-section {
-  padding: 40px 0 70px;
-  background-color: #FFFBEE;
-}
-
-.skills-inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0 24px;
-  text-align: left;
-}
-
-.skills-overview-block {
-  margin-top: 20px;
-}
-
-.skills-overview-title {
-  text-align: center;
-  font-size: 0.85em;
-  letter-spacing: 0.22em;
-  color: var(--light-text);
-  text-transform: uppercase;
-  margin-bottom: 18px;
-}
-
-/* 2×3 grid */
-.skills-grid {
-  margin-top: 10px;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-
-/* Flip card */
-.skill-card-outer {
-  perspective: 1000px;
-  min-height: 190px;
-}
-
-.skill-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.6s;
-}
-
-.skill-card-face {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  backface-visibility: hidden;
-  background: #ffffff;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px 20px;
-  box-sizing: border-box;
-}
-
-.skill-card-front {
-  font-weight: 600;
-  color: var(--primary-text);
-  text-align: center;
-}
-
-.skill-card-back {
-  transform: rotateY(180deg);
-  text-align: left;
-  font-size: 0.9em;
-  line-height: 1.7;
-  color: var(--secondary-text);
-}
-
-/* 桌機 hover flip */
-@media (hover: hover) and (pointer: fine) {
-  .skill-card-outer:hover .skill-card-inner {
-    transform: rotateY(180deg);
-  }
-}
-
-/* 手機／小螢幕：用 class 控制 flip */
-.skill-card-outer.is-flipped .skill-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* 第六張保留空位但隱藏內容 */
-.skills-grid .skill-card-outer:nth-child(6) .skill-card-face {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* ---------------------- */
-/* 工具 / 流程矩陣 */
-/* ---------------------- */
-.tools-section {
-  padding: 60px 0 80px;
-  background-color: #FFFFFF;
-}
-
-.tools-inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 0 24px;
-  text-align: left;
-}
-
-.tools-title {
-  font-size: 1.6em;
-  font-weight: 600;
-  color: var(--primary-text);
-  margin-bottom: 8px;
-}
-
-.tools-subtitle {
-  font-size: 0.95em;
-  color: var(--secondary-text);
-  margin-bottom: 22px;
-}
-
-/* 桌機矩陣外框 */
-.tool-matrix {
-  margin-top: 40px;
-  background-color: #FFF9E6;
-  border-radius: 14px;
-  padding: 20px 22px 24px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
-}
-
-/* 三欄列 */
-.tool-row {
-  display: grid;
-  grid-template-columns: minmax(110px, 150px) minmax(140px, 200px) minmax(0, 1fr);
-  gap: 16px;
-  align-items: flex-start;
-  padding: 10px 6px;
-  border-top: 1px solid rgba(0, 0, 0, 0.03);
-  font-size: 0.9em;
-}
-
-.tool-row:first-child {
-  border-top: none;
-  font-weight: 600;
-  color: var(--primary-text);
-}
-
-.tool-row-header {
-  font-weight: 600;
-}
-
-.tool-purpose {
-  font-weight: 500;
-  color: var(--primary-text);
-}
-
-.tool-process {}
-.tool-tools {}
-
-/* ---------------------- */
-/* Scroll Reveal 共用 */
-/* ---------------------- */
+/* ----------------------
+   Scroll Reveal 共用
+---------------------- */
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(40px);
-  transition:
-    opacity 1s cubic-bezier(0.22, 0.61, 0.36, 1),
+  transition: opacity 1s cubic-bezier(0.22, 0.61, 0.36, 1),
     transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
   will-change: opacity, transform;
 }
@@ -792,18 +514,395 @@ body {
   transform: translateY(0);
 }
 
-/* ---------------------- */
-/* Footer / Contact */
-/* ---------------------- */
-footer {
-  padding: 40px 0 30px;
-  font-size: 0.85em;
+/* ----------------------
+   工作風格與思考框架
+---------------------- */
+.work-style-section {
+  background: #fff7da;
+  padding: 80px 0 70px;
+  text-align: left;
+}
+
+.work-style-eyebrow {
+  font-size: 1.05em;
+  font-weight: 500;
+  color: var(--primary-text);
+  margin: 0 0 14px;
+}
+
+.work-style-title {
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--primary-text);
+  margin: 0 0 10px;
+}
+
+.work-style-sub {
+  max-width: 760px;
+  font-size: 1.02em;
+  line-height: 1.9;
+  margin-top: 8px;
+}
+
+/* 四象限卡片 */
+.framework-grid {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 掃光 overlay */
+.framework-grid::after {
+  content: '';
+  position: absolute;
+  inset: -40px -120px;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.7) 35%,
+    rgba(255, 255, 255, 0) 65%
+  );
+  filter: blur(22px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: frameworkSweep 60s linear infinite;
+}
+
+.framework-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 18px 18px 20px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  color: var(--primary-text);
+}
+
+.framework-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.05em;
+  font-weight: 600;
+}
+
+.framework-card p {
+  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.8;
+}
+
+.framework-note {
+  margin-top: 20px;
+  font-size: 0.9em;
   color: var(--light-text);
 }
 
-/* ---------------------- */
-/* RWD */
-/* ---------------------- */
+/* ----------------------
+   Core Competence
+---------------------- */
+.core-competence-section {
+  background: var(--soft-ivory);
+  padding: 60px 0 50px;
+  text-align: left;
+}
+
+.caps-label {
+  font-size: 0.9em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b0b0b0;
+  font-weight: 400;
+  margin-bottom: 18px;
+}
+
+.core-line {
+  margin: 6px 0;
+  font-size: 1em;
+}
+
+/* ----------------------
+   Skills Overview
+---------------------- */
+.skills-section {
+  background: #fffdf7;
+  padding: 60px 0 70px;
+  text-align: left;
+}
+
+.skills-grid {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* Flip card base */
+.skill-card {
+  perspective: 1200px;
+}
+
+.skill-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 210px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.skill-card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+}
+
+/* Front */
+.skill-card-front {
+  background: #fff7da;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-front-title {
+  font-size: 1.05em;
+  font-weight: 600;
+  color: var(--primary-text);
+  text-align: center;
+}
+
+/* Back */
+.skill-card-back {
+  background: #ffffff;
+  transform: rotateY(180deg);
+  padding: 16px 18px 18px;
+  text-align: left;
+  color: var(--primary-text);
+  overflow-y: auto;
+}
+
+.skill-card-back h4 {
+  margin: 0 0 10px;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.skill-item {
+  position: relative;
+  padding-left: 12px;
+  margin-bottom: 10px;
+}
+
+.skill-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: #ffc800;
+  border-radius: 999px;
+}
+
+.skill-item-title {
+  font-size: 0.9em;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.skill-item p {
+  margin: 0;
+  font-size: 0.86em;
+  line-height: 1.6;
+}
+
+/* Flipped */
+.skill-card.is-flipped .skill-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* ----------------------
+   Tools / 流程矩陣
+---------------------- */
+.tools-section {
+  background: #ffffff;
+  padding: 70px 0 80px;
+  text-align: left;
+}
+
+.tools-title {
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--primary-text);
+  margin: 0 0 6px;
+}
+
+.tools-subtitle {
+  font-size: 1.02em;
+  color: var(--secondary-text);
+  max-width: 680px;
+}
+
+/* Desktop grid */
+.tool-matrix-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.tool-matrix-card {
+  background: #fffdf8;
+  border-radius: 12px;
+  padding: 16px 18px 18px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+}
+
+.tool-matrix-title {
+  font-size: 0.98em;
+  font-weight: 600;
+  color: var(--primary-text);
+  margin-bottom: 10px;
+}
+
+.tool-matrix-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tool-matrix-tags span {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #ffffff;
+  font-size: 0.86em;
+  color: var(--secondary-text);
+  white-space: nowrap;
+}
+
+/* Mobile slider wrapper */
+.tool-mobile-wrapper {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  margin-top: 26px;
+}
+
+.tool-slider-nav {
+  border-radius: 999px;
+  border: 1px solid #e0e0e0;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.tool-mobile-slider {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 4px 4px 12px;
+}
+
+.tool-mobile-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.tool-mobile-card {
+  min-width: 82%;
+  background: #fffdf8;
+  border-radius: 12px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
+  padding: 16px 18px 18px;
+  scroll-snap-align: center;
+}
+
+/* ----------------------
+   Contact
+---------------------- */
+.contact-section {
+  padding: 60px 0 70px;
+  background: #fafafa;
+  text-align: left;
+}
+
+.contact-title {
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--primary-text);
+  margin-bottom: 12px;
+}
+
+.contact-text {
+  margin: 0 0 20px;
+  font-size: 1.02em;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-link {
+  display: inline-flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--secondary-text);
+}
+
+.contact-link-inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-label {
+  font-size: 0.86em;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--light-text);
+}
+
+.contact-value {
+  font-size: 1em;
+  color: var(--primary-text);
+}
+
+.contact-value.with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.linkedin-icon {
+  width: 18px;
+  height: 18px;
+  fill: #0a66c2;
+}
+
+/* Footer */
+.footer {
+  padding: 18px 0 26px;
+  background: #ffffff;
+  border-top: 1px solid #f0f0f0;
+  font-size: 0.84em;
+  color: var(--light-text);
+}
+
+/* ----------------------
+   RWD
+---------------------- */
 @media (max-width: 900px) {
   .experience-layout {
     grid-template-columns: 1fr;
@@ -813,10 +912,6 @@ footer {
   .experience-left {
     text-align: left;
   }
-
-  .skills-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 768px) {
@@ -824,15 +919,20 @@ footer {
     padding: 0 15px;
   }
 
-  .main-nav > ul > li + li {
-    margin-left: 16px;
+  .main-nav {
+    gap: 16px;
   }
 
-  /* 手機版二階選單置中，避免貼邊 */
-  .main-nav .submenu {
+  /* 手機 submenu 寬度與邊距 */
+  .nav-item.has-submenu .submenu {
     left: 50%;
     transform: translateX(-50%);
-    min-width: 170px;
+    width: min(360px, 90vw);
+    padding: 8px 20px;
+  }
+
+  .nav-item.has-submenu .submenu a {
+    padding: 6px 0;
   }
 
   .hero-landing {
@@ -851,6 +951,11 @@ footer {
     font-size: 0.8em;
   }
 
+  .keyword-tags {
+    top: 70%;
+    transform: translateX(40px);
+  }
+
   .animated-vertical-line {
     margin: 20px auto;
   }
@@ -862,11 +967,6 @@ footer {
 
   .bio-section p {
     font-size: 1em;
-  }
-
-  .keyword-tags {
-    top: 70%;
-    transform: translateX(40px);
   }
 
   .career-evolution-section {
@@ -881,16 +981,39 @@ footer {
     font-size: 1em;
   }
 
-  .ability-cards-row {
-    gap: 14px;
+  .framework-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .method-steps {
+  /* 手機不需要掃光效果 */
+  .framework-grid::after {
+    display: none;
+  }
+
+  .skills-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tool-matrix-grid {
+    display: none;
+  }
+
+  .tool-mobile-wrapper {
+    display: flex;
   }
 }
 
 @media (max-width: 600px) {
+  .framework-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
   .container {
     padding: 0 16px;
   }
@@ -902,59 +1025,15 @@ footer {
     align-items: center;
   }
 
-  .skills-grid {
-    grid-template-columns: 1fr;
+  .work-style-section {
+    padding: 60px 0 60px;
   }
 
-  /* 工具矩陣變成水平 slide 卡片 */
-  .tool-matrix {
-    background-color: transparent;
-    box-shadow: none;
-    padding: 12px 0 4px;
-    display: flex;
-    gap: 14px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+  .tools-section {
+    padding-bottom: 60px;
   }
 
-  .tool-row-header {
-    display: none;
-  }
-
-  .tool-row {
-    grid-template-columns: 1fr;
-    border-top: none;
-    margin-bottom: 0;
-    padding: 14px 16px 16px;
-    border-radius: 12px;
-    background-color: #FFF9E6;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-    min-width: 80%;
-    flex: 0 0 80%;
-    scroll-snap-align: center;
-  }
-
-  .tool-purpose {
-    margin-bottom: 6px;
-    font-size: 0.95em;
-  }
-
-  .tool-process::before,
-  .tool-tools::before {
-    display: block;
-    font-size: 0.78em;
-    color: var(--light-text);
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    margin-bottom: 2px;
-  }
-
-  .tool-process::before {
-    content: "流程或手法";
-  }
-
-  .tool-tools::before {
-    content: "工具";
+  .tool-mobile-card {
+    min-width: 88%;
   }
 }
