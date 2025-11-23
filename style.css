@@ -224,7 +224,7 @@ body {
 .small-divider {
     width: 30px;
     height: 2px;
-    background: var(--accent-yellow);
+    background: var(--secondary-text);
     margin: 25px auto;
 }
 
@@ -238,3 +238,4 @@ body {
 @media (max-width: 768px) {
     /* ... 保持 RWD 樣式不變 ... */
 }
+
