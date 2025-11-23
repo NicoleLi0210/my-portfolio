@@ -845,37 +845,44 @@ body {
 .contact-text {
   margin: 0 0 20px;
   font-size: 1.02em;
+  color: #FFFFFF;
 }
 
+/* 整個區塊：上下兩列 */
 .contact-links {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
+/* 單一列：左標籤 / 右內容 */
 .contact-link {
-  display: inline-flex;
-  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
   text-decoration: none;
   color: #FFFFFF;
 }
 
-.contact-link-inline {
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-}
+/* 不再需要特別改 direction，所以可以留空或刪掉 */
+.contact-link-inline {}
 
+/* 左邊的 EMAIL / LINKEDIN 標籤 */
 .contact-label {
+  width: 80px;                /* 固定一個寬度，文字就會排齊 */
   font-size: 0.86em;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--light-text);
 }
 
+/* 右邊的內容 */
 .contact-value {
+  flex: 1;                    /* 右側吃滿剩餘空間 */
   font-size: 1em;
   color: #FFFFFF;
+  word-break: break-all;      /* email 太長時可以換行 */
 }
 
 .contact-value.with-icon {
@@ -888,15 +895,6 @@ body {
   width: 18px;
   height: 18px;
   fill: #0a66c2;
-}
-
-/* Footer */
-.footer {
-  padding: 18px 0 26px;
-  background: #ffffff;
-  border-top: 1px solid #f0f0f0;
-  font-size: 0.84em;
-  color: var(--light-text);
 }
 
 /* ----------------------
@@ -1039,6 +1037,7 @@ body {
     min-width: 88%;
   }
 }
+
 
 
 
