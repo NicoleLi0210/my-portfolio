@@ -56,19 +56,6 @@ body {
   }
 }
 
-/* 工作風格區塊掃光：60 秒跑一次 */
-@keyframes frameworkSweep {
-  0% {
-    transform: translateX(-120%);
-  }
-  2% {
-    transform: translateX(120%);
-  }
-  100% {
-    transform: translateX(120%);
-  }
-}
-
 body {
   font-family: 'Noto Sans TC', sans-serif;
   margin: 0;
@@ -158,10 +145,13 @@ body {
   z-index: 999;
 }
 
-.nav-item.has-submenu:hover .submenu {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
+/* 桌機版 hover 展開：只在 min-width:901px 啟用，避免手機 hover 黏住 */
+@media (min-width: 901px) {
+  .nav-item.has-submenu:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
 }
 
 .nav-item.has-submenu .submenu a {
@@ -533,31 +523,18 @@ body {
   text-align: left;
 }
 
-/* 上方白底小標（兩行合在一起） */
+/* 上方文字（已取消白底卡片感） */
 .work-style-eyebrow-block {
   display: inline-block;
-  padding: 10px 16px;
-  background: #ffffff;
-  border-radius: 6px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
   font-size: 1.05em;
   font-weight: 500;
   color: var(--primary-text);
   margin-bottom: 22px;
 }
-.work-style-eyebrow {
-  font-size: 1.05em;
-  font-weight: 500;
-  color: var(--primary-text);
-  margin: 0 0 14px;
-
-  /* 把所有「卡片感」洗掉，確保是純文字 */
-  background: transparent !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-}
-
 
 .work-style-title {
   font-size: 2.2em;
@@ -581,7 +558,7 @@ body {
   margin-top: 0;
 }
 
-/* 四象限黃色條狀卡片 - 比齊你的版型 */
+/* 四象限黃色條狀卡片 */
 .framework-grid {
   margin-top: 32px;
   display: grid;
@@ -593,21 +570,9 @@ body {
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
 }
 
-/* 掃光 overlay */
+/* 原本掃光 overlay 改為完全關閉，避免遮擋文字 */
 .framework-grid::after {
-  content: '';
-  position: absolute;
-  inset: -40px -120px;
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.7) 35%,
-    rgba(255, 255, 255, 0) 65%
-  );
-  filter: blur(22px);
-  mix-blend-mode: screen;
-  pointer-events: none;
-  animation: frameworkSweep 60s linear infinite;
+  content: none;
 }
 
 .framework-card {
@@ -1074,11 +1039,6 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* 手機不需要掃光效果 */
-  .framework-grid::after {
-    display: none;
-  }
-
   .skills-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1131,4 +1091,3 @@ body {
     min-width: 88%;
   }
 }
-
