@@ -9,26 +9,6 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet" />
 </head>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const animatedElements = document.querySelectorAll(
-    ".fade-in-left, .fade-in-right"
-  );
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in-view");
-        }
-      });
-    },
-    { threshold: 0.2 }
-  );
-
-  animatedElements.forEach((el) => observer.observe(el));
-});
-</script>
 
 <body>
 
@@ -47,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       <!-- Hero 第一屏 -->
       <section class="portfolio-hero">
-        <p class="portfolio-eyebrow">PORTFOLIO – CHICONY POWER</p>
+        <p class="portfolio-eyebrow">PORTFOLOLIO – CHICONY POWER</p>
 
         <h1 class="portfolio-title">全新領域下的軟硬整合與產品重整</h1>
 
@@ -56,133 +36,132 @@ document.addEventListener("DOMContentLoaded", function () {
           快速進入陌生領域並取得跨部門信任、重新調整產品方向、梳理跨單位協作流程。
         </p>
 
-        <!-- 第一屏圖片 -->
         <div class="portfolio-hero-image">
           <img src="chicony1.png" alt="能源管理平台與 IWA Setter 畫面" />
         </div>
       </section>
-<!-- 第二屏：能源管理平台｜產品策略調整 -->
-<section class="case-section case-section-ems">
-  <div class="case-layout">
 
-    <!-- 左側圖片（新增動畫） -->
-    <div class="case-image fade-in-left">
-      <img src="chicony2.png" alt="產品策略調整剪報" />
-    </div>
 
-    <!-- 右側文字（新增動畫） -->
-    <div class="case-text fade-in-right">
-      <h2 class="case-title">能源管理平台｜產品策略調整</h2>
+      <!-- 第二屏：能源管理平台｜產品策略調整 -->
+      <section class="case-section case-section-ems">
+        <div class="case-layout">
 
-      <div class="case-block">
-        <h3>SITUATION</h3>
-        <p><strong>功能堆疊造成效益難以呈現，TA 不明確。</strong></p>
-        <p>
-          短時間內熟悉智慧能源、建築管理與 ISO 50001 的運作脈絡後，平台現況被確認為以功能堆疊為主，
-          缺乏完整能源管理循環與功能耦合。此架構限制效益呈現，也不利於後續跨場域擴張或標準化導入。
-        </p>
-      </div>
+          <div class="case-image fade-in-left">
+            <img src="chicony2.png" alt="產品策略調整剪報" />
+          </div>
 
-      <div class="case-block">
-        <h3>TASK</h3>
-        <p><strong>重建可擴充、可複用的產品方向。</strong></p>
-        <p>
-          在正式接手能源管理平台後，需於既有技術與流程限制下，重新盤點系統架構、使用情境、
-          客戶需求與競品方向，為平台建立清晰、可落地且具延展性的產品策略。
-        </p>
-      </div>
+          <div class="case-text fade-in-right">
+            <h2 class="case-title">能源管理平台｜產品策略調整</h2>
 
-      <div class="case-block">
-        <h3>ACTION</h3>
-        <p><strong>從功能導向轉向系統整合與數據治理。</strong></p>
-        <p>
-          依據盤點結果，提出產品策略調整：將平台由「功能導向」提升為「系統整合與數據治理導向」。
-          重新建立模組邏輯、跨設備整合方式，並將能源基線與迴歸分析納入核心能力，
-          使平台具備支援 ISO 50001 PDCA 的完整方法論基礎。
-        </p>
-      </div>
+            <div class="case-block">
+              <h3>SITUATION</h3>
+              <p><strong>功能堆疊造成效益難以呈現，TA 不明確。</strong></p>
+              <p>
+                短時間內熟悉智慧能源、建築管理與 ISO 50001 的運作脈絡後，平台現況被確認為以功能堆疊為主，
+                缺乏完整能源管理循環與功能耦合。此架構限制效益呈現，也不利於後續跨場域擴張或標準化導入。
+              </p>
+            </div>
 
-      <div class="case-block">
-        <h3>RESULT</h3>
-        <p><strong>形成標準化、可複用的 1.0→2.0 產品藍圖。</strong></p>
-        <p>
-          最終協助團隊形塑能源管理平台 1.0→2.0 的產品藍圖，使未來的導入更標準化、可複用，
-          並能更有效呈現節能與管理效益，為後續跨場域與長期產品線發展奠定基礎。
-        </p>
-      </div>
-    </div>
+            <div class="case-block">
+              <h3>TASK</h3>
+              <p><strong>重建可擴充、可複用的產品方向。</strong></p>
+              <p>
+                在正式接手能源管理平台後，需於既有技術與流程限制下，重新盤點系統架構、使用情境、
+                客戶需求與競品方向，為平台建立清晰、可落地且具延展性的產品策略。
+              </p>
+            </div>
 
-  </div>
-</section>
-<!-- 第三屏：微星統包案｜流程優化與需求落差削減 -->
-<section class="case-section case-section-msi">
-  <div class="case-layout">
+            <div class="case-block">
+              <h3>ACTION</h3>
+              <p><strong>從功能導向轉向系統整合與數據治理。</strong></p>
+              <p>
+                依據盤點結果，提出產品策略調整：將平台由「功能導向」提升為「系統整合與數據治理導向」。
+                重新建立模組邏輯、跨設備整合方式，並將能源基線與迴歸分析納入核心能力，
+                使平台具備支援 ISO 50001 PDCA 的完整方法論基礎。
+              </p>
+            </div>
 
-    <!-- 左側文字（加動畫） -->
-    <div class="case-text fade-in-left">
-      <h2 class="case-title">微星統包案｜流程優化與需求落差削減</h2>
+            <div class="case-block">
+              <h3>RESULT</h3>
+              <p><strong>形成標準化、可複用的 1.0→2.0 產品藍圖。</strong></p>
+              <p>
+                最終協助團隊形塑能源管理平台 1.0→2.0 的產品藍圖，使未來的導入更標準化、可複用，
+                並能更有效呈現節能與管理效益，為後續跨場域與長期產品線發展奠定基礎。
+              </p>
+            </div>
+          </div>
 
-      <div class="case-block">
-        <h3>SITUATION</h3>
-        <p><strong>流程斷層大、需求落差高、跨部門協作不可預期。</strong></p>
-        <p>
-          接手微星統包案後，發現專案存在明顯的流程斷層與需求落差：前線回報不一致、工程端需求線索不足、
-          模組界線不清、且跨部門進度難以追蹤，使得專案整體不可預期，也難以承接後續大型規模導入。
-        </p>
-      </div>
+        </div>
+      </section>
 
-      <div class="case-block">
-        <h3>TASK</h3>
-        <p><strong>建立可預期且可追蹤的專案運作方式，降低客製化與錯誤成本。</strong></p>
-        <p>
-          在既有流程混亂、需求模糊、跨部門協作成本偏高的情況下，建立一套可預期、可追蹤、可溝通的專案運作方式，
-          並降低客製量，讓整體能更穩定地向後推進。
-        </p>
-      </div>
 
-      <div class="case-block">
-        <h3>ACTION</h3>
-        <p><strong>重整流程、模組化需求、建立優先級與透明進度機制。</strong></p>
+      <!-- 第三屏：微星統包案 -->
+      <section class="case-section case-section-msi">
+        <div class="case-layout">
 
-        <p><strong>改善跨部門協作流程</strong></p>
-        <ul>
-          <li>重新梳理業務、專案經理、PM、工程四方的協作模式。</li>
-          <li>明確定義資料產出責任與串接介面，讓流程更清晰可預期。</li>
-        </ul>
+          <div class="case-text fade-in-left">
 
-        <p><strong>重整需求，降低落差</strong></p>
-        <ul>
-          <li>建立 RICE 優先級，整理與分類統包書需求。</li>
-          <li>與前線重新界定需求範圍，釐清必須與可延後項目。</li>
-          <li>提出跨部門需求管道，提升產品面對統需案的能力與共識。</li>
-        </ul>
+            <h2 class="case-title">微星統包案｜流程優化與需求落差削減</h2>
 
-        <p><strong>提升專案透明度與可預測性</strong></p>
-        <ul>
-          <li>兩週內完成需求拆分與工程可行性評估，形成清楚的工作分解。</li>
-          <li>拉出完整甘特圖，使所有利害關係人能同步掌握進度與風險。</li>
-          <li>建立前線教育訓練與週期性市場分析，確保需求回饋更準確。</li>
-        </ul>
-      </div>
+            <div class="case-block">
+              <h3>SITUATION</h3>
+              <p><strong>流程斷層大、需求落差高、跨部門協作不可預期。</strong></p>
+              <p>
+                接手微星統包案後，發現專案存在明顯的流程斷層與需求落差：前線回報不一致、工程端需求線索不足、
+                模組界線不清、且跨部門進度難以追蹤，使得專案整體不可預期，也難以承接後續大型規模導入。
+              </p>
+            </div>
 
-      <div class="case-block">
-        <h3>RESULT</h3>
-        <p><strong>需求落差下降、客製減少、專案預估更穩定、協作效率提升。</strong></p>
-        <p>
-          跨部門協作變得可預期且可追蹤，支撐後續大型專案推動。需求落差明顯下降、客製比例降低，
-          規格更能模組化再利用；專案預估更穩定、時程風險更低，團隊對整體執行步調更有信心。
-        </p>
-      </div>
-    </div>
+            <div class="case-block">
+              <h3>TASK</h3>
+              <p><strong>建立可預期且可追蹤的專案運作方式，降低客製化與錯誤成本。</strong></p>
+              <p>
+                在既有流程混亂、需求模糊、跨部門協作成本偏高的情況下，建立一套可預期、可追蹤、可溝通的專案運作方式，
+                並降低客製量，讓整體能更穩定地向後推進。
+              </p>
+            </div>
 
-    <!-- 右側圖片（加動畫） -->
-    <div class="case-image fade-in-right">
-      <img src="chicony3.png" alt="微星統包案 RICE 與需求拆解" />
-    </div>
+            <div class="case-block">
+              <h3>ACTION</h3>
+              <p><strong>重整流程、模組化需求、建立優先級與透明進度機制。</strong></p>
 
-  </div>
-</section>
+              <p><strong>改善跨部門協作流程</strong></p>
+              <ul>
+                <li>重新梳理業務、專案經理、PM、工程四方的協作模式。</li>
+                <li>明確定義資料產出責任與串接介面，讓流程更清晰可預期。</li>
+              </ul>
 
+              <p><strong>重整需求，降低落差</strong></p>
+              <ul>
+                <li>建立 RICE 優先級，整理與分類統包書需求。</li>
+                <li>與前線重新界定需求範圍，釐清必須與可延後項目。</li>
+                <li>提出跨部門需求管道，提升產品面對統需案的能力與共識。</li>
+              </ul>
+
+              <p><strong>提升專案透明度與可預測性</strong></p>
+              <ul>
+                <li>兩週內完成需求拆分與工程可行性評估，形成清楚的工作分解。</li>
+                <li>拉出完整甘特圖，使所有利害關係人能同步掌握進度與風險。</li>
+                <li>建立前線教育訓練與週期性市場分析，確保需求回饋更準確。</li>
+              </ul>
+            </div>
+
+            <div class="case-block">
+              <h3>RESULT</h3>
+              <p><strong>需求落差下降、客製減少、專案預估更穩定、協作效率提升。</strong></p>
+              <p>
+                跨部門協作變得可預期且可追蹤，支撐後續大型專案推動。需求落差明顯下降、客製比例降低，
+                規格更能模組化再利用；專案預估更穩定、時程風險更低，團隊對整體執行步調更有信心。
+              </p>
+            </div>
+          </div>
+
+          <div class="case-image fade-in-right">
+            <img src="chicony3.png" alt="微星統包案 RICE 與需求拆解" />
+          </div>
+
+        </div>
+      </section>
 
 
       <!-- 回上一頁 -->
@@ -192,6 +171,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     </div>
   </main>
+
+
+  <!-- 動畫 script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const animatedElements = document.querySelectorAll(
+        ".fade-in-left, .fade-in-right"
+      );
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      animatedElements.forEach((el) => observer.observe(el));
+    });
+  </script>
 
   <footer class="footer">
     <div class="container">
