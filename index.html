@@ -137,11 +137,10 @@
 
     <!-- Portfolio CTA -->
     <div class="portfolio-cta reveal-on-scroll">
-        <a href="portfolio.html" class="portfolio-button">
-            <!-- 之後把圖檔名稱換成你實際的 Button PNG -->
-            <img src="portfolio.png" alt="View Portfolio">
-        </a>
-    </div>
+    <a href="portfolio.html" class="portfolio-button">
+        <img src="portfolio.png" alt="View Portfolio">
+    </a>
+</div>
 </section>
 
 <!-- 作品集區塊 placeholder -->
@@ -160,20 +159,22 @@
     }
 
     const observer = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                obs.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.01,
-        rootMargin: '0px 0px -8% 0px'
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+        }
     });
+}, {
+    threshold: 0,                 // 只要進螢幕就觸發
+    rootMargin: '0px 0px -5% 0px' // 略微往上收一點點
+});
+
 
     revealElements.forEach(el => observer.observe(el));
 })();
 </script>
 </body>
 </html>
+
 
