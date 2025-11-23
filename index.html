@@ -882,26 +882,53 @@
     })();
   </script>
   <script>
-  (function () {
-    const slider = document.getElementById('toolSlider');
-    if (!slider) return;
-
-    const prev = document.getElementById('toolPrev');
-    const next = document.getElementById('toolNext');
-
-    const slideWidth = () => slider.clientWidth;
-
-    prev.addEventListener('click', () => {
-      slider.scrollBy({ left: -slideWidth(), behavior: 'smooth' });
-    });
-    next.addEventListener('click', () => {
-      slider.scrollBy({ left: slideWidth(), behavior: 'smooth' });
-    });
-  })();
-</script>
-
+    (function () {
+      const slider = document.getElementById('toolSlider');
+      if (!slider) return;
+  
+      const prev = document.getElementById('toolPrev');
+      const next = document.getElementById('toolNext');
+      const cards = slider.querySelectorAll('.tool-mobile-card');
+  
+      const slideWidth = () => slider.clientWidth;
+  
+      // 左右箭頭滑動
+      prev.addEventListener('click', () => {
+        slider.scrollBy({ left: -slideWidth(), behavior: 'smooth' });
+      });
+  
+      next.addEventListener('click', () => {
+        slider.scrollBy({ left: slideWidth(), behavior: 'smooth' });
+      });
+  
+      // 更新「中間那張」active 卡片，做成一張一張翻出來的感覺
+      function updateActiveCard() {
+        const sliderRect = slider.getBoundingClientRect();
+        const centerX = sliderRect.left + sliderRect.width / 2;
+  
+        cards.forEach((card) => {
+          const rect = card.getBoundingClientRect();
+          const cardCenter = rect.left + rect.width / 2;
+          const diff = Math.abs(centerX - cardCenter);
+          const threshold = rect.width * 0.5;
+  
+          card.classList.toggle('is-active', diff < threshold);
+        });
+      }
+  
+      // 監聽滑動與視窗尺寸變化
+      slider.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateActiveCard);
+      });
+      window.addEventListener('resize', updateActiveCard);
+  
+      // 初始跑一次
+      updateActiveCard();
+    })();
+  </script>
 </body>
 </html>
+
 
 
 
