@@ -83,8 +83,8 @@
 
         <div class="small-divider"></div>
 
-        <p>今年 <span class="highlight-bold">32 歲</span></p>
-        <p>工作年資邁入第 <span class="highlight-bold">10 年</span></p>
+        <p>今年 <span id="age" class="highlight-bold">--</span> 歲</p>
+        <p>工作年資邁入第 <span id="workYears" class="highlight-bold">--</span> 年</p>
 
         <div class="small-divider"></div>
 
@@ -926,8 +926,38 @@
       updateActiveCard();
     })();
   </script>
+  <script>
+  // ---- 年齡／年資自動計算 ----
+  (function () {
+    const birthYear = 1993;
+    const birthMonth = 2;   // 2 月
+    const startWorkYear = 2015;
+
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1;
+
+    // 年紀計算：如果現在月份 < 生日月份 → 要再 -1
+    let age = year - birthYear;
+    if (month < birthMonth) {
+      age -= 1;
+    }
+
+    // 年資 = 目前西元年 - 2015
+    const workYears = year - startWorkYear;
+
+    // 填入 DOM
+    const ageEl = document.getElementById("age");
+    const workEl = document.getElementById("workYears");
+
+    if (ageEl) ageEl.textContent = age;
+    if (workEl) workEl.textContent = workYears;
+  })();
+</script>
+
 </body>
 </html>
+
 
 
 
