@@ -902,8 +902,28 @@
         });
     })();
   </script>
+  <script>
+  (function () {
+    const slider = document.getElementById('toolSlider');
+    if (!slider) return;
+
+    const prev = document.getElementById('toolPrev');
+    const next = document.getElementById('toolNext');
+
+    const slideWidth = () => slider.clientWidth;
+
+    prev.addEventListener('click', () => {
+      slider.scrollBy({ left: -slideWidth(), behavior: 'smooth' });
+    });
+    next.addEventListener('click', () => {
+      slider.scrollBy({ left: slideWidth(), behavior: 'smooth' });
+    });
+  })();
+</script>
+
 </body>
 </html>
+
 
 
 
