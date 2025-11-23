@@ -1007,7 +1007,9 @@ body {
   .framework-grid {
     grid-template-columns: 1fr; /* 手機：一欄直排 */
   }
-
+  .framework-img {
+    width: 100%;
+  }
   .skills-grid {
     grid-template-columns: 1fr;
   }
@@ -1037,6 +1039,7 @@ body {
     min-width: 88%;
   }
 }
+
 
 
 
