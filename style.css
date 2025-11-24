@@ -1808,6 +1808,52 @@ body {
   box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
   background-color: #f5f5f5;
 }
+/* ----------------------
+   Portfolio 子導覽（104 / 群光共用）
+---------------------- */
+.portfolio-subnav {
+  position: sticky;
+  top: 0;                     /* 這一頁沒有 header，所以貼畫面最頂 */
+  z-index: 900;
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.portfolio-subnav-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 24px;
+}
+
+.portfolio-subnav-link {
+  border: none;
+  background: none;
+  padding: 6px 0 8px;
+  font-size: 0.9em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--secondary-text);
+  cursor: pointer;
+  position: relative;
+}
+
+/* hover 底線效果 */
+.portfolio-subnav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent-yellow);
+  transition: width 0.22s ease-out;
+}
+
+.portfolio-subnav-link:hover::after {
+  width: 100%;
+}
+
 
 
 
