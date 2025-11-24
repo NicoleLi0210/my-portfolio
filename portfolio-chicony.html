@@ -44,24 +44,23 @@
         </div>
       </section>
       <!-- 子導覽：能源管理平台 / 微星統包案 -->
-      <nav class="portfolio-subnav">
+      <nav id="portfolioSubnav" class="portfolio-subnav" aria-label="章節快速導覽">
         <div class="portfolio-subnav-inner">
           <a href="#ems-section" class="portfolio-subnav-link">能源管理平台</a>
           <a href="#msi-section" class="portfolio-subnav-link">微星統包案</a>
         </div>
       </nav>
+
       <!-- 第二屏：能源管理平台｜產品策略調整 -->
       <section id="ems-section" class="case-section case-section-ems">
-      <section class="case-section case-section-ems">
         <div class="case-layout">
-
+          <!-- 左圖 -->
           <div class="case-image fade-in-left">
             <img src="chicony2.png" alt="產品策略調整剪報" />
           </div>
-
+          <!-- 右文 -->
           <div class="case-text fade-in-right">
-            <h2 class="case-title">能源管理平台｜產品策略調整</h2>
-
+            <h2 class="case-title">能源管理平台｜產品策略調整</h2>          
             <div class="case-block">
               <h3>SITUATION</h3>
               <p><strong>功能堆疊造成效益難以呈現，TA 不明確。</strong></p>
@@ -106,11 +105,8 @@
 
       <!-- 第三屏：微星統包案 -->
       <section id="msi-section" class="case-section case-section-msi">
-      <section class="case-section case-section-msi">
         <div class="case-layout">
-
-          <div class="case-text fade-in-left">
-
+          <div class="case-text fade-in-left">            
             <h2 class="case-title">微星統包案｜流程優化與需求落差削減</h2>
 
             <div class="case-block">
@@ -181,7 +177,6 @@
 
     </div>
   </main>
-  </main>
 
   <!-- 全站懸浮操作按鈕（作品頁版） -->
   <div
@@ -229,27 +224,6 @@
     pt.classList.add("hide");
   });
 </script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const animatedElements = document.querySelectorAll(
-        ".fade-in-left, .fade-in-right"
-      );
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("in-view");
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
-
-      animatedElements.forEach((el) => observer.observe(el));
-    });
-  </script>
   <!-- 動畫 script -->
   <script>
     window.addEventListener("load", () => {
@@ -288,20 +262,26 @@
       // ============================
       const subnav = document.getElementById('portfolioSubnav');
       if (subnav) {
-        const links = subnav.querySelectorAll('[data-target]');
-        links.forEach(link => {
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const id = link.dataset.target;
-            const target = document.getElementById(id);
-            if (!target) return;
+        // 這裡不再處理點擊，讓 <a href="#xxx"> 自己工作就好        
+        // 手機板：下滑超過一定高度就顯示，上滑回頂端就隱藏
+        let lastScrollY = window.scrollY;
+        const THRESHOLD = 140;
+        
+  const handleScroll = () => {
+    const current = window.scrollY;
+    
+    if (current > THRESHOLD) {
+      subnav.classList.add('is-visible');
+    } else {
+      subnav.classList.remove('is-visible');
+    }
 
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          });
-        });
+    lastScrollY = current;
+  };
+
+  handleScroll();
+  window.addEventListener('scroll', handleScroll);
+}
 
         // 手機板：下滑超過一定高度就顯示，上滑回頂端就隱藏
         let lastScrollY = window.scrollY;
