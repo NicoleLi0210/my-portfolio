@@ -1420,7 +1420,7 @@ body {
 .case-image img {
   display: block;
   width: 100%;
-  max-width: 420px;      /* 圖片大小 */
+  max-width: 580px;      /* 圖片大小 */
   height: auto;
   margin: 0 auto;        /* 圖片置中 */
   border-radius: 0;
@@ -1779,6 +1779,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
