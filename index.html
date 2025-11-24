@@ -811,53 +811,37 @@
 
   <!-- 全站懸浮操作按鈕（桌機＋手機共用） -->
   <div
-    id="floatingActions"
-    class="floating-actions"
-    aria-label="快速操作按鈕"
+  id="floatingActions"
+  class="floating-actions"
+  aria-label="快速操作按鈕"
+>
+  <button
+    type="button"
+    class="floating-icon-btn"
+    data-action="contact"
+    aria-label="聯絡我"
   >
-    <!-- Contact / LinkedIn -->
-    <button
-      type="button"
-      class="floating-button floating-contact"
-      data-action="contact"
-      aria-label="前往 LinkedIn 聯絡我"
-    >
-      <img
-        src="contact.png"
-        alt="Contact via LinkedIn"
-        class="floating-button-img"
-      />
-    </button>
+    <img src="contact.png" alt="Contact" />
+  </button>
 
-    <!-- Share -->
-    <button
-      type="button"
-      class="floating-button floating-share"
-      data-action="share"
-      aria-label="分享這個作品集"
-    >
-      <img
-        src="share.png"
-        alt="Share this page"
-        class="floating-button-img"
-      />
-    </button>
+  <button
+    type="button"
+    class="floating-icon-btn"
+    data-action="share"
+    aria-label="分享這個作品集"
+  >
+    <img src="share.png" alt="Share" />
+  </button>
 
-    <!-- 回到頂部 -->
-    <button
-      type="button"
-      class="floating-button floating-top"
-      data-action="top"
-      aria-label="回到頂部"
-    >
-      <img
-        src="top.png"
-        alt="Back to top"
-        class="floating-button-img"
-      />
-    </button>
-  </div>
-
+  <button
+    type="button"
+    class="floating-icon-btn"
+    data-action="top"
+    aria-label="回到頂部"
+  >
+    <img src="top.png" alt="回到頂部" />
+  </button>
+</div>
   <footer class="footer">
     <div class="container">
       <p>© 2025 Nicole Li. All rights reserved.</p>
@@ -867,6 +851,7 @@
   <script src="main.js"></script>
 </body>
 </html>
+
 
 
 
