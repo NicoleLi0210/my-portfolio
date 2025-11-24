@@ -883,24 +883,83 @@
   </script>
   <script>
     (function () {
-      const slider = document.getElementById('toolSlider');
-      if (!slider) return;
-  
-      const prev = document.getElementById('toolPrev');
-      const next = document.getElementById('toolNext');
-      const cards = slider.querySelectorAll('.tool-mobile-card');
-  
-      const slideWidth = () => slider.clientWidth;
-  
-      // 左右箭頭滑動
-      prev.addEventListener('click', () => {
-        slider.scrollBy({ left: -slideWidth(), behavior: 'smooth' });
+<script>
+  // 工具卡片：手機版撲克牌疊卡 slider
+  (function () {
+    const slider = document.getElementById('toolSlider');
+    if (!slider) return;
+
+    const prevBtn = document.getElementById('toolPrev');
+    const nextBtn = document.getElementById('toolNext');
+    const cards = Array.from(slider.querySelectorAll('.tool-mobile-card'));
+
+    let activeIndex = 0;
+
+    function clampIndex(i) {
+      if (i < 0) return 0;
+      if (i > cards.length - 1) return cards.length - 1;
+      return i;
+    }
+
+    function updateClasses() {
+      cards.forEach((card, idx) => {
+        card.classList.remove('is-active', 'is-prev', 'is-next');
+
+        if (idx === activeIndex) {
+          card.classList.add('is-active');
+        } else if (idx === activeIndex - 1) {
+          card.classList.add('is-prev');
+        } else if (idx === activeIndex + 1) {
+          card.classList.add('is-next');
+        }
       });
-  
-      next.addEventListener('click', () => {
-        slider.scrollBy({ left: slideWidth(), behavior: 'smooth' });
-      });
-  
+    }
+
+    function goTo(index, withScroll = true) {
+      activeIndex = clampIndex(index);
+      const width = slider.clientWidth;
+
+      if (withScroll) {
+        slider.scrollTo({
+          left: activeIndex * width,
+          behavior: 'smooth',
+        });
+      }
+
+      updateClasses();
+    }
+
+    // 初始狀態
+    goTo(0, false);
+
+    // 左右箭頭
+    prevBtn.addEventListener('click', () => {
+      goTo(activeIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      goTo(activeIndex + 1);
+    });
+
+    // 使用者用手滑動時，依據 scrollLeft 自動算出 activeIndex
+    slider.addEventListener('scroll', () => {
+      const width = slider.clientWidth;
+      const scrolledIndex = Math.round(slider.scrollLeft / width);
+
+      const newIndex = clampIndex(scrolledIndex);
+      if (newIndex !== activeIndex) {
+        activeIndex = newIndex;
+        updateClasses();
+      }
+    });
+
+    // 視窗縮放時，重新對齊目前那張
+    window.addEventListener('resize', () => {
+      goTo(activeIndex, true);
+    });
+  })();
+</script>
+ 
       // 更新「中間那張」active 卡片，做成一張一張翻出來的感覺
       function updateActiveCard() {
         const sliderRect = slider.getBoundingClientRect();
@@ -957,6 +1016,7 @@
 
 </body>
 </html>
+
 
 
 
