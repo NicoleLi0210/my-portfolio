@@ -1465,6 +1465,53 @@ body {
   }
 }
 /* ----------------------
+   Portfolio – Chicony 子導覽
+---------------------- */
+.portfolio-subnav {
+  position: sticky;           /* 跟著滾，在 header 底下掛著 */
+  top: 55px;                  /* 對齊你的固定 header 高度 */
+  z-index: 900;
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.portfolio-subnav-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 24px;
+}
+
+/* 按鈕本體 */
+.portfolio-subnav-link {
+  border: none;
+  background: none;
+  padding: 6px 0 8px;
+  font-size: 0.9em;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--secondary-text);
+  cursor: pointer;
+  position: relative;
+}
+
+/* 底線效果 */
+.portfolio-subnav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent-yellow);
+  transition: width 0.22s ease-out;
+}
+
+.portfolio-subnav-link:hover::after {
+  width: 100%;
+}
+
+/* ----------------------
    動畫效果
 ---------------------- */
 
@@ -1695,6 +1742,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
