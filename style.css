@@ -1492,65 +1492,54 @@ body {
   transform: translateX(40px);
 }
 /* ----------------------
-   Floating Actions：懸浮按鈕（用 PNG 圖片）
+   Floating Actions：懸浮按鈕（純圖示版）
 ---------------------- */
 .floating-actions {
   position: fixed;
-  right: 18px;
-  bottom: 18px;
+  right: 16px;
+  bottom: 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   z-index: 950;
+  transform: translateY(0);
   transition:
     opacity 0.25s ease-out,
     transform 0.25s ease-out;
 }
 
-/* Contact 出現時 JS 會加上這個 class */
+/* Contact 出現時會加上的 class（由 JS 控制） */
 .floating-actions.is-hidden {
   opacity: 0;
   pointer-events: none;
   transform: translateY(10px);
 }
 
-/* 按鈕本體：把它當作圖片容器就好 */
-.floating-button {
+/* 單一懸浮按鈕：只包圖片，不加底色／邊框 */
+.floating-icon-btn {
   border: none;
-  background: none;
   padding: 0;
+  margin: 0;
+  background: none;
   cursor: pointer;
-  outline: none;
+  line-height: 0;
 }
 
-/* PNG 圖片樣式 */
-.floating-button img {
+/* 控制圖示尺寸 */
+.floating-icon-btn img {
   display: block;
-  width: 48px;      /* 桌機大小 */
+  width: 54px;   /* 覺得太大可以改 48 / 44 */
   height: auto;
-  border-radius: 16px;
-  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.28);
-  transition:
-    transform 0.22s ease-out,
-    box-shadow 0.22s ease-out,
-    filter 0.22s ease-out;
 }
 
-/* hover 微浮起來一點 */
-.floating-button:hover img {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.32);
-  filter: brightness(1.02);
-}
-
-/* active 壓下去一點 */
-.floating-button:active img {
+/* 微小的 hover 效果 */
+.floating-icon-btn:hover img {
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.26);
+  transition: transform 0.18s ease-out;
 }
 
 /* ----------------------
-   懸浮按鈕 RWD（手機置中橫排）
+   懸浮按鈕 RWD
 ---------------------- */
 @media (max-width: 768px) {
   .floating-actions {
@@ -1558,7 +1547,6 @@ body {
     right: auto;
     bottom: 14px;
     flex-direction: row;
-    gap: 12px;
     transform: translate(-50%, 0);
   }
 
@@ -1566,11 +1554,10 @@ body {
     transform: translate(-50%, 10px);
   }
 
-  .floating-button img {
-    width: 42px;   /* 手機稍微縮小一點 */
+  .floating-icon-btn img {
+    width: 50px; /* 手機稍微再小一點也可以 */
   }
 }
-
 
 /* ----------------------
    Contact 區塊底部按鈕
@@ -1724,6 +1711,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
