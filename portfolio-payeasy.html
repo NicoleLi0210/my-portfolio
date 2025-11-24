@@ -34,16 +34,13 @@
           在電商維運期間，透過釐清高層需求的核心動機，將討論從單一功能導向，成功轉為改善用戶體驗與提升平台效能，導向中長期產品策略。
         </p>
 
-        <div class="portfolio-hero-image">
-          <img src="PEZ_02.png" alt="PayEasy 賣貴通報示意圖" />
-        </div>
-      </section>
-
-      <section id="pez-section" class="case-section case-section-pez">
-        <div class="case-layout case-layout-vertical">
+        </section>
+      
+      <section id="pez-section-intro" class="case-section case-section-intro">
+        <h2 class="case-title">賣貴通報｜需求深度評估</h2>
+        <div class="case-layout case-layout-horizontal">
+            
           <div class="case-text fade-in-left">            
-            <h2 class="case-title">賣貴通報｜需求深度評估</h2>
-
             <div class="case-block">
               <h3>SITUATION</h3>
               <p><strong>需求來自高層的「許願」而非用戶問題。</strong></p>
@@ -98,6 +95,11 @@
         </div>
       </section>
 
+      <section id="pez-section-image" class="case-section case-section-image">
+        <div class="case-layout case-layout-full-image fade-in-up">
+            <img src="PEZ_02.png" alt="PayEasy 賣貴通報整體畫面示意圖" />
+        </div>
+      </section>
 
       <div class="portfolio-back">
         <a href="index.html" class="portfolio-back-link">← 回到首頁</a>
@@ -150,7 +152,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const animatedElements = document.querySelectorAll(
-        ".fade-in-left, .fade-in-right"
+        ".fade-in-left, .fade-in-right, .fade-in-up" // 新增 .fade-in-up 給獨立圖片
       );
 
       const observer = new IntersectionObserver(
@@ -170,50 +172,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // ============================
-      // 子導覽：桌機吸頂 + 手機 MoMo 滑出
-      // (因 portfolioSubnav 元素已移除，此段邏輯將自動跳過，但保留代碼以維持與原頁面結構一致)
-      // ============================
-      const subnav = document.getElementById('portfolioSubnav');
-      let subnavOffsetTop = 0;
-
-      if (subnav) {
-        // 記住子導覽原本在頁面中的 Y 位置（hero 下面）
-        subnavOffsetTop = subnav.offsetTop;
-      }
-
-      const THRESHOLD_MOBILE = 140;
-
-      const handleScroll = () => {
-        if (!subnav) return; // 元素不存在時直接返回
-
-        const scrollY = window.scrollY;
-        const isMobile = window.innerWidth <= 768;
-
-        if (isMobile) {
-          // 📱 手機：MoMo 滑出 / 收起
-          subnav.classList.remove('is-fixed');
-          if (scrollY > THRESHOLD_MOBILE) {
-            subnav.classList.add('is-visible');
-          } else {
-            subnav.classList.remove('is-visible');
-          }
-        } else {
-          // 💻 桌機：超過原始位置就吸頂
-          subnav.classList.remove('is-visible');
-          if (scrollY >= subnavOffsetTop) {
-            subnav.classList.add('is-fixed');
-          } else {
-            subnav.classList.remove('is-fixed');
-          }
-        }
-      };
-
-      if (subnav) {
-        handleScroll();
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleScroll);
-      }
+      // 由於沒有 portfolioSubnav 元素，子導覽的邏輯會自動跳過。
 
       // ============================
       // 浮動按鈕：聯絡 / 分享 / 回頂部（沿用你原本的邏輯）
@@ -282,8 +241,6 @@
       });
     });
   </script>
-
-
 
 
   <footer class="footer">
