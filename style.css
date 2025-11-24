@@ -1468,11 +1468,20 @@ body {
    Portfolio – Chicony 子導覽
 ---------------------- */
 .portfolio-subnav {
-  position: sticky;      /* 桌機：在版面裡，捲到頂部時吸頂 */
-  top: 0;                /* 這一頁沒有 header，所以貼齊畫面頂端 */
+  position: relative;      /* 先當成一般區塊，位置在 hero 下面 */
   z-index: 900;
   background: #ffffff;
   border-bottom: 1px solid #f0f0f0;
+}
+
+/* 桌機：超過原始位置後，吸附在畫面頂端 */
+@media (min-width: 769px) {
+  .portfolio-subnav.is-fixed {
+    position: fixed;
+    top: 0;      /* 這頁沒有 header，所以直接貼螢幕最上方 */
+    left: 0;
+    right: 0;
+  }
 }
 
 /* 內層寬度對齊 container */
@@ -1770,6 +1779,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
