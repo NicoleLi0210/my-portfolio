@@ -1373,7 +1373,7 @@ body {
 }
 
 .case-layout-vertical .case-image img {
-  max-width: 720px;      /* 比原本 420 再大一些 */
+  max-width: 900px;      /* 比原本 420 再大一些 */
   margin-top: 24px;
 }
 
@@ -1788,6 +1788,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
