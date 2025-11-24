@@ -304,3 +304,102 @@
   if (ageEl) ageEl.textContent = age;
   if (workEl) workEl.textContent = workYears;
 })();
+// =============================
+//  懸浮按鈕 + Contact 底部按鈕
+// =============================
+(function () {
+  const floatingActions = document.getElementById("floatingActions");
+  const contactSection = document.getElementById("contact");
+
+  // 所有有 data-action 的按鈕：包含懸浮 & contact 區塊內按鈕
+  const actionButtons = document.querySelectorAll("[data-action]");
+  if (!actionButtons.length) return;
+
+  const linkedinUrl =
+    "https://www.linkedin.com/in/%E6%99%8F%E6%85%88-%E6%9D%8E-183172212";
+
+  function handleAction(action) {
+    switch (action) {
+      case "contact": {
+        // 聯絡我：直接開 LinkedIn
+        window.open(linkedinUrl, "_blank", "noopener");
+        break;
+      }
+      case "share": {
+        const shareData = {
+          title: document.title || "Nicole Li - Product Manager Portfolio",
+          text: "這是 Nicole 的產品經理作品集網站。",
+          url: window.location.href,
+        };
+
+        if (navigator.share) {
+          // 手機 / 支援 Web Share API 的瀏覽器
+          navigator.share(shareData).catch(() => {
+            // 使用者取消就算了，不需要報錯
+          });
+        } else {
+          // 簡單的 fallback：試著複製網址，不行就叫使用者手動
+          const url = window.location.href;
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard
+              .writeText(url)
+              .then(() => {
+                alert("已複製此頁網址，歡迎分享給其他人。");
+              })
+              .catch(() => {
+                alert("請從瀏覽器網址列複製此頁網址進行分享。");
+              });
+          } else {
+            alert("請從瀏覽器網址列複製此頁網址進行分享。");
+          }
+        }
+        break;
+      }
+      case "top": {
+        // 回到頂部
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+        break;
+      }
+      default:
+        break;
+    }
+  }
+
+  // 綁定所有 data-action 按鈕的 click
+  actionButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const action = btn.getAttribute("data-action");
+      if (!action) return;
+      handleAction(action);
+    });
+  });
+
+  // Contact 出現時隱藏懸浮按鈕，離開時再顯示
+  if (floatingActions && contactSection && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target !== contactSection) return;
+
+          if (entry.isIntersecting) {
+            // Contact 出現在畫面時 → 隱藏懸浮按鈕
+            floatingActions.classList.add("is-hidden");
+          } else {
+            // 離開 Contact → 顯示懸浮按鈕
+            floatingActions.classList.remove("is-hidden");
+          }
+        });
+      },
+      {
+        threshold: 0.15, // 大概有一小部分接觸到畫面就算「出現」
+      }
+    );
+
+    io.observe(contactSection);
+  }
+})();
+
+
