@@ -1511,6 +1511,11 @@ body {
   width: 100%;
 }
 
+/* 當前錨點高亮 */
+.portfolio-subnav-link.is-active::after {
+  width: 100%;
+}
+
 /* ----------------------
    動畫效果
 ---------------------- */
@@ -1742,6 +1747,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
