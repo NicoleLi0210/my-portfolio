@@ -1463,6 +1463,12 @@ body {
   box-shadow: none;
   background: transparent;
 }
+.img-small-phase {
+  display: block;
+  width: 40%;      /* 想「變小 60%」就抓大約 40%，不夠再調 35%、30% */
+  max-width: none; /* 把前面 580px 的上限取消掉 */
+  margin: 24px auto 0; /* 要不要加點上方間距可以一起調 */
+}
 
 /* 返回按鈕 */
 .portfolio-back {
@@ -1797,11 +1803,8 @@ body {
 .portfolio-subnav-link:hover::after {
   width: 100%;
 }
-.img-small-phase {
-  max-width: 60%;
-  display: block;
-  margin: 0 auto; /* 保持置中 */
-}
+
+
 
 
 
