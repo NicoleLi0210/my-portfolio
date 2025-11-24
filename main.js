@@ -46,7 +46,7 @@
 })();
 </>
 
-  <>
+  
     // Scroll Reveal
     (function () {
       const revealElements = document.querySelectorAll('.reveal-on-scroll');
@@ -281,4 +281,5 @@
       if (ageEl) ageEl.textContent = age;
       if (workEl) workEl.textContent = workYears;
     })();
+
 
