@@ -178,6 +178,14 @@
 
   <!-- 動畫 script -->
   <script>
+  window.addEventListener("load", () => {
+    const pt = document.getElementById("page-transition");
+    if (!pt) return;
+    pt.classList.add("hide");
+  });
+</script>
+
+  <script>
     document.addEventListener("DOMContentLoaded", function () {
       const animatedElements = document.querySelectorAll(
         ".fade-in-left, .fade-in-right"
