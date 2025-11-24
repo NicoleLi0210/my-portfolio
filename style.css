@@ -1468,12 +1468,14 @@ body {
    Portfolio – Chicony 子導覽
 ---------------------- */
 .portfolio-subnav {
-  position: sticky;           /* 跟著滾，在 header 底下掛著 */
-  top: 55px;                  /* 對齊你的固定 header 高度 */
+  position: sticky;
+  top: 0; /* 貼到畫面頂端 */
   z-index: 900;
-  background: #ffffff;
-  border-bottom: 1px solid #f0f0f0;
+  background: #fff7da; /* 換成比較明顯的底色，你也可以改成自己喜歡的色碼 */
+  border-bottom: 1px solid #f0e0a0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04); /* 讓它跟背景有一點分層感（可要可不要） */
 }
+
 
 .portfolio-subnav-inner {
   display: flex;
@@ -1487,13 +1489,14 @@ body {
   border: none;
   background: none;
   padding: 6px 0 8px;
-  font-size: 0.9em;
+  font-size: 0.98em; /* 稍微變大，不會太誇張 */
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--secondary-text);
   cursor: pointer;
   position: relative;
 }
+
 
 /* 底線效果 */
 .portfolio-subnav-link::after {
@@ -1765,6 +1768,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
