@@ -245,97 +245,108 @@
     });
   </script>
 
-<!-- 子導覽 + 浮動按鈕行為 -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    /* ============================
-       子導覽：手機滑到一定高度才顯示
-    ============================ */
-    const subnav = document.getElementById('portfolioSubnav');
-    if (subnav) {
-      let lastScrollY = window.scrollY;
-      const THRESHOLD = 140;
+  <!-- 子導覽 + 浮動按鈕行為 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // ============================
+      // 子導覽：手機版 MoMo 式顯示
+      // ============================
+      const subnav = document.getElementById('portfolioSubnav');
 
-      const handleScroll = () => {
-        const current = window.scrollY;
+      if (subnav) {
+        const THRESHOLD = 140;
 
-        if (current > THRESHOLD) {
-          subnav.classList.add('is-visible');
-        } else {
-          subnav.classList.remove('is-visible');
-        }
+        const handleScroll = () => {
+          const isMobile = window.innerWidth <= 768;
 
-        lastScrollY = current;
-      };
-
-      handleScroll();
-      window.addEventListener('scroll', handleScroll);
-    }
-
-    /* ============================
-       浮動按鈕：聯絡 / 分享 / 回頂部
-    ============================ */
-
-    // 聯絡：開 LinkedIn
-    const fabContact = document.getElementById('fabContact');
-    if (fabContact) {
-      fabContact.addEventListener('click', () => {
-        window.open(
-          'https://www.linkedin.com/in/%E6%99%8F%E6%85%88-%E6%9D%8E-183172212',
-          '_blank',
-          'noopener'
-        );
-      });
-    }
-
-    // 分享與回頂部：共用控制器
-    function handleAction(action) {
-      switch (action) {
-        case 'top':
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          break;
-
-        case 'share': {
-          const url = window.location.href;
-
-          // 手機：原生分享
-          if (window.innerWidth < 768 && navigator.share) {
-            navigator
-              .share({ title: document.title, url })
-              .catch(() => {});
+          // 桌機：不做 MoMo 動畫，保持原本 sticky 行為
+          if (!isMobile) {
+            subnav.classList.remove('is-visible');
             return;
           }
 
-          // 桌機：複製連結
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard
-              .writeText(url)
-              .then(() => {
-                alert('連結已複製，歡迎分享給對這份作品集有興趣的人。');
-              })
-              .catch(() => {
-                prompt('無法自動複製，請手動複製這段連結：', url);
-              });
+          const current = window.scrollY;
+          if (current > THRESHOLD) {
+            subnav.classList.add('is-visible');
           } else {
-            prompt('請手動複製這段連結：', url);
+            subnav.classList.remove('is-visible');
           }
-          break;
-        }
+        };
 
-        default:
-          break;
+        // 初始化一次
+        handleScroll();
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
       }
-    }
 
-    const actionButtons = document.querySelectorAll('[data-action]');
-    actionButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const action = btn.getAttribute('data-action');
-        if (action) handleAction(action);
+      // ============================
+      // 浮動按鈕：聯絡 / 分享 / 回頂部
+      // ============================
+
+      // 聯絡：直接開 LinkedIn
+      const fabContact = document.getElementById('fabContact');
+      if (fabContact) {
+        fabContact.addEventListener('click', () => {
+          window.open(
+            'https://www.linkedin.com/in/%E6%99%8F%E6%85%88-%E6%9D%8E-183172212',
+            '_blank',
+            'noopener'
+          );
+        });
+      }
+
+      // 分享 & 回頂部：用 data-action 共用
+      function handleAction(action) {
+        switch (action) {
+          case 'top':
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            break;
+
+          case 'share': {
+            const url = window.location.href;
+
+            // 手機：優先原生分享
+            if (window.innerWidth < 768 && navigator.share) {
+              navigator
+                .share({
+                  title: document.title,
+                  url
+                })
+                .catch(() => {});
+              return;
+            }
+
+            // 桌機：複製連結 + 提示
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard
+                .writeText(url)
+                .then(() => {
+                  alert('連結已複製，歡迎分享給對這份作品集有興趣的人。');
+                })
+                .catch(() => {
+                  prompt('無法自動複製，請手動複製這段連結：', url);
+                });
+            } else {
+              prompt('請手動複製這段連結：', url);
+            }
+            break;
+          }
+
+          default:
+            break;
+        }
+      }
+
+      const actionButtons = document.querySelectorAll('[data-action]');
+      actionButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const action = btn.getAttribute('data-action');
+          if (action) handleAction(action);
+        });
       });
     });
-  });
-</script>
+  </script>
+
 
 
   <footer class="footer">
