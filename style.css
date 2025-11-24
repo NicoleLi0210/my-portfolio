@@ -1629,6 +1629,47 @@ body {
     justify-content: center;
   }
 }
+/* ----------------------
+   Page Transition
+---------------------- */
+#page-transition {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 0.6s ease 0.2s;
+}
+
+#page-transition.hide {
+  opacity: 0;
+}
+
+.transition-logo {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #333;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeSlideIn 0.6s ease forwards 0.1s;
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 
 
