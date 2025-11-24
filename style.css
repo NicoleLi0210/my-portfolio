@@ -1567,7 +1567,7 @@ body {
   }
 
   .floating-button img {
-    width: 64px;   /* 手機稍微縮小一點 */
+    width: 42px;   /* 手機稍微縮小一點 */
   }
 }
 
@@ -1724,6 +1724,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
