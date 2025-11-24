@@ -711,6 +711,12 @@ body {
 /* ----------------------
    Skills Overview
 ---------------------- */
+/* 桌機／有滑鼠裝置：hover 時翻面 */
+@media (hover: hover) and (pointer: fine) {
+  .skill-card:hover .skill-card-inner {
+    transform: rotateY(180deg);
+  }
+}
 .skills-section {
   background: #fffdf7;
   padding: 60px 0 70px;
@@ -1604,23 +1610,7 @@ body {
    懸浮按鈕 RWD
 ---------------------- */
 @media (max-width: 768px) {
-  .floating-actions {
-    left: 50%;
-    right: auto;
-    bottom: 14px;
-    flex-direction: row;
-    transform: translate(-50%, 0); /* 預設置中 */
-  }
-
-  .floating-actions.is-hidden {
-    transform: translate(-50%, 10px); /* 隱藏時一起往下滑一點 */
-  }
-
-  .floating-icon-btn {
-    padding: 8px 12px;
-    font-size: 0.78em;
-    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.22);
-  }
+  /* 浮動按鈕：沿用前面那段設定，不再改 padding / box-shadow */
 
   .contact-bottom-actions {
     flex-direction: column;
@@ -1632,6 +1622,7 @@ body {
     justify-content: center;
   }
 }
+
 /* ----------------------
    Page Transition
 ---------------------- */
@@ -1711,6 +1702,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
