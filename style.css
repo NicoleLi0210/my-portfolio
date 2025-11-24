@@ -1526,7 +1526,7 @@ body {
 /* PNG 圖片樣式 */
 .floating-button img {
   display: block;
-  width: 72px;      /* 桌機大小 */
+  width: 48px;      /* 桌機大小 */
   height: auto;
   border-radius: 16px;
   box-shadow: 0 10px 26px rgba(15, 23, 42, 0.28);
@@ -1724,6 +1724,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
