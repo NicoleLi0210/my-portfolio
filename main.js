@@ -1,5 +1,53 @@
   <!-- Scripts -->
   <script>
+// =============================
+//  Mobile Menu：漢堡 + 左側抽屜
+// =============================
+(function () {
+  const toggleBtn = document.querySelector(".mobile-menu-toggle");
+  const mobileNav = document.getElementById("mobileNav");
+  const root = document.documentElement;
+
+  // 漢堡開關
+  toggleBtn.addEventListener("click", () => {
+    const isOpen = mobileNav.classList.toggle("open");
+    toggleBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+    // 鎖定 body 滾動
+    root.style.overflow = isOpen ? "hidden" : "";
+  });
+
+  // 點到選單內的超連結 → 自動關閉選單
+  mobileNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileNav.classList.remove("open");
+      root.style.overflow = "";
+      toggleBtn.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  // =============================
+  //   次選單展開（雙層）
+  // =============================
+  const parents = mobileNav.querySelectorAll(".mobile-nav-item.has-children");
+
+  parents.forEach((item) => {
+    const btn = item.querySelector(".mobile-nav-parent");
+    const submenu = item.querySelector(".mobile-nav-sublist");
+    const chevron = item.querySelector(".mobile-nav-chevron");
+
+    btn.addEventListener("click", () => {
+      item.classList.toggle("open");
+      const isOpen = item.classList.contains("open");
+
+      submenu.style.maxHeight = isOpen ? submenu.scrollHeight + "px" : "0px";
+      chevron.textContent = isOpen ? "▴" : "▾";
+    });
+  });
+})();
+</script>
+
+  <script>
     // Scroll Reveal
     (function () {
       const revealElements = document.querySelectorAll('.reveal-on-scroll');
@@ -234,4 +282,5 @@
       if (ageEl) ageEl.textContent = age;
       if (workEl) workEl.textContent = workYears;
     })();
+
   </script>
