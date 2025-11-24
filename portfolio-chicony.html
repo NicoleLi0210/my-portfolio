@@ -215,15 +215,6 @@
     </button>
   </div>
 
-
-  <!-- 動畫 script -->
-  <script>
-  window.addEventListener("load", () => {
-    const pt = document.getElementById("page-transition");
-    if (!pt) return;
-    pt.classList.add("hide");
-  });
-</script>
   <!-- 動畫 script -->
   <script>
     window.addEventListener("load", () => {
@@ -254,123 +245,98 @@
     });
   </script>
 
-  <!-- 子導覽 + 浮動按鈕行為 -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // ============================
-      // 子導覽：點按捲動到對應區塊
-      // ============================
-      const subnav = document.getElementById('portfolioSubnav');
-      if (subnav) {
-        // 這裡不再處理點擊，讓 <a href="#xxx"> 自己工作就好        
-        // 手機板：下滑超過一定高度就顯示，上滑回頂端就隱藏
-        let lastScrollY = window.scrollY;
-        const THRESHOLD = 140;
-        
-  const handleScroll = () => {
-    const current = window.scrollY;
-    
-    if (current > THRESHOLD) {
-      subnav.classList.add('is-visible');
-    } else {
-      subnav.classList.remove('is-visible');
+<!-- 子導覽 + 浮動按鈕行為 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    /* ============================
+       子導覽：手機滑到一定高度才顯示
+    ============================ */
+    const subnav = document.getElementById('portfolioSubnav');
+    if (subnav) {
+      let lastScrollY = window.scrollY;
+      const THRESHOLD = 140;
+
+      const handleScroll = () => {
+        const current = window.scrollY;
+
+        if (current > THRESHOLD) {
+          subnav.classList.add('is-visible');
+        } else {
+          subnav.classList.remove('is-visible');
+        }
+
+        lastScrollY = current;
+      };
+
+      handleScroll();
+      window.addEventListener('scroll', handleScroll);
     }
 
-    lastScrollY = current;
-  };
+    /* ============================
+       浮動按鈕：聯絡 / 分享 / 回頂部
+    ============================ */
 
-  handleScroll();
-  window.addEventListener('scroll', handleScroll);
-}
+    // 聯絡：開 LinkedIn
+    const fabContact = document.getElementById('fabContact');
+    if (fabContact) {
+      fabContact.addEventListener('click', () => {
+        window.open(
+          'https://www.linkedin.com/in/%E6%99%8F%E6%85%88-%E6%9D%8E-183172212',
+          '_blank',
+          'noopener'
+        );
+      });
+    }
 
-        // 手機板：下滑超過一定高度就顯示，上滑回頂端就隱藏
-        let lastScrollY = window.scrollY;
-        const THRESHOLD = 140;
+    // 分享與回頂部：共用控制器
+    function handleAction(action) {
+      switch (action) {
+        case 'top':
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          break;
 
-        const handleScroll = () => {
-          const current = window.scrollY;
+        case 'share': {
+          const url = window.location.href;
 
-          if (current > THRESHOLD) {
-            subnav.classList.add('is-visible');
+          // 手機：原生分享
+          if (window.innerWidth < 768 && navigator.share) {
+            navigator
+              .share({ title: document.title, url })
+              .catch(() => {});
+            return;
+          }
+
+          // 桌機：複製連結
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard
+              .writeText(url)
+              .then(() => {
+                alert('連結已複製，歡迎分享給對這份作品集有興趣的人。');
+              })
+              .catch(() => {
+                prompt('無法自動複製，請手動複製這段連結：', url);
+              });
           } else {
-            subnav.classList.remove('is-visible');
+            prompt('請手動複製這段連結：', url);
           }
-
-          lastScrollY = current;
-        };
-
-        // 初始化一次
-        handleScroll();
-        window.addEventListener('scroll', handleScroll);
-      }
-
-      // ============================
-      // 浮動按鈕：聯絡 / 分享 / 回頂部
-      // ============================
-
-      // 聯絡：直接開 LinkedIn
-      const fabContact = document.getElementById('fabContact');
-      if (fabContact) {
-        fabContact.addEventListener('click', () => {
-          window.open(
-            'https://www.linkedin.com/in/%E6%99%8F%E6%85%88-%E6%9D%8E-183172212',
-            '_blank',
-            'noopener'
-          );
-        });
-      }
-
-      // 分享 & 回頂部：用 data-action 共用
-      function handleAction(action) {
-        switch (action) {
-          case 'top':
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            break;
-
-          case 'share': {
-            const url = window.location.href;
-
-            // 手機：優先原生分享
-            if (window.innerWidth < 768 && navigator.share) {
-              navigator
-                .share({
-                  title: document.title,
-                  url
-                })
-                .catch(() => {});
-              return;
-            }
-
-            // 桌機：複製連結 + 提示
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-              navigator.clipboard
-                .writeText(url)
-                .then(() => {
-                  alert('連結已複製，歡迎分享給對這份作品集有興趣的人。');
-                })
-                .catch(() => {
-                  prompt('無法自動複製，請手動複製這段連結：', url);
-                });
-            } else {
-              prompt('請手動複製這段連結：', url);
-            }
-            break;
-          }
-
-          default:
-            break;
+          break;
         }
-      }
 
-      const actionButtons = document.querySelectorAll('[data-action]');
-      actionButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const action = btn.getAttribute('data-action');
-          if (action) handleAction(action);
-        });
+        default:
+          break;
+      }
+    }
+
+    const actionButtons = document.querySelectorAll('[data-action]');
+    actionButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const action = btn.getAttribute('data-action');
+        if (action) handleAction(action);
       });
     });
-  </script>
+  });
+</script>
+
 
   <footer class="footer">
     <div class="container">
