@@ -1492,7 +1492,7 @@ body {
   transform: translateX(40px);
 }
 /* ----------------------
-   Floating Actions：懸浮按鈕
+   Floating Actions：懸浮按鈕（用 PNG 圖片）
 ---------------------- */
 .floating-actions {
   position: fixed;
@@ -1502,59 +1502,75 @@ body {
   flex-direction: column;
   gap: 10px;
   z-index: 950;
-  transform: translateY(0);
   transition:
     opacity 0.25s ease-out,
     transform 0.25s ease-out;
 }
 
-/* Contact 出現時會加上的 class（由 JS 控制） */
+/* Contact 出現時 JS 會加上這個 class */
 .floating-actions.is-hidden {
   opacity: 0;
   pointer-events: none;
   transform: translateY(10px);
 }
 
-/* 懸浮按鈕本體 */
-.floating-actions-btn {
+/* 按鈕本體：把它當作圖片容器就好 */
+.floating-button {
   border: none;
-  outline: none;
+  background: none;
+  padding: 0;
   cursor: pointer;
-  border-radius: 999px;
-  padding: 8px 14px;
-  font-size: 0.82em;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: #111111;
-  color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.26);
-  white-space: nowrap;
-  opacity: 0.9;
+  outline: none;
 }
 
-.floating-actions-btn:hover {
-  opacity: 1;
+/* PNG 圖片樣式 */
+.floating-button img {
+  display: block;
+  width: 72px;      /* 桌機大小 */
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.28);
+  transition:
+    transform 0.22s ease-out,
+    box-shadow 0.22s ease-out,
+    filter 0.22s ease-out;
+}
+
+/* hover 微浮起來一點 */
+.floating-button:hover img {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.32);
+  filter: brightness(1.02);
+}
+
+/* active 壓下去一點 */
+.floating-button:active img {
   transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.26);
 }
 
-.floating-actions-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 5px 15px rgba(15, 23, 42, 0.22);
+/* ----------------------
+   懸浮按鈕 RWD（手機置中橫排）
+---------------------- */
+@media (max-width: 768px) {
+  .floating-actions {
+    left: 50%;
+    right: auto;
+    bottom: 14px;
+    flex-direction: row;
+    gap: 12px;
+    transform: translate(-50%, 0);
+  }
+
+  .floating-actions.is-hidden {
+    transform: translate(-50%, 10px);
+  }
+
+  .floating-button img {
+    width: 64px;   /* 手機稍微縮小一點 */
+  }
 }
 
-/* 不同按鈕可以稍微做點區別（可選） */
-.floating-actions-btn--primary {
-  background: #111111;
-}
-
-.floating-actions-btn--ghost {
-  background: #ffffff;
-  color: #333333;
-}
 
 /* ----------------------
    Contact 區塊底部按鈕
@@ -1708,6 +1724,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
