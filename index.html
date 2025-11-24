@@ -14,10 +14,26 @@
     各區塊依序調整動畫、排版與互動細節，並以 Git 版本管理、部署至 GitHub Pages，藉此呈現我在跨領域協作、技術理解與結構化落地上的能力。
   
 </div>
-  <!-- Header -->
+    <!-- Header -->
   <header class="header">
     <div class="container header-content">
+      <!-- 手機版漢堡選單按鈕（桌機會用 CSS 隱藏） -->
+      <button
+        class="mobile-menu-toggle"
+        type="button"
+        aria-label="開啟主選單"
+        aria-expanded="false"
+        aria-controls="mobileNav"
+      >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <!-- Logo -->
       <div class="logo">李晏慈 Nicole</div>
+
+      <!-- 桌機版主選單 -->
       <nav class="main-nav">
         <div class="nav-item">
           <a href="#profile" class="nav-link">簡介</a>
@@ -47,7 +63,50 @@
         </div>
       </nav>
     </div>
+
+    <!-- 手機版側邊滑出選單（左側、非滿版） -->
+    <nav id="mobileNav" class="mobile-nav" aria-hidden="true">
+      <ul class="mobile-nav-list">
+        <!-- 單層：直接錨點 -->
+        <li class="mobile-nav-item">
+          <a href="#profile" class="mobile-nav-link">簡介</a>
+        </li>
+
+        <!-- 有第二層：經歷 -->
+        <li class="mobile-nav-item has-children">
+          <button class="mobile-nav-parent" type="button">
+            <span class="mobile-nav-text">經歷</span>
+            <span class="mobile-nav-chevron" aria-hidden="true">▾</span>
+          </button>
+          <ul class="mobile-nav-sublist">
+            <li><a href="#experience-2025">群光電能</a></li>
+            <li><a href="#experience-104">104 資訊科技</a></li>
+            <li><a href="#experience-payeasy">PayEasy 康迅數位</a></li>
+            <li><a href="#experience-vitality">活力台灣科技</a></li>
+          </ul>
+        </li>
+
+        <!-- 有第二層：關於我 -->
+        <li class="mobile-nav-item has-children">
+          <button class="mobile-nav-parent" type="button">
+            <span class="mobile-nav-text">關於我</span>
+            <span class="mobile-nav-chevron" aria-hidden="true">▾</span>
+          </button>
+          <ul class="mobile-nav-sublist">
+            <li><a href="#work-style">工作風格</a></li>
+            <li><a href="#skills-overview">技能</a></li>
+            <li><a href="#tools">工具／流程</a></li>
+          </ul>
+        </li>
+
+        <!-- 單層：聯絡 -->
+        <li class="mobile-nav-item">
+          <a href="#contact" class="mobile-nav-link">聯絡</a>
+        </li>
+      </ul>
+    </nav>
   </header>
+
 
   <!-- Hero / Profile -->
   <section id="profile" class="hero-landing">
@@ -996,6 +1055,7 @@
 
 </body>
 </html>
+
 
 
 
