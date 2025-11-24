@@ -701,8 +701,26 @@ body {
 ---------------------- */
 .tools-section {
   background: #ffffff;
-  padding: 70px 0 80px;
+  padding: 70px 0 90px;  /* 底部多一點空間讓陰影有餘裕 */
   text-align: left;
+  position: relative;     /* 為了下面的漸層遮罩 */
+  overflow: visible;
+}
+
+.tools-section::after {
+  /* 底部淡淡的漸層，讓卡片陰影不要突然被截斷 */
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40px;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    #ffffff
+  );
 }
 
 .tools-title {
@@ -738,7 +756,7 @@ body {
   font-size: 0.9em;
   line-height: 1.7;
   background: #fffdf7;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
 }
 
 .tool-row-header .tool-cell {
@@ -820,7 +838,7 @@ body {
   gap: 0;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 28px 24px 36px;   /* 留出上下空間讓陰影更明顯 */
+  padding: 32px 24px 60px;   /* 底部 padding 再多一點，陰影不會貼邊 */
 }
 
 .tool-mobile-slider::-webkit-scrollbar {
@@ -834,7 +852,7 @@ body {
   background: #ffffff;
   border-radius: 24px;
   border: 1px solid #f0f0f0;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
   padding: 20px 20px 22px;
   scroll-snap-align: center;
   text-align: left;
@@ -856,7 +874,7 @@ body {
   transform: scale(1) translateY(0);
   opacity: 1;
   filter: none;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
   z-index: 3;
 }
 
@@ -865,16 +883,16 @@ body {
   transform: scale(1) translateY(0);
   opacity: 1;
   filter: none;
-  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
   z-index: 4;
 }
 
-/* 左右鄰居：像露在後面的牌，略向左右偏移 */
+/* 左右鄰居：略向左右偏移，像露在後面的牌 */
 .tool-mobile-card.is-prev {
   transform: scale(0.93) translate(-10px, 14px);
   opacity: 0.75;
   filter: blur(0.1px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.12);
   z-index: 2;
 }
 
@@ -882,7 +900,7 @@ body {
   transform: scale(0.93) translate(10px, 14px);
   opacity: 0.75;
   filter: blur(0.1px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.12);
   z-index: 2;
 }
 
@@ -1336,6 +1354,7 @@ body {
 .fade-in-right {
   transform: translateX(40px);
 }
+
 
 
 
