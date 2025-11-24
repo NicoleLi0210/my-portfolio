@@ -1160,10 +1160,6 @@ body {
 
 
 @media (max-width: 768px) {
-  .header-content {
-    padding: 0 18px;
-  }
-
   .main-nav {
     gap: 16px;
   }
@@ -1495,6 +1491,7 @@ body {
 .fade-in-right {
   transform: translateX(40px);
 }
+
 
 
 
