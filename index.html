@@ -634,8 +634,7 @@
 
     <!-- 📱 手機版：大卡片 Slider -->
     <div class="tool-mobile-wrapper">
-      <button class="tool-slider-nav" id="toolPrev">‹</button>
-
+      <button class="tool-slider-nav" id="toolPrev" type="button" aria-label="上一張">‹</button>
       <div class="tool-mobile-slider" id="toolSlider">
         <!-- Card 1 -->
         <div class="tool-mobile-card">
@@ -710,7 +709,7 @@
         </div>
       </div>
 
-      <button class="tool-slider-nav" id="toolNext">›</button>
+      <button class="tool-slider-nav" id="toolNext" type="button" aria-label="下一張">›</button>
     </div>
   </div>
 </section>
@@ -879,90 +878,92 @@
         cards.forEach((card) => io.observe(card));
       }
     })();
-  </script>
 
-(function () {
-  const slider = document.getElementById('toolSlider');
-  if (!slider) return;
+    // Tools 手機版 Slider
+    (function () {
+      const slider = document.getElementById('toolSlider');
+      if (!slider) return;
 
-  const prevBtn = document.getElementById('toolPrev');
-  const nextBtn = document.getElementById('toolNext');
-  const cards = Array.from(slider.querySelectorAll('.tool-mobile-card'));
+      const prevBtn = document.getElementById('toolPrev');
+      const nextBtn = document.getElementById('toolNext');
+      const cards = Array.from(slider.querySelectorAll('.tool-mobile-card'));
 
-  let activeIndex = 0;
+      let activeIndex = 0;
 
-  function clampIndex(i) {
-    if (i < 0) return 0;
-    if (i > cards.length - 1) return cards.length - 1;
-    return i;
-  }
-
-  // 取目前卡片實際寬度（含 RWD）
-  function getCardWidth() {
-    const first = cards[0];
-    return first ? first.getBoundingClientRect().width : slider.clientWidth;
-  }
-
-  function updateClasses() {
-    cards.forEach((card, idx) => {
-      card.classList.remove('is-active', 'is-prev', 'is-next');
-
-      if (idx === activeIndex) {
-        card.classList.add('is-active');
-      } else if (idx === activeIndex - 1) {
-        card.classList.add('is-prev');
-      } else if (idx === activeIndex + 1) {
-        card.classList.add('is-next');
+      function clampIndex(i) {
+        if (i < 0) return 0;
+        if (i > cards.length - 1) return cards.length - 1;
+        return i;
       }
-    });
-  }
 
-  function goTo(index, withScroll = true) {
-    activeIndex = clampIndex(index);
-    const cardWidth = getCardWidth();
+      // 取目前卡片實際寬度（含 RWD）
+      function getCardWidth() {
+        const first = cards[0];
+        return first ? first.getBoundingClientRect().width : slider.clientWidth;
+      }
 
-    if (withScroll) {
-      slider.scrollTo({
-        left: activeIndex * cardWidth,
-        behavior: 'smooth',
+      function updateClasses() {
+        cards.forEach((card, idx) => {
+          card.classList.remove('is-active', 'is-prev', 'is-next');
+
+          if (idx === activeIndex) {
+            card.classList.add('is-active');
+          } else if (idx === activeIndex - 1) {
+            card.classList.add('is-prev');
+          } else if (idx === activeIndex + 1) {
+            card.classList.add('is-next');
+          }
+        });
+      }
+
+      function goTo(index, withScroll = true) {
+        activeIndex = clampIndex(index);
+        const cardWidth = getCardWidth();
+
+        if (withScroll) {
+          slider.scrollTo({
+            left: activeIndex * cardWidth,
+            behavior: 'smooth',
+          });
+        }
+
+        updateClasses();
+      }
+
+      // 初始狀態
+      goTo(0, false);
+
+      // 左右箭頭
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          goTo(activeIndex - 1);
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          goTo(activeIndex + 1);
+        });
+      }
+
+      // 手指滑動時，同步更新 activeIndex
+      slider.addEventListener('scroll', () => {
+        const cardWidth = getCardWidth();
+        const scrolledIndex = Math.round(slider.scrollLeft / cardWidth);
+        const newIndex = clampIndex(scrolledIndex);
+        if (newIndex !== activeIndex) {
+          activeIndex = newIndex;
+          updateClasses();
+        }
       });
-    }
 
-    updateClasses();
-  }
+      // 視窗縮放時，重新對齊目前那張
+      window.addEventListener('resize', () => {
+        goTo(activeIndex, true);
+      });
+    })();
 
-  // 初始狀態
-  goTo(0, false);
-
-  // 左右箭頭
-  prevBtn.addEventListener('click', () => {
-    goTo(activeIndex - 1);
-  });
-
-  nextBtn.addEventListener('click', () => {
-    goTo(activeIndex + 1);
-  });
-
-  // 手指滑動時，同步更新 activeIndex
-  slider.addEventListener('scroll', () => {
-    const cardWidth = getCardWidth();
-    const scrolledIndex = Math.round(slider.scrollLeft / cardWidth);
-    const newIndex = clampIndex(scrolledIndex);
-    if (newIndex !== activeIndex) {
-      activeIndex = newIndex;
-      updateClasses();
-    }
-  });
-
-  // 視窗縮放時，重新對齊目前那張
-  window.addEventListener('resize', () => {
-    goTo(activeIndex, true);
-  });
-})();
-
-
-  <!-- 年齡／年資自動計算 -->
-  <script>
+    // 年齡／年資自動計算
     (function () {
       const birthYear = 1993;
       const birthMonth = 2;   // 2 月
@@ -988,9 +989,12 @@
       if (workEl) workEl.textContent = workYears;
     })();
   </script>
+</body>
+</html>
 
 </body>
 </html>
+
 
 
 
