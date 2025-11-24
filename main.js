@@ -94,50 +94,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ====================================================
-  // 5. Skills Overview 翻面：桌機 hover、手機進 viewport 自動翻
+    // ====================================================
+  // 5. Skills Overview 翻面：桌機 hover、手機進 viewport 自動翻 + 收回
   // ====================================================
   const skillCards = document.querySelectorAll('.skill-card');
 
   if (skillCards.length > 0) {
     const supportsHover = window.matchMedia('(hover: hover)').matches;
 
-    skillCards.forEach(card => {
-      const inner = card.querySelector('.skill-card-inner');
-      if (!inner) return;
-
-      if (supportsHover) {
-        // 桌機：用 JS 幫忙加 class，避免只吃 :hover 卻被其他條件蓋掉
+    // 桌機：滑過去翻面，滑走關回來
+    if (supportsHover) {
+      skillCards.forEach(card => {
         card.addEventListener('mouseenter', () => {
-          inner.classList.add('is-flipped');
+          card.classList.add('is-flipped'); // 注意：加在 card 本身
         });
         card.addEventListener('mouseleave', () => {
-          inner.classList.remove('is-flipped');
+          card.classList.remove('is-flipped');
         });
-      }
-    });
+      });
+    }
 
-    // 手機：用 IntersectionObserver，進畫面後自動翻面
+    // 手機／觸控：用 IntersectionObserver，根據進入比例翻開 / 關閉
     if (!supportsHover && 'IntersectionObserver' in window) {
       const skillObserver = new IntersectionObserver(
         entries => {
           entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              const inner = entry.target.querySelector('.skill-card-inner');
-              if (inner) {
-                inner.classList.add('is-flipped');
-              }
-              // 只翻一次就好
-              skillObserver.unobserve(entry.target);
+            const card = entry.target;
+
+            // 完全離開畫面：關閉
+            if (!entry.isIntersecting) {
+              card.classList.remove('is-flipped');
+              return;
+            }
+
+            // intersectionRatio ≈ 卡片有多少比例在 viewport 裡
+            // > 0.45：大部分卡片進到畫面中 → 打開
+            // < 0.2：只剩一小部分 → 關回來
+            if (entry.intersectionRatio > 0.45) {
+              card.classList.add('is-flipped');
+            } else if (entry.intersectionRatio < 0.2) {
+              card.classList.remove('is-flipped');
             }
           });
         },
-        { threshold: 0.4 }
+        {
+          threshold: [0, 0.2, 0.45, 0.8]
+        }
       );
 
       skillCards.forEach(card => skillObserver.observe(card));
     }
   }
+
 
   // ====================================================
   // 6. 手機工具 slider（修掉垂直捲動 + 手滑也能更新 active 狀態）
@@ -317,3 +325,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
