@@ -1491,6 +1491,145 @@ body {
 .fade-in-right {
   transform: translateX(40px);
 }
+/* ----------------------
+   Floating Actions：懸浮按鈕
+---------------------- */
+.floating-actions {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 950;
+  transform: translateY(0);
+  transition:
+    opacity 0.25s ease-out,
+    transform 0.25s ease-out;
+}
+
+/* Contact 出現時會加上的 class（由 JS 控制） */
+.floating-actions.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+}
+
+/* 懸浮按鈕本體 */
+.floating-actions-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 0.82em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #111111;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.26);
+  white-space: nowrap;
+  opacity: 0.9;
+}
+
+.floating-actions-btn:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.floating-actions-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 15px rgba(15, 23, 42, 0.22);
+}
+
+/* 不同按鈕可以稍微做點區別（可選） */
+.floating-actions-btn--primary {
+  background: #111111;
+}
+
+.floating-actions-btn--ghost {
+  background: #ffffff;
+  color: #333333;
+}
+
+/* ----------------------
+   Contact 區塊底部按鈕
+---------------------- */
+.contact-bottom-actions {
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contact-action-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 0.88em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: #ffffff;
+  color: #3e3a39;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-action-btn:hover {
+  background: #f5f5f5;
+}
+
+.contact-action-btn.contact-action-top {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+}
+
+.contact-action-btn.contact-action-top:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ----------------------
+   懸浮按鈕 RWD
+---------------------- */
+@media (max-width: 768px) {
+  .floating-actions {
+    left: 50%;
+    right: auto;
+    bottom: 14px;
+    flex-direction: row;
+    transform: translate(-50%, 0); /* 預設置中 */
+  }
+
+  .floating-actions.is-hidden {
+    transform: translate(-50%, 10px); /* 隱藏時一起往下滑一點 */
+  }
+
+  .floating-actions-btn {
+    padding: 8px 12px;
+    font-size: 0.78em;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.22);
+  }
+
+  .contact-bottom-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 
 
 
