@@ -1469,19 +1469,18 @@ body {
 ---------------------- */
 .portfolio-subnav {
   position: sticky;
-  top: 0; /* 貼到畫面頂端 */
+  top: 0px;                       /* 貼在 header 下緣 */
   z-index: 900;
-  background: #fff7da; /* 換成比較明顯的底色，你也可以改成自己喜歡的色碼 */
-  border-bottom: 1px solid #f0e0a0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04); /* 讓它跟背景有一點分層感（可要可不要） */
+  background: #fff9d9;             /* 比較明顯的淡黃色底 */
+  border-bottom: 1px solid #f0d26a;
+  margin: 8px 0 16px;
 }
-
 
 .portfolio-subnav-inner {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 8px 24px;
+  gap: 24px;
+  padding: 6px 24px;
 }
 
 /* 按鈕本體 */
@@ -1489,15 +1488,13 @@ body {
   border: none;
   background: none;
   padding: 6px 0 8px;
-  font-size: 0.98em; /* 稍微變大，不會太誇張 */
+  font-size: 0.98em;               /* 比原本稍微大一點 */
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--secondary-text);
   cursor: pointer;
   position: relative;
 }
-
-
 /* 底線效果 */
 .portfolio-subnav-link::after {
   content: '';
@@ -1529,7 +1526,6 @@ body {
     opacity: 0;
     transition: transform 0.25s ease-out, opacity 0.25s ease-out;
   }
-
   /* JS 之後會加上這個 class 讓它滑出來 */
   .portfolio-subnav.is-visible {
     transform: translateY(0);
@@ -1768,6 +1764,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
