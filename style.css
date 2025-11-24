@@ -1528,7 +1528,7 @@ body {
 /* 控制圖示尺寸 */
 .floating-icon-btn img {
   display: block;
-  width: 48px;   /* 覺得太大可以改 48 / 44 */
+  width: 63px;   /* 覺得太大可以改 48 / 44 */
   height: auto;
 }
 
@@ -1555,7 +1555,7 @@ body {
   }
 
   .floating-icon-btn img {
-    width: 42px; /* 手機稍微再小一點也可以 */
+    width: 55px; /* 手機稍微再小一點也可以 */
   }
 }
 
@@ -1711,6 +1711,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
