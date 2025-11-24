@@ -1616,7 +1616,7 @@ body {
     transform: translate(-50%, 10px); /* 隱藏時一起往下滑一點 */
   }
 
-  .floating-actions-btn {
+  .floating-icon-btn {
     padding: 8px 12px;
     font-size: 0.78em;
     box-shadow: 0 6px 18px rgba(15, 23, 42, 0.22);
@@ -1711,6 +1711,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
