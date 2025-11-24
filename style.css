@@ -1797,6 +1797,12 @@ body {
 .portfolio-subnav-link:hover::after {
   width: 100%;
 }
+.img-small-phase {
+  max-width: 60%;
+  display: block;
+  margin: 0 auto; /* 保持置中 */
+}
+
 
 
 
