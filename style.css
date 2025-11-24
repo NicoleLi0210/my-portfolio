@@ -133,6 +133,25 @@ body {
 .nav-link:hover {
   color: var(--accent-yellow);
 }
+/* 手機版漢堡按鈕：桌機隱藏 */
+.mobile-menu-toggle {
+  display: none; /* 先隱藏，RWD 再打開 */
+  border: none;
+  background: transparent;
+  padding: 6px 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* 三條線 */
+.hamburger-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--primary-text);
+  border-radius: 999px;
+  margin: 3px 0;
+}
 
 /* Submenu */
 .submenu {
@@ -175,6 +194,101 @@ body {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+}
+/* ----------------------
+   Mobile Nav 抽屜選單
+---------------------- */
+.mobile-nav {
+  position: fixed;
+  top: 55px;                       /* 貼在 header 下緣 */
+  left: 0;
+  width: 72vw;                     /* 不滿版 */
+  max-width: 320px;
+  height: calc(100vh - 55px);
+  background: #ffffff;
+  box-shadow: 6px 0 24px rgba(15, 23, 42, 0.16);
+  transform: translateX(-100%);
+  transition: transform 0.28s ease-out;
+  z-index: 900;                    /* 在內容之上、header 之下 */
+}
+
+/* 開啟狀態 */
+.mobile-nav.open {
+  transform: translateX(0);
+}
+
+/* 桌機不顯示這個 nav */
+@media (min-width: 901px) {
+  .mobile-nav {
+    display: none;
+  }
+}
+
+/* 選單列表 */
+.mobile-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 12px 0 24px;
+}
+
+/* 單一項目 */
+.mobile-nav-item {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+/* 第一層：有連結的項目（簡介／聯絡） */
+.mobile-nav-link,
+.mobile-nav-parent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 0.95em;
+  color: var(--primary-text);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-parent:hover {
+  background: #f7f7f7;
+}
+
+/* 左側文字、右側箭頭 */
+.mobile-nav-text {
+  flex: 1;
+  text-align: left;
+}
+
+.mobile-nav-chevron {
+  margin-left: 8px;
+  font-size: 0.8em;
+  color: #999999;
+}
+
+/* 第二層：預設收起，由 JS 控制 max-height */
+.mobile-nav-sublist {
+  max-height: 0;
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: max-height 0.24s ease;
+}
+
+.mobile-nav-sublist li a {
+  display: block;
+  padding: 8px 24px 8px 32px;   /* 往右縮排一點 */
+  font-size: 0.9em;
+  color: var(--secondary-text);
+  text-decoration: none;
+}
+
+.mobile-nav-sublist li a:hover {
+  background: #f7f7f7;
 }
 
 /* ----------------------
@@ -1016,7 +1130,34 @@ body {
   .experience-left {
     text-align: left;
   }
+
+  /* 手機版 Header：左邊漢堡 + 右邊 Logo */
+  .header-content {
+    padding: 0 16px;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
+  /* 手機隱藏桌機版 nav，改用側邊抽屜 */
+  .main-nav {
+    display: none;
+  }
+
+  /* 顯示漢堡按鈕 */
+  .mobile-menu-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Logo 稍微小一點，靠左一些 */
+  .logo {
+    font-size: 1em;
+    margin-left: 6px;
+  }
 }
+
 
 @media (max-width: 768px) {
   .header-content {
@@ -1354,6 +1495,7 @@ body {
 .fade-in-right {
   transform: translateX(40px);
 }
+
 
 
 
