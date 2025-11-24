@@ -1282,6 +1282,33 @@ body {
     padding: 6px 10px;
   }
 }
+
+/* ===== 通用 spacing / 對齊工具 ===== */
+.mt-40 {
+  margin-top: 40px;
+}
+
+.img-medium {
+  display: block;
+  max-width: 720px; /* 你覺得太大可以再往下調，例如 640 */
+  width: 70%;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* 104 作品頁：AI導入段落內，第二組 layout 往下拉一點 */
+#sec-ai-products .case-layout + .case-layout {
+  margin-top: 40px;
+}
+
+/* 104 作品頁：AI 小工具段落內，每一組 layout 之間拉開距離 */
+#sec-ai-tools .case-layout + .case-layout {
+  margin-top: 40px;
+}
+
 /* ----------------------
    Portfolio – Chicony
 ---------------------- */
@@ -1471,89 +1498,6 @@ body {
 
   .case-image img {
     max-width: 100%;    /* 手機版圖放大 */
-  }
-}
-/* ----------------------
-   Portfolio – Chicony 子導覽
----------------------- */
-.portfolio-subnav {
-  position: relative;      /* 先當成一般區塊，位置在 hero 下面 */
-  z-index: 900;
-  background: #ffffff;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-/* 桌機：超過原始位置後，吸附在畫面頂端 */
-@media (min-width: 769px) {
-  .portfolio-subnav.is-fixed {
-    position: fixed;
-    top: 0;      /* 這頁沒有 header，所以直接貼螢幕最上方 */
-    left: 0;
-    right: 0;
-  }
-}
-
-/* 內層寬度對齊 container */
-.portfolio-subnav-inner {
-  max-width: 1040px;
-  margin: 0 auto;
-  padding: 8px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-/* 按鈕本體 */
-.portfolio-subnav-link {
-  border: none;
-  background: none;
-  padding: 6px 0 8px;
-  font-size: 0.92em;           /* 字稍微大一點 */
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--secondary-text);
-  cursor: pointer;
-  position: relative;
-}
-
-/* 底線效果 */
-.portfolio-subnav-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 2px;
-  width: 0;
-  background: var(--accent-yellow);
-  transition: width 0.22s ease-out;
-}
-
-.portfolio-subnav-link:hover::after {
-  width: 100%;
-}
-
-/* 📱 手機版：改成固定在頂端 + MoMo 滑出效果 */
-@media (max-width: 768px) {
-  .portfolio-subnav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    transform: translateY(-120%); /* 預設藏在上方 */
-    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
-  }
-
-  .portfolio-subnav.is-visible {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  }
-
-  .portfolio-subnav-inner {
-    padding-inline: 16px;
-  }
-
-  .portfolio-subnav-link {
-    font-size: 0.9em;
   }
 }
 
@@ -1853,6 +1797,7 @@ body {
 .portfolio-subnav-link:hover::after {
   width: 100%;
 }
+
 
 
 
