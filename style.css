@@ -1367,6 +1367,15 @@ body {
   max-width: 1100px;
   margin: 0 auto;        /* 整組置中 */
 }
+/* 微星統包案：改成上下排版（文字上、圖片下） */
+.case-layout-vertical {
+  grid-template-columns: 1fr;
+}
+
+.case-layout-vertical .case-image img {
+  max-width: 720px;      /* 比原本 420 再大一些 */
+  margin-top: 24px;
+}
 
 /* 文字區塊 */
 .case-text {
@@ -1779,6 +1788,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
