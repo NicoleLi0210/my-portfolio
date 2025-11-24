@@ -1515,6 +1515,24 @@ body {
 .portfolio-subnav-link.is-active::after {
   width: 100%;
 }
+/* 手機版：子導覽滑出／收起 */
+@media (max-width: 900px) {
+  .portfolio-subnav {
+    position: fixed;             /* 手機改用 fixed 貼在螢幕上 */
+    top: 55px;                   /* 一樣卡在 header 底下 */
+    left: 0;
+    right: 0;
+    transform: translateY(-100%);/* 預設藏在上面 */
+    opacity: 0;
+    transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+  }
+
+  /* JS 之後會加上這個 class 讓它滑出來 */
+  .portfolio-subnav.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 /* ----------------------
    動畫效果
@@ -1747,6 +1765,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
