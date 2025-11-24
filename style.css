@@ -1468,19 +1468,21 @@ body {
    Portfolio – Chicony 子導覽
 ---------------------- */
 .portfolio-subnav {
-  position: sticky;
-  top: 0px;                       /* 貼在 header 下緣 */
+  position: sticky;      /* 桌機：在版面裡，捲到頂部時吸頂 */
+  top: 0;                /* 這一頁沒有 header，所以貼齊畫面頂端 */
   z-index: 900;
-  background: #fff9d9;             /* 比較明顯的淡黃色底 */
-  border-bottom: 1px solid #f0d26a;
-  margin: 8px 0 16px;
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
 }
 
+/* 內層寬度對齊 container */
 .portfolio-subnav-inner {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 8px 24px;
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding: 6px 24px;
+  gap: 16px;
 }
 
 /* 按鈕本體 */
@@ -1488,13 +1490,14 @@ body {
   border: none;
   background: none;
   padding: 6px 0 8px;
-  font-size: 0.98em;               /* 比原本稍微大一點 */
-  letter-spacing: 0.14em;
+  font-size: 0.92em;           /* 字稍微大一點 */
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--secondary-text);
   cursor: pointer;
   position: relative;
 }
+
 /* 底線效果 */
 .portfolio-subnav-link::after {
   content: '';
@@ -1511,25 +1514,28 @@ body {
   width: 100%;
 }
 
-/* 當前錨點高亮 */
-.portfolio-subnav-link.is-active::after {
-  width: 100%;
-}
-/* 手機版：子導覽滑出／收起 */
-@media (max-width: 900px) {
+/* 📱 手機版：改成固定在頂端 + MoMo 滑出效果 */
+@media (max-width: 768px) {
   .portfolio-subnav {
-    position: fixed;             /* 手機改用 fixed 貼在螢幕上 */
-    top: 0px;                   /* 一樣卡在 header 底下 */
+    position: fixed;
+    top: 0;
     left: 0;
     right: 0;
-    transform: translateY(-100%);/* 預設藏在上面 */
-    opacity: 0;
-    transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+    transform: translateY(-120%); /* 預設藏在上方 */
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
   }
-  /* JS 之後會加上這個 class 讓它滑出來 */
+
   .portfolio-subnav.is-visible {
     transform: translateY(0);
-    opacity: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .portfolio-subnav-inner {
+    padding-inline: 16px;
+  }
+
+  .portfolio-subnav-link {
+    font-size: 0.9em;
   }
 }
 
@@ -1764,6 +1770,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
