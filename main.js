@@ -305,101 +305,96 @@
   if (workEl) workEl.textContent = workYears;
 })();
 // =============================
-//  懸浮按鈕 + Contact 底部按鈕
+//  Floating actions：聯絡 / 分享 / 回頂部
 // =============================
 (function () {
-  const floatingActions = document.getElementById("floatingActions");
+  const floater = document.getElementById("floatingActions");
+  if (!floater) return;
+
+  const buttons = floater.querySelectorAll(".floating-icon-btn");
   const contactSection = document.getElementById("contact");
+  const header = document.querySelector(".header");
 
-  // 所有有 data-action 的按鈕：包含懸浮 & contact 區塊內按鈕
-  const actionButtons = document.querySelectorAll("[data-action]");
-  if (!actionButtons.length) return;
+  function smoothScrollTo(offset) {
+    window.scrollTo({
+      top: offset,
+      behavior: "smooth",
+    });
+  }
 
-  const linkedinUrl =
-    "https://www.linkedin.com/in/%E6%99%8F%E6%85%88-%E6%9D%8E-183172212";
+  function scrollToTop() {
+    smoothScrollTo(0);
+  }
 
-  function handleAction(action) {
-    switch (action) {
-      case "contact": {
-        // 聯絡我：直接開 LinkedIn
-        window.open(linkedinUrl, "_blank", "noopener");
-        break;
-      }
-      case "share": {
-        const shareData = {
-          title: document.title || "Nicole Li - Product Manager Portfolio",
-          text: "這是 Nicole 的產品經理作品集網站。",
-          url: window.location.href,
-        };
+  function scrollToContact() {
+    if (!contactSection) return;
+    const rect = contactSection.getBoundingClientRect();
+    const headerOffset = header ? header.offsetHeight + 8 : 0;
+    const offset = rect.top + window.pageYOffset - headerOffset;
+    smoothScrollTo(offset);
+  }
 
-        if (navigator.share) {
-          // 手機 / 支援 Web Share API 的瀏覽器
-          navigator.share(shareData).catch(() => {
-            // 使用者取消就算了，不需要報錯
+  function handleShare() {
+    const url = window.location.href;
+    const isMobileShare = "share" in navigator && window.innerWidth <= 900;
+
+    if (isMobileShare) {
+      // 手機：沿用原本 share 行為
+      navigator
+        .share({
+          title: document.title,
+          url,
+        })
+        .catch(() => {});
+    } else {
+      // 桌機：複製連結 + 提示視窗
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard
+          .writeText(url)
+          .then(() => {
+            alert("Link copied\n已複製連結，可以分享給可能適合的團隊或夥伴。");
+          })
+          .catch(() => {
+            window.prompt("請手動複製以下連結：", url);
           });
-        } else {
-          // 簡單的 fallback：試著複製網址，不行就叫使用者手動
-          const url = window.location.href;
-          if (navigator.clipboard && window.isSecureContext) {
-            navigator.clipboard
-              .writeText(url)
-              .then(() => {
-                alert("已複製此頁網址，歡迎分享給其他人。");
-              })
-              .catch(() => {
-                alert("請從瀏覽器網址列複製此頁網址進行分享。");
-              });
-          } else {
-            alert("請從瀏覽器網址列複製此頁網址進行分享。");
-          }
-        }
-        break;
+      } else {
+        window.prompt("請手動複製以下連結：", url);
       }
-      case "top": {
-        // 回到頂部
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-        break;
-      }
-      default:
-        break;
     }
   }
 
-  // 綁定所有 data-action 按鈕的 click
-  actionButtons.forEach((btn) => {
+  buttons.forEach((btn) => {
+    const action = btn.dataset.action;
     btn.addEventListener("click", () => {
-      const action = btn.getAttribute("data-action");
-      if (!action) return;
-      handleAction(action);
+      switch (action) {
+        case "top":
+          scrollToTop();
+          break;
+        case "contact":
+          scrollToContact();
+          break;
+        case "share":
+          handleShare();
+          break;
+      }
     });
   });
 
-  // Contact 出現時隱藏懸浮按鈕，離開時再顯示
-  if (floatingActions && contactSection && "IntersectionObserver" in window) {
-    const io = new IntersectionObserver(
+  // Contact 區塊在畫面中時，藏起懸浮按鈕
+  if ("IntersectionObserver" in window && contactSection) {
+    const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.target !== contactSection) return;
-
-          if (entry.isIntersecting) {
-            // Contact 出現在畫面時 → 隱藏懸浮按鈕
-            floatingActions.classList.add("is-hidden");
-          } else {
-            // 離開 Contact → 顯示懸浮按鈕
-            floatingActions.classList.remove("is-hidden");
-          }
+          floater.classList.toggle("is-hidden", entry.isIntersecting);
         });
       },
-      {
-        threshold: 0.15, // 大概有一小部分接觸到畫面就算「出現」
-      }
+      { threshold: 0.4 }
     );
 
-    io.observe(contactSection);
+    observer.observe(contactSection);
   }
 })();
+
+
 
 
