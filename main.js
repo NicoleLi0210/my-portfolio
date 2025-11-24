@@ -1,5 +1,4 @@
   <!-- Scripts -->
-  <script>
 // =============================
 //  Mobile Menu：漢堡 + 左側抽屜
 // =============================
@@ -45,9 +44,9 @@
     });
   });
 })();
-</script>
+</>
 
-  <script>
+  <>
     // Scroll Reveal
     (function () {
       const revealElements = document.querySelectorAll('.reveal-on-scroll');
@@ -283,4 +282,3 @@
       if (workEl) workEl.textContent = workYears;
     })();
 
-  </script>
