@@ -774,7 +774,6 @@
     </div>
   </div>
 </section>
-
   <!-- Contact -->
   <section id="contact" class="contact-section">
     <div class="container">
@@ -805,17 +804,70 @@
           </span>
         </a>
       </div>
+
+      <!-- Contact 區塊內的 Share / 回頂部 按鈕 -->
+      <div class="contact-inline-actions">
+        <button
+          type="button"
+          class="contact-inline-button"
+          data-action="share"
+        >
+          Share 這個作品集
+        </button>
+        <button
+          type="button"
+          class="contact-inline-button"
+          data-action="top"
+        >
+          回到頂部
+        </button>
+      </div>
     </div>
   </section>
+
+  <!-- 全站懸浮操作按鈕（桌機＋手機共用） -->
+  <div
+    id="floatingActions"
+    class="floating-actions"
+    aria-label="快速操作按鈕"
+  >
+    <button
+      type="button"
+      class="floating-button floating-contact"
+      data-action="contact"
+    >
+      聯絡我
+    </button>
+
+    <button
+      type="button"
+      class="floating-button floating-share"
+      data-action="share"
+    >
+      Share
+    </button>
+
+    <button
+      type="button"
+      class="floating-button floating-top"
+      data-action="top"
+      aria-label="回到頂部"
+    >
+      ↑
+    </button>
+  </div>
 
   <footer class="footer">
     <div class="container">
       <p>© 2025 Nicole Li. All rights reserved.</p>
     </div>
   </footer>
-<script src="main.js"></script>
+
+  <script src="main.js"></script>
 </body>
 </html>
+
+
 
 
 
