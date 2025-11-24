@@ -696,7 +696,6 @@ body {
 .skill-card.is-flipped .skill-card-inner {
   transform: rotateY(180deg);
 }
-
 /* ----------------------
    Tools / 流程矩陣
 ---------------------- */
@@ -738,8 +737,8 @@ body {
   padding: 14px 16px 16px;
   font-size: 0.9em;
   line-height: 1.7;
-  background: #f3f3f3;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  background: #fffdf7;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
 }
 
 .tool-row-header .tool-cell {
@@ -754,11 +753,11 @@ body {
 }
 
 .tool-row-light .tool-cell {
-  background: #fffaf0;
+  background: #fffdf7;
 }
 
 .tool-row-dark .tool-cell {
-  background: #e7e7e7;
+  background: #f5f7fb;
 }
 
 .tool-purpose {
@@ -783,12 +782,13 @@ body {
   background: #ffd700;
   bottom: -3px;
 }
+
 /* 📱 Mobile slider：手機版撲克牌疊卡效果 */
 .tool-mobile-wrapper {
   display: none;           /* desktop 隱藏，手機再顯示 */
   align-items: center;
   justify-content: center;
-  margin-top: 26px;
+  margin-top: 32px;
   position: relative;
 }
 
@@ -811,13 +811,8 @@ body {
   z-index: 5;
 }
 
-#toolPrev {
-  left: 6px;
-}
-
-#toolNext {
-  right: 6px;
-}
+#toolPrev { left: 6px; }
+#toolNext { right: 6px; }
 
 .tool-mobile-slider {
   flex: 1;
@@ -825,28 +820,29 @@ body {
   gap: 0;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  padding: 24px 32px 32px;   /* 留出上下空間讓陰影更明顯 */
+  padding: 28px 24px 36px;   /* 留出上下空間讓陰影更明顯 */
 }
 
 .tool-mobile-slider::-webkit-scrollbar {
   display: none;
 }
 
-/* 基礎卡片樣式：預設視為「疊在後面的卡」 */
+/* 基礎卡片：預設當成壓在後面的牌 */
 .tool-mobile-card {
   flex: 0 0 78%;
   max-width: 78%;
-  background: #fffdf8;
+  background: #ffffff;
   border-radius: 24px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
   padding: 20px 20px 22px;
   scroll-snap-align: center;
   text-align: left;
   position: relative;
   transform-origin: center bottom;
-  transform: scale(0.9) translateY(18px);
-  opacity: 0.4;
-  filter: blur(0.3px);
+  transform: scale(0.88) translateY(24px);
+  opacity: 0.5;
+  filter: blur(0.2px);
   transition:
     transform 0.35s ease-out,
     opacity 0.35s ease-out,
@@ -855,19 +851,35 @@ body {
   z-index: 1;
 }
 
+/* 沒有 JS 時，至少第一張長得正常 */
+.tool-mobile-card:first-child {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  filter: none;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  z-index: 3;
+}
+
 /* 目前焦點卡片：往前、放大、拉高陰影 */
 .tool-mobile-card.is-active {
   transform: scale(1) translateY(0);
   opacity: 1;
   filter: none;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
-  z-index: 3;
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.18);
+  z-index: 4;
 }
 
-/* 左右鄰居：介於中間，像露在後面的牌 */
-.tool-mobile-card.is-prev,
+/* 左右鄰居：像露在後面的牌，略向左右偏移 */
+.tool-mobile-card.is-prev {
+  transform: scale(0.93) translate(-10px, 14px);
+  opacity: 0.75;
+  filter: blur(0.1px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
 .tool-mobile-card.is-next {
-  transform: scale(0.94) translateY(10px);
+  transform: scale(0.93) translate(10px, 14px);
   opacity: 0.75;
   filter: blur(0.1px);
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
@@ -902,7 +914,6 @@ body {
   font-size: 0.92em;
   line-height: 1.7;
 }
-
 
 /* ----------------------
    Contact
@@ -1325,6 +1336,7 @@ body {
 .fade-in-right {
   transform: translateX(40px);
 }
+
 
 
 
