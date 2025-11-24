@@ -1669,6 +1669,46 @@ body {
     transform: translateY(0);
   }
 }
+/* ============================
+   Contact 區塊：分享與回頂部（文字＋底線）
+============================ */
+.contact-inline-actions {
+  margin-top: 32px;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-inline-button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.05em;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  padding: 0 0 4px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.55);
+  transition: all 0.25s ease;
+  font-weight: 400;
+}
+
+.contact-inline-button:hover {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+  border-bottom-width: 3px;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .contact-inline-actions {
+    gap: 24px;
+  }
+  
+  .contact-inline-button {
+    font-size: 1em;
+  }
+}
+
 
 
 
