@@ -1472,20 +1472,7 @@ body {
 .fade-in-left,
 .fade-in-right {
   opacity: 0;
-  transform: translateY(20px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-/* 左進場 */
-.fade-in-left.in-view {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* 右進場 */
-.fade-in-right.in-view {
-  opacity: 1;
-  transform: translateX(0);
 }
 
 /* 左邊起始狀態 */
@@ -1496,6 +1483,12 @@ body {
 /* 右邊起始狀態 */
 .fade-in-right {
   transform: translateX(40px);
+}
+
+.fade-in-left.in-view,
+.fade-in-right.in-view {
+  opacity: 1;
+  transform: translateX(0);
 }
 /* ----------------------
    Floating Actions：懸浮按鈕（純圖示版）
@@ -1702,6 +1695,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
