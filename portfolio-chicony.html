@@ -43,9 +43,27 @@
           <img src="chicony1.png" alt="能源管理平台與 IWA Setter 畫面" />
         </div>
       </section>
-
-
+      <!-- 子導覽：能源管理平台 / 微星統包案 -->
+      <nav id="portfolioSubnav" class="portfolio-subnav" aria-label="章節快速導覽">
+        <div class="container portfolio-subnav-inner">
+          <button
+            type="button"
+            class="portfolio-subnav-link"
+            data-target="case-ems"
+          >
+            能源管理平台
+          </button>
+          <button
+            type="button"
+            class="portfolio-subnav-link"
+            data-target="case-msi"
+          >
+            微星統包案
+          </button>
+        </div>
+      </nav>
       <!-- 第二屏：能源管理平台｜產品策略調整 -->
+      <section id="case-ems" class="case-section case-section-ems">
       <section class="case-section case-section-ems">
         <div class="case-layout">
 
@@ -99,6 +117,7 @@
 
 
       <!-- 第三屏：微星統包案 -->
+      <section id="case-msi" class="case-section case-section-msi">
       <section class="case-section case-section-msi">
         <div class="case-layout">
 
@@ -174,6 +193,44 @@
 
     </div>
   </main>
+  </main>
+
+  <!-- 全站懸浮操作按鈕（作品頁版） -->
+  <div
+    id="floatingActions"
+    class="floating-actions"
+    aria-label="快速操作按鈕"
+  >
+    <!-- 聯絡：直接開 LinkedIn 新分頁 -->
+    <button
+      type="button"
+      class="floating-icon-btn"
+      id="fabContact"
+      aria-label="聯絡我（LinkedIn）"
+    >
+      <img src="contact.png" alt="Contact" />
+    </button>
+
+    <!-- 分享：複製連結 / 原生分享 -->
+    <button
+      type="button"
+      class="floating-icon-btn"
+      data-action="share"
+      aria-label="分享這個作品集"
+    >
+      <img src="share.png" alt="Share" />
+    </button>
+
+    <!-- 回到頂部 -->
+    <button
+      type="button"
+      class="floating-icon-btn"
+      data-action="top"
+      aria-label="回到頂部"
+    >
+      <img src="top.png" alt="回到頂部" />
+    </button>
+  </div>
 
 
   <!-- 動畫 script -->
@@ -203,6 +260,147 @@
       );
 
       animatedElements.forEach((el) => observer.observe(el));
+    });
+  </script>
+  <!-- 動畫 script -->
+  <script>
+    window.addEventListener("load", () => {
+      const pt = document.getElementById("page-transition");
+      if (!pt) return;
+      pt.classList.add("hide");
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const animatedElements = document.querySelectorAll(
+        ".fade-in-left, .fade-in-right"
+      );
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      animatedElements.forEach((el) => observer.observe(el));
+    });
+  </script>
+
+  <!-- 子導覽 + 浮動按鈕行為 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // ============================
+      // 子導覽：點按捲動到對應區塊
+      // ============================
+      const subnav = document.getElementById('portfolioSubnav');
+      if (subnav) {
+        const links = subnav.querySelectorAll('[data-target]');
+        links.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const id = link.dataset.target;
+            const target = document.getElementById(id);
+            if (!target) return;
+
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          });
+        });
+
+        // 手機板：下滑超過一定高度就顯示，上滑回頂端就隱藏
+        let lastScrollY = window.scrollY;
+        const THRESHOLD = 140;
+
+        const handleScroll = () => {
+          const current = window.scrollY;
+
+          if (current > THRESHOLD) {
+            subnav.classList.add('is-visible');
+          } else {
+            subnav.classList.remove('is-visible');
+          }
+
+          lastScrollY = current;
+        };
+
+        // 初始化一次
+        handleScroll();
+        window.addEventListener('scroll', handleScroll);
+      }
+
+      // ============================
+      // 浮動按鈕：聯絡 / 分享 / 回頂部
+      // ============================
+
+      // 聯絡：直接開 LinkedIn
+      const fabContact = document.getElementById('fabContact');
+      if (fabContact) {
+        fabContact.addEventListener('click', () => {
+          window.open(
+            'https://www.linkedin.com/in/%E6%99%8F%E6%85%88-%E6%9D%8E-183172212',
+            '_blank',
+            'noopener'
+          );
+        });
+      }
+
+      // 分享 & 回頂部：用 data-action 共用
+      function handleAction(action) {
+        switch (action) {
+          case 'top':
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            break;
+
+          case 'share': {
+            const url = window.location.href;
+
+            // 手機：優先原生分享
+            if (window.innerWidth < 768 && navigator.share) {
+              navigator
+                .share({
+                  title: document.title,
+                  url
+                })
+                .catch(() => {});
+              return;
+            }
+
+            // 桌機：複製連結 + 提示
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard
+                .writeText(url)
+                .then(() => {
+                  alert('連結已複製，歡迎分享給對這份作品集有興趣的人。');
+                })
+                .catch(() => {
+                  prompt('無法自動複製，請手動複製這段連結：', url);
+                });
+            } else {
+              prompt('請手動複製這段連結：', url);
+            }
+            break;
+          }
+
+          default:
+            break;
+        }
+      }
+
+      const actionButtons = document.querySelectorAll('[data-action]');
+      actionButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const action = btn.getAttribute('data-action');
+          if (action) handleAction(action);
+        });
+      });
     });
   </script>
 
