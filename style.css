@@ -1522,7 +1522,7 @@ body {
 @media (max-width: 900px) {
   .portfolio-subnav {
     position: fixed;             /* 手機改用 fixed 貼在螢幕上 */
-    top: 55px;                   /* 一樣卡在 header 底下 */
+    top: 0px;                   /* 一樣卡在 header 底下 */
     left: 0;
     right: 0;
     transform: translateY(-100%);/* 預設藏在上面 */
@@ -1768,6 +1768,7 @@ body {
     font-size: 1em;
   }
 }
+
 
 
 
