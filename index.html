@@ -881,81 +881,85 @@
     })();
   </script>
 
-  <!-- 工具卡片：手機版撲克牌疊卡 slider -->
-  <script>
-    (function () {
-      const slider = document.getElementById('toolSlider');
-      if (!slider) return;
+(function () {
+  const slider = document.getElementById('toolSlider');
+  if (!slider) return;
 
-      const prevBtn = document.getElementById('toolPrev');
-      const nextBtn = document.getElementById('toolNext');
-      const cards = Array.from(slider.querySelectorAll('.tool-mobile-card'));
+  const prevBtn = document.getElementById('toolPrev');
+  const nextBtn = document.getElementById('toolNext');
+  const cards = Array.from(slider.querySelectorAll('.tool-mobile-card'));
 
-      let activeIndex = 0;
+  let activeIndex = 0;
 
-      function clampIndex(i) {
-        if (i < 0) return 0;
-        if (i > cards.length - 1) return cards.length - 1;
-        return i;
+  function clampIndex(i) {
+    if (i < 0) return 0;
+    if (i > cards.length - 1) return cards.length - 1;
+    return i;
+  }
+
+  // 取目前卡片實際寬度（含 RWD）
+  function getCardWidth() {
+    const first = cards[0];
+    return first ? first.getBoundingClientRect().width : slider.clientWidth;
+  }
+
+  function updateClasses() {
+    cards.forEach((card, idx) => {
+      card.classList.remove('is-active', 'is-prev', 'is-next');
+
+      if (idx === activeIndex) {
+        card.classList.add('is-active');
+      } else if (idx === activeIndex - 1) {
+        card.classList.add('is-prev');
+      } else if (idx === activeIndex + 1) {
+        card.classList.add('is-next');
       }
+    });
+  }
 
-      function updateClasses() {
-        cards.forEach((card, idx) => {
-          card.classList.remove('is-active', 'is-prev', 'is-next');
+  function goTo(index, withScroll = true) {
+    activeIndex = clampIndex(index);
+    const cardWidth = getCardWidth();
 
-          if (idx === activeIndex) {
-            card.classList.add('is-active');
-          } else if (idx === activeIndex - 1) {
-            card.classList.add('is-prev');
-          } else if (idx === activeIndex + 1) {
-            card.classList.add('is-next');
-          }
-        });
-      }
-
-      function goTo(index, withScroll = true) {
-        activeIndex = clampIndex(index);
-        const width = slider.clientWidth;
-
-        if (withScroll) {
-          slider.scrollTo({
-            left: activeIndex * width,
-            behavior: 'smooth',
-          });
-        }
-
-        updateClasses();
-      }
-
-      // 初始狀態
-      goTo(0, false);
-
-      // 左右箭頭
-      prevBtn.addEventListener('click', () => {
-        goTo(activeIndex - 1);
+    if (withScroll) {
+      slider.scrollTo({
+        left: activeIndex * cardWidth,
+        behavior: 'smooth',
       });
+    }
 
-      nextBtn.addEventListener('click', () => {
-        goTo(activeIndex + 1);
-      });
+    updateClasses();
+  }
 
-      // 手指滑動時，同步更新 activeIndex
-      slider.addEventListener('scroll', () => {
-        const width = slider.clientWidth;
-        const scrolledIndex = Math.round(slider.scrollLeft / width);
-        const newIndex = clampIndex(scrolledIndex);
-        if (newIndex !== activeIndex) {
-          activeIndex = newIndex;
-          updateClasses();
-        }
-      });
+  // 初始狀態
+  goTo(0, false);
 
-      // 視窗縮放時，重新對齊目前那張
-      window.addEventListener('resize', () => {
-        goTo(activeIndex, true);
-      });
-    })();
-  </script>
+  // 左右箭頭
+  prevBtn.addEventListener('click', () => {
+    goTo(activeIndex - 1);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    goTo(activeIndex + 1);
+  });
+
+  // 手指滑動時，同步更新 activeIndex
+  slider.addEventListener('scroll', () => {
+    const cardWidth = getCardWidth();
+    const scrolledIndex = Math.round(slider.scrollLeft / cardWidth);
+    const newIndex = clampIndex(scrolledIndex);
+    if (newIndex !== activeIndex) {
+      activeIndex = newIndex;
+      updateClasses();
+    }
+  });
+
+  // 視窗縮放時，重新對齊目前那張
+  window.addEventListener('resize', () => {
+    goTo(activeIndex, true);
+  });
+})();
+
 
   <!-- 年齡／年資自動計算 -->
   <script>
@@ -987,6 +991,7 @@
 
 </body>
 </html>
+
 
 
 
