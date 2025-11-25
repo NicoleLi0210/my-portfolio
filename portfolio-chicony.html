@@ -245,7 +245,7 @@
     });
   </script>
 
-<!-- 子導覽 + 浮動按鈕行為 + 錨點平滑捲動 -->
+<!-- 子導覽 + 浮動按鈕行為 + 錨點平滑捲動 + active 樣式 -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     // ============================
@@ -291,37 +291,113 @@
     }
 
     // ============================
-    // 子導覽錨點：平滑捲動到區塊
+    // 子導覽錨點：平滑捲動 + active 樣式
     // ============================
     const navLinks = document.querySelectorAll('.portfolio-subnav-link');
+    const sections = [];
 
+    // 建立「錨點 → 對應區塊」對照
+    navLinks.forEach(link => {
+      const targetId = link.getAttribute('href'); // 例如 #ems-section / #msi-section
+      if (!targetId || !targetId.startsWith('#')) return;
+
+      const targetEl = document.querySelector(targetId);
+      if (!targetEl) return;
+
+      sections.push({ id: targetId, el: targetEl, link });
+    });
+
+    // 切換哪一個 tab 是 .is-active
+    function setActiveLink(targetId) {
+      navLinks.forEach(link => {
+        if (link.getAttribute('href') === targetId) {
+          link.classList.add('is-active');
+        } else {
+          link.classList.remove('is-active');
+        }
+      });
+
+      // 讓 active tab 在橫向可滑動的 nav 裡，自動捲到視窗中央附近
+      const activeLink = Array.from(navLinks).find(
+        link => link.getAttribute('href') === targetId
+      );
+      if (activeLink && activeLink.scrollIntoView) {
+        activeLink.scrollIntoView({
+          behavior: 'smooth',
+          inline: 'center',
+          block: 'nearest'
+        });
+      }
+    }
+
+    let isScrollingByClick = false;
+    let clickTimeoutId = null;
+
+    // 點 tab：平滑捲動＋切換 active
     navLinks.forEach(link => {
       link.addEventListener('click', function (e) {
-        // 先把預設的「瞬間跳轉」關掉
         e.preventDefault();
 
-        const targetId = this.getAttribute('href'); // 例如 "#ems-section"
-        const targetEl = document.querySelector(targetId);
-        if (!targetEl) return;
+        const targetId = this.getAttribute('href');
+        const targetItem = sections.find(sec => sec.id === targetId);
+        if (!targetItem) return;
 
-        // 計算目標區塊在整個頁面上的位置
         const subnavHeight = subnav ? subnav.offsetHeight : 0;
-        const extraGap = 8; // 稍微留一點空白
+        const extraGap = 8;
+
         const targetTop =
-          targetEl.getBoundingClientRect().top + window.scrollY - subnavHeight - extraGap;
+          targetItem.el.getBoundingClientRect().top +
+          window.scrollY -
+          subnavHeight -
+          extraGap;
+
+        isScrollingByClick = true;
+        clearTimeout(clickTimeoutId);
 
         window.scrollTo({
           top: targetTop,
           behavior: 'smooth'
         });
+
+        setActiveLink(targetId);
+
+        // 避免 scroll 事件在動畫過程中一直搶著改 active
+        clickTimeoutId = setTimeout(() => {
+          isScrollingByClick = false;
+        }, 800);
       });
     });
+
+    // 捲動畫面時，自動判斷當前區段 → 切換 active tab
+    function updateActiveOnScroll() {
+      if (isScrollingByClick || sections.length === 0) return;
+
+      const subnavHeight = subnav ? subnav.offsetHeight : 0;
+      const scrollPosition = window.scrollY + subnavHeight + 40;
+
+      let currentSection = sections[0];
+
+      sections.forEach(sec => {
+        if (sec.el.offsetTop <= scrollPosition) {
+          currentSection = sec;
+        }
+      });
+
+      if (currentSection) {
+        setActiveLink(currentSection.id);
+      }
+    }
+
+    window.addEventListener('scroll', updateActiveOnScroll);
+
+    // 初始狀態：預設第一個 section 對應的 tab 啟動
+    if (sections.length > 0) {
+      setActiveLink(sections[0].id);
+    }
 
     // ============================
     // 浮動按鈕：聯絡 / 分享 / 回頂部
     // ============================
-
-    // 聯絡：直接開 LinkedIn
     const fabContact = document.getElementById('fabContact');
     if (fabContact) {
       fabContact.addEventListener('click', () => {
@@ -333,7 +409,6 @@
       });
     }
 
-    // 分享 & 回頂部：用 data-action 共用
     function handleAction(action) {
       switch (action) {
         case 'top':
@@ -343,18 +418,13 @@
         case 'share': {
           const url = window.location.href;
 
-          // 手機：優先原生分享
           if (window.innerWidth < 768 && navigator.share) {
             navigator
-              .share({
-                title: document.title,
-                url
-              })
+              .share({ title: document.title, url })
               .catch(() => {});
             return;
           }
 
-          // 桌機：複製連結 + 提示
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard
               .writeText(url)
@@ -384,6 +454,7 @@
     });
   });
 </script>
+
 
 
 
