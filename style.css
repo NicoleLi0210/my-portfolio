@@ -1782,6 +1782,92 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   padding: 10px 0;
 }
+/* ----------------------
+   工作方法論 (Framework) 樣式
+---------------------- */
+
+/* 定義顏色變數，方便日後維護 */
+:root {
+  --framework-title-bg: #fbd727; /* 標題區底色：FBD727 */
+  --framework-content-bg: #f8e483; /* 內文區底色：F8E483 */
+  --framework-text: #333333; /* 文字顏色 */
+}
+
+/* Framework Grid: 四欄並排容器 */
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 平均分配為 4 欄 */
+  gap: 20px;
+  margin: 40px auto;
+  padding: 0 15px; /* 確保內容不會緊貼邊緣 */
+}
+
+/* Framework Card: 每個步驟卡片樣式 */
+.framework-card {
+  border-radius: 8px;
+  overflow: hidden; /* 確保子元素背景不會溢出圓角 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  color: var(--framework-text);
+  text-align: left;
+  /* 設置動畫的初始狀態 (如果您的 JS 有使用) */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 針對有 .in-view 的元素應用動畫 */
+.framework-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 標題區塊 */
+.framework-title {
+  background-color: var(--framework-title-bg);
+  color: var(--framework-text);
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 15px 20px;
+  margin: 0;
+}
+
+/* 內文區塊 */
+.framework-content {
+  background-color: var(--framework-content-bg);
+  padding: 20px;
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* ----------------------
+   Framework RWD 響應式設計
+---------------------- */
+
+/* 平板 (769px - 1200px): 改為兩欄 */
+@media (max-width: 1200px) {
+  .framework-grid {
+    grid-template-columns: repeat(2, 1fr); /* 改為 2 欄 */
+    gap: 24px;
+  }
+}
+
+/* 手機 (768px 以下): 改為單欄堆疊 */
+@media (max-width: 768px) {
+  .framework-grid {
+    grid-template-columns: 1fr; /* 1 欄 */
+    gap: 20px;
+  }
+
+  .framework-title {
+    font-size: 1.1rem;
+    padding: 12px 15px;
+  }
+
+  .framework-content {
+    padding: 15px;
+  }
+}
 
 
 
