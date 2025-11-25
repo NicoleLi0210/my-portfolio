@@ -251,7 +251,7 @@
       // ============================
       // 子導覽：桌機吸頂 + 手機 MoMo 滑出
       // ============================
-      const subnav = document.getElementById('portfolioSubnav');
+            const subnav = document.getElementById('portfolioSubnav');
       let subnavOffsetTop = 0;
 
       if (subnav) {
@@ -259,7 +259,7 @@
         subnavOffsetTop = subnav.offsetTop;
       }
 
-      const THRESHOLD_MOBILE = 140;
+      const THRESHOLD_MOBILE = 140; // 手機版捲動到這個高度才開始滑出
 
       const handleScroll = () => {
         if (!subnav) return;
@@ -268,16 +268,14 @@
         const isMobile = window.innerWidth <= 768;
 
         if (isMobile) {
-          // 📱 手機：MoMo 滑出 / 收起
-          subnav.classList.remove('is-fixed'); // 手機不用吸頂 class
+          // 📱 手機：超過 140px 就滑出並固定在頂端
           if (scrollY > THRESHOLD_MOBILE) {
-            subnav.classList.add('is-visible');
+            subnav.classList.add('is-fixed');
           } else {
-            subnav.classList.remove('is-visible');
+            subnav.classList.remove('is-fixed');
           }
         } else {
           // 💻 桌機：超過原始位置就吸頂
-          subnav.classList.remove('is-visible'); // 桌機不需要 MoMo 動畫
           if (scrollY >= subnavOffsetTop) {
             subnav.classList.add('is-fixed');
           } else {
@@ -285,6 +283,7 @@
           }
         }
       };
+
 
       if (subnav) {
         handleScroll();
