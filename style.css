@@ -1786,7 +1786,6 @@ body {
 .portfolio-subnav-link:hover,
 .portfolio-subnav-link:focus-visible {
   color: #222222;
-  transform: translateY(-1px);
 }
 
 /* 底線：預設透明，hover / active 再顯示 */
@@ -1809,9 +1808,14 @@ body {
   font-weight: 800;            /* EXTRA BOLD 感覺 */
 }
 
-/* active 的底線：用 FBD727 */
-.portfolio-subnav-link.is-active::after {
-  background-color: #fbd727;   /* 粗底線顏色 */
+/* is-active：膠囊背景 */
+.portfolio-subnav-link.is-active {
+  font-weight: 700;               /* 更粗 */
+  color: #000000;                 /* 字黑 */
+  background: var(--accent-yellow);
+  padding: 6px 14px;              /* 讓膠囊更飽滿 */
+  border-radius: 20px;            /* 膠囊 */
+  position: relative;
 }
 
 
@@ -1972,6 +1976,7 @@ body.no-scroll {
   height: 100%;
   border: 0;
 }
+
 
 
 
