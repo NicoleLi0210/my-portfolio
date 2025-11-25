@@ -273,47 +273,37 @@
 
         <!-- PROTOTYPE 按鈕 -->
         <div class="mt-56">
-          <a
-            href="https://www.figma.com/proto/np7CmAfaZp0pch0sOxXhXw/Untitled?node-id=98-243&t=7Zpj6e3XBfBP2MiW-1"
-            target="_blank"
-            rel="noopener"
-            class="spec-proto-btn"
-          >
+          <a href="#" onclick="openPrototypeModal(); return false;" class="spec-proto-btn">
             PROTOTYPE
           </a>
+
         </div>
 
       </div>
     </div>
   </div>
 </section>
-
-<!-- 第三階段：Prototype 嵌入 -->
-<section id="sec-prototype" class="case-section" style="padding: 60px 0;">
-  <div class="container" style="text-align: center;">
-
-    <!-- 標題 -->
-    <h1 class="case-title" style="margin-bottom: 32px;">互動式面談 Prototype</h1>
-
-    <!-- 說明文字 -->
-    <p style="
-      font-size: 1.05rem;
-      color: #555;
-      max-width: 640px;
-      margin: 0 auto 28px;
-      line-height: 1.7;
-    ">
-      以下為面談引導流程的 Prototype，透過互動式體驗，模擬候選人在實際操作中的互動與決策過程。
-    </p>
-
-    <!-- Figma Prototype Embed -->
-    <div style="display:flex; justify-content:center; margin-top: 24px;">
-      <iframe
-        style="border: 1px solid rgba(0, 0, 0, 0.1); width: 100%; max-width: 800px; height: 450px;"
-        src="https://embed.figma.com/design/VT1J3mwIuoug5YSYqblRKV/%E8%A6%96%E8%A8%8A%E9%9D%A2%E8%AB%87?node-id=0-1&embed-host=share"
-        allowfullscreen>
-      </iframe>
+<!-- Prototype Lightbox -->
+<div id="prototypeModal" class="prototype-modal" aria-hidden="true">
+  <div class="prototype-modal-dialog">
+    <div class="prototype-modal-header">
+      <h2 class="prototype-modal-title">互動式面談 Prototype</h2>
+      <button type="button" class="prototype-modal-close" aria-label="關閉 Prototype">
+        &times;
+      </button>
     </div>
+    <div class="prototype-modal-body">
+      <div class="prototype-modal-iframe-wrap">
+        <iframe
+          src="https://embed.figma.com/proto/VT1J3mwIuoug5YSYqblRKV/%E8%A6%96%E8%A8%8A%E9%9D%A2%E8%AB%87?node-id=1-652&p=f&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&embed-host=share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
       
       <!-- 回上一頁 -->
@@ -393,7 +383,7 @@
     });
   </script>
 
-<!-- 子導覽 + 浮動按鈕行為 -->
+<!-- 子導覽 + 浮動按鈕行為 + Prototype Lightbox -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     // ============================
@@ -441,9 +431,8 @@
     const navLinks = document.querySelectorAll('.portfolio-subnav-link');
     const sections = [];
 
-    // 建立「錨點 → 對應區塊」對照
     navLinks.forEach(link => {
-      const targetId = link.getAttribute('href'); // 例如 #sec-ai-products
+      const targetId = link.getAttribute('href');
       if (!targetId || !targetId.startsWith('#')) return;
 
       const targetEl = document.querySelector(targetId);
@@ -452,7 +441,6 @@
       sections.push({ id: targetId, el: targetEl, link });
     });
 
-    // 切換哪一個 tab 是 .is-active
     function setActiveLink(targetId) {
       navLinks.forEach(link => {
         if (link.getAttribute('href') === targetId) {
@@ -462,7 +450,6 @@
         }
       });
 
-      // 讓 active tab 在橫向可滑動的 nav 裡，自動捲到視窗中央附近
       const activeLink = Array.from(navLinks).find(
         link => link.getAttribute('href') === targetId
       );
@@ -478,7 +465,6 @@
     let isScrollingByClick = false;
     let clickTimeoutId = null;
 
-    // 點 tab：平滑捲動＋切換 active
     navLinks.forEach(link => {
       link.addEventListener('click', function (e) {
         e.preventDefault();
@@ -506,14 +492,12 @@
 
         setActiveLink(targetId);
 
-        // 避免 scroll 事件在動畫過程中一直搶著改 active
         clickTimeoutId = setTimeout(() => {
           isScrollingByClick = false;
         }, 800);
       });
     });
 
-    // 捲動畫面時，自動判斷當前區段 → 切換 active tab
     function updateActiveOnScroll() {
       if (isScrollingByClick || sections.length === 0) return;
 
@@ -535,13 +519,12 @@
 
     window.addEventListener('scroll', updateActiveOnScroll);
 
-    // 初始狀態：預設第一個 section 對應的 tab 啟動
     if (sections.length > 0) {
       setActiveLink(sections[0].id);
     }
 
     // ============================
-    // 浮動按鈕：聯絡 / 分享 / 回頂部（沿用原本邏輯）
+    // 浮動按鈕：聯絡 / 分享 / 回頂部
     // ============================
     const fabContact = document.getElementById('fabContact');
     if (fabContact) {
@@ -595,8 +578,57 @@
         if (action) handleAction(action);
       });
     });
+
+    // ============================
+    // Prototype Lightbox：點 PROTOTYPE 開窗
+    // ============================
+    const prototypeBtn = document.querySelector(
+      '#sec-interactive-interview .spec-proto-btn'
+    );
+    const prototypeModal = document.getElementById('prototypeModal');
+    const prototypeClose = prototypeModal
+      ? prototypeModal.querySelector('.prototype-modal-close')
+      : null;
+
+    function openPrototypeModal() {
+      if (!prototypeModal) return;
+      prototypeModal.classList.add('is-open');
+      document.body.classList.add('no-scroll');
+    }
+
+    function closePrototypeModal() {
+      if (!prototypeModal) return;
+      prototypeModal.classList.remove('is-open');
+      document.body.classList.remove('no-scroll');
+    }
+
+    if (prototypeBtn && prototypeModal) {
+      prototypeBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        openPrototypeModal();
+      });
+    }
+
+    if (prototypeClose) {
+      prototypeClose.addEventListener('click', closePrototypeModal);
+    }
+
+    if (prototypeModal) {
+      prototypeModal.addEventListener('click', function (e) {
+        if (e.target === prototypeModal) {
+          closePrototypeModal();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        closePrototypeModal();
+      }
+    });
   });
 </script>
+
 
 
 
