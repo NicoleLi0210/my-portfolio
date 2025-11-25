@@ -1840,34 +1840,8 @@ body {
   line-height: 1.7;
 }
 
-/* ----------------------
-   Framework RWD 響應式設計
----------------------- */
 
-/* 平板 (769px - 1200px): 改為兩欄 */
-@media (max-width: 1200px) {
-  .framework-grid {
-    grid-template-columns: repeat(2, 1fr); /* 改為 2 欄 */
-    gap: 24px;
-  }
-}
 
-/* 手機 (768px 以下): 改為單欄堆疊 */
-@media (max-width: 768px) {
-  .framework-grid {
-    grid-template-columns: 1fr; /* 1 欄 */
-    gap: 20px;
-  }
-
-  .framework-title {
-    font-size: 1.1rem;
-    padding: 12px 15px;
-  }
-
-  .framework-content {
-    padding: 15px;
-  }
-}
 
 
 
