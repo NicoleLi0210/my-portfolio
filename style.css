@@ -1731,22 +1731,81 @@ body {
   width: 120%;        /* 手機還是可以撐滿寬 */
   margin: 24px auto 0;
 }
-/* 作品頁：錨點吸頂 */
+/* 作品頁：錨點吸頂 + 樣式美化 */
 .portfolio-subnav {
   position: relative;
   z-index: 50;
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
 }
 
+/* 吸頂時加一點陰影，讓它像一條獨立的 bar */
 .portfolio-subnav.is-fixed {
   position: fixed;
-  top: 0;   /* 你沒有 header 所以用 0 */
+  top: 0;
   left: 0;
   width: 100%;
   background: #ffffff;
-  border-bottom: 1px solid #eee;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  padding: 10px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
+
+/* 內層：橫向排一排，可以左右滑動 */
+.portfolio-subnav-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 1040px;         /* 跟 .container 一致 */
+  margin: 0 auto;
+  padding: 10px 16px 6px;
+  overflow-x: auto;
+  scrollbar-width: none;      /* Firefox 隱藏卷軸 */
+}
+
+/* Chrome / Safari 隱藏卷軸 */
+.portfolio-subnav-inner::-webkit-scrollbar {
+  display: none;
+}
+
+/* 單一項目：像你截圖那種扁平 tab */
+.portfolio-subnav-link,
+.portfolio-subnav-link:visited {
+  position: relative;
+  display: inline-block;
+  padding: 6px 4px 10px;
+  font-size: 0.9em;
+  color: var(--secondary-text);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+
+/* hover & focus：字變深一點、底線拉出來 */
+.portfolio-subnav-link:hover,
+.portfolio-subnav-link:focus-visible {
+  color: var(--primary-text);
+  transform: translateY(-1px);
+}
+
+/* 底線（預設透明，hover / active 顯示） */
+.portfolio-subnav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: transparent;
+  border-radius: 999px;
+  transition: background-color 0.2s ease;
+}
+
+/* 有 .is-active 的 tab + hover 狀態：顯示黃色線 */
+.portfolio-subnav-link.is-active::after,
+.portfolio-subnav-link:hover::after,
+.portfolio-subnav-link:focus-visible::after {
+  background-color: var(--accent-yellow);
+}
+
 /* ----------------------
    工作方法論 (Framework) 樣式
 ---------------------- */
@@ -1814,6 +1873,7 @@ body {
 .framework-content p:last-child {
   margin-bottom: 0;
 }
+
 
 
 
