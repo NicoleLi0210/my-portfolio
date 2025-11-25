@@ -162,50 +162,7 @@
   <!-- 子導覽 + 浮動按鈕行為 -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // ============================
-      // 子導覽：桌機吸頂 + 手機 MoMo 滑出
-      // ============================
-      const subnav = document.getElementById('portfolioSubnav');
-      let subnavOffsetTop = 0;
-
-      if (subnav) {
-        // 記住子導覽原本在頁面中的 Y 位置（hero 下面）
-        subnavOffsetTop = subnav.offsetTop;
-      }
-
-      const THRESHOLD_MOBILE = 140;
-
-      const handleScroll = () => {
-        if (!subnav) return;
-
-        const scrollY = window.scrollY;
-        const isMobile = window.innerWidth <= 768;
-
-        if (isMobile) {
-          // 📱 手機：MoMo 滑出 / 收起
-          subnav.classList.remove('is-fixed'); // 手機不用吸頂 class
-          if (scrollY > THRESHOLD_MOBILE) {
-            subnav.classList.add('is-visible');
-          } else {
-            subnav.classList.remove('is-visible');
-          }
-        } else {
-          // 💻 桌機：超過原始位置就吸頂
-          subnav.classList.remove('is-visible'); // 桌機不需要 MoMo 動畫
-          if (scrollY >= subnavOffsetTop) {
-            subnav.classList.add('is-fixed');
-          } else {
-            subnav.classList.remove('is-fixed');
-          }
-        }
-      };
-
-      if (subnav) {
-        handleScroll();
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleScroll);
-      }
-
+      
       // ============================
       // 浮動按鈕：聯絡 / 分享 / 回頂部（沿用原本的邏輯）
       // ============================
