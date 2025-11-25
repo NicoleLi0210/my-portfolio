@@ -443,18 +443,16 @@
       <img src="top.png" alt="回到頂部" />
     </button>
   </div>
-        // ============================
-      // 動畫 script
-      // ============================
+  <!-- 動畫 script -->
   <script>
-    // Page transition
+    // Page transition：頁面載入完，把過場畫面收起來
     window.addEventListener("load", () => {
       const pt = document.getElementById("page-transition");
       if (!pt) return;
       pt.classList.add("hide");
     });
 
-    // 左右滑入動畫
+    // 左右滑入動畫：區塊進入畫面時加上 in-view
     document.addEventListener("DOMContentLoaded", function () {
       const animatedElements = document.querySelectorAll(
         ".fade-in-left, .fade-in-right"
@@ -475,7 +473,10 @@
     });
   </script>
 
-        // ============================
+  <!-- 子導覽 + 浮動按鈕行為 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // ============================
       // 子導覽：桌機吸頂 + 手機 MoMo 滑出
       // ============================
       const subnav = document.getElementById('portfolioSubnav');
@@ -516,7 +517,6 @@
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleScroll);
       }
-
 
       // ============================
       // 浮動按鈕：聯絡 / 分享 / 回頂部
@@ -585,6 +585,7 @@
       });
     });
   </script>
+
 
   <footer class="footer">
     <div class="container">
