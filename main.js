@@ -325,4 +325,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+// =============================================
+// 作品頁：子導航吸頂（桌機 + 手機）
+// =============================================
+document.addEventListener("DOMContentLoaded", () => {
+  const subnav = document.getElementById("portfolioSubnav");
+  if (!subnav) return; // 沒有子導覽的頁面直接跳過
+
+  const sentinel = document.createElement("div");
+  sentinel.style.position = "absolute";
+  sentinel.style.top = `${subnav.offsetTop}px`;
+  sentinel.style.width = "100%";
+  sentinel.style.height = "1px";
+
+  subnav.parentNode.insertBefore(sentinel, subnav);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          subnav.classList.add("is-sticky");
+        } else {
+          subnav.classList.remove("is-sticky");
+        }
+      });
+    },
+    { threshold: 0 }
+  );
+
+  observer.observe(sentinel);
+});
+
+
 
