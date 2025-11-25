@@ -1804,31 +1804,12 @@ body {
 .portfolio-subnav-link:hover::after {
   width: 100%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.case-layout-full-image img {
+  display: block;
+  max-width: 860px;   /* 想多大就改這個數字，例如 720px */
+  width: 120%;        /* 手機還是可以撐滿寬 */
+  margin: 24px auto 0;
+}
 
 
 
