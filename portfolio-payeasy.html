@@ -12,7 +12,7 @@
 
 <body>
 <!-- Page Transition -->
-<div id="page-transition">
+<div id="page-transition" class="hide">
   <div class="transition-logo">PayEasy康訊數位 作品集</div>
 </div>
   <!-- 主要內容 -->
@@ -35,21 +35,17 @@
         <h1 class="portfolio-title">新功能規劃，學習釐清利害關係與對齊目標</h1>
 
         <p class="portfolio-subtitle">
-          在電商維運職中逐步建立 PM 的思維框架<br />
-          透過用戶與利害關係人訪談挖掘深層需求，避免產品流於表面功能<br />
+          在電商維運職中逐步建立 PM 的思維框架<br>
+          透過用戶與利害關係人訪談挖掘深層需求，避免產品流於表面功能<br>
           並能在真實情境評估後，果斷調整或否決不符價值的規劃，建立務實的產品判斷能力。。
         </p>        
       </section>
       <!-- 第二屏：賣貴通報｜需求深度評估 -->
       <section id="pez-section-intro" class="case-section case-section-intro">
-        <div class="case-layout case-layout-vertical">
-          <div class="case-image fade-in-left">
-          <img src="PEZ_02.png" alt="賣貴通報畫面" />
-        </div>
-        </div>
+        
         <div class="case-layout">        
           <!-- 文 -->
-          <div class="case-text fade-in-left">
+          <div class="case-text fade-in-left in-view">
             <h2 class="case-title">「賣貴通報」需求深度評估｜成功避免錯誤開發，並找出真正的產品方向</h2>          
             <div class="case-block">
               <h3>SITUATION</h3>
@@ -96,12 +92,16 @@
             </div>
           </div>
           <!-- 圖 -->
-          <div class="case-image fade-in-right">
-            <img src="PEZ_01.png" alt="flow chart" />
+          <div class="case-image fade-in-right in-view">
+            <img src="PEZ_01.png" alt="flow chart">
           </div>
 
         </div>
-      </section>
+      <div class="case-layout case-layout-vertical">
+          <div class="case-image fade-in-left in-view">
+          <img src="PEZ_02.png" alt="賣貴通報畫面">
+        </div>
+        </div></section>
 
       <!-- 回上一頁 -->
       <div class="portfolio-back">
@@ -112,39 +112,20 @@
   </main>
 
   <!-- 全站懸浮操作按鈕（作品頁版） -->
-  <div
-    id="floatingActions"
-    class="floating-actions"
-    aria-label="快速操作按鈕"
-  >
+  <div id="floatingActions" class="floating-actions" aria-label="快速操作按鈕">
     <!-- 聯絡：直接開 LinkedIn 新分頁 -->
-    <button
-      type="button"
-      class="floating-icon-btn"
-      id="fabContact"
-      aria-label="聯絡我（LinkedIn）"
-    >
-      <img src="contact.png" alt="Contact" />
+    <button type="button" class="floating-icon-btn" id="fabContact" aria-label="聯絡我（LinkedIn）">
+      <img src="contact.png" alt="Contact">
     </button>
 
     <!-- 分享：複製連結 / 原生分享 -->
-    <button
-      type="button"
-      class="floating-icon-btn"
-      data-action="share"
-      aria-label="分享這個作品集"
-    >
-      <img src="share.png" alt="Share" />
+    <button type="button" class="floating-icon-btn" data-action="share" aria-label="分享這個作品集">
+      <img src="share.png" alt="Share">
     </button>
 
     <!-- 回到頂部 -->
-    <button
-      type="button"
-      class="floating-icon-btn"
-      data-action="top"
-      aria-label="回到頂部"
-    >
-      <img src="top.png" alt="回到頂部" />
+    <button type="button" class="floating-icon-btn" data-action="top" aria-label="回到頂部">
+      <img src="top.png" alt="回到頂部">
     </button>
   </div>
 
@@ -301,6 +282,8 @@
       <p>© 2025 Nicole Li. All rights reserved.</p>
     </div>
   </footer>
+
+
 
 </body>
 </html>
