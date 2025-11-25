@@ -1251,6 +1251,9 @@ body {
 /* ===== 通用 spacing / 對齊工具 ===== */
 .mt-40 {
   margin-top: 40px;
+} 
+.mb-60 {
+  margin-bottom: 60px;
 }
 
 .img-medium {
@@ -1976,6 +1979,7 @@ body.no-scroll {
   height: 100%;
   border: 0;
 }
+
 
 
 
