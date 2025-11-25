@@ -1749,16 +1749,16 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-/* 內層：橫向排一排，可以左右滑動 */
+/* 內層：橫向排一排，可以左右滑動（保持原本可滑動效果） */
 .portfolio-subnav-inner {
   display: flex;
   align-items: center;
-  gap: 24px;
-  max-width: 1040px;         /* 跟 .container 一致 */
+  gap: 28px;                /* 間距再拉開一點 */
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 10px 16px 6px;
+  padding: 12px 18px 8px;   /* 整條 bar 字再大一點的空間 */
   overflow-x: auto;
-  scrollbar-width: none;      /* Firefox 隱藏卷軸 */
+  scrollbar-width: none;    /* Firefox 隱藏卷軸 */
 }
 
 /* Chrome / Safari 隱藏卷軸 */
@@ -1766,57 +1766,58 @@ body {
   display: none;
 }
 
-/* 單一項目：像你截圖那種扁平 tab */
+/* 單一項目：預設狀態（粗體、深灰、字稍微放大） */
 .portfolio-subnav-link,
 .portfolio-subnav-link:visited {
   position: relative;
   display: inline-block;
-  padding: 6px 4px 10px;
-  font-size: 0.9em;
-  color: var(--secondary-text);
+  padding: 8px 4px 12px;
+  font-size: 1.0em;        /* 字體放大 */
+  font-weight: 600;        /* BOLD-ish */
+  color: #3d3d3d;          /* 你指定的預設顏色 */
   text-decoration: none;
   white-space: nowrap;
-  transition: color 0.2s ease, transform 0.15s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.15s ease;
 }
 
-/* hover & focus：字變深一點、底線拉出來 */
+/* hover：稍微往上 + 顏色變深 */
 .portfolio-subnav-link:hover,
 .portfolio-subnav-link:focus-visible {
-  color: var(--primary-text);
+  color: #222222;
   transform: translateY(-1px);
 }
 
-/* 底線（預設透明，hover / active 顯示） */
+/* 底線：預設透明，hover / active 再顯示 */
 .portfolio-subnav-link::after {
   content: '';
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 2px;
+  height: 4px;                 /* 粗的、有存在感的底線 */
   background: transparent;
   border-radius: 999px;
   transition: background-color 0.2s ease;
 }
 
-/* 有 .is-active 的 tab + hover 狀態：顯示黃色線 */
-.portfolio-subnav-link.is-active::after,
-.portfolio-subnav-link:hover::after,
-.portfolio-subnav-link:focus-visible::after {
-  background-color: var(--accent-yellow);
+/* === active 樣式：被選到或目前區段 === */
+.portfolio-subnav-link.is-active,
+.portfolio-subnav-link.is-active:visited {
+  color: #c8a600;              /* 你指定的重點色 */
+  font-weight: 800;            /* EXTRA BOLD 感覺 */
 }
+
+/* active 的底線：用 FBD727 */
+.portfolio-subnav-link.is-active::after {
+  background-color: #fbd727;   /* 粗底線顏色 */
+}
+
 
 /* ----------------------
    工作方法論 (Framework) 樣式
 ---------------------- */
-
-/* 顏色變數你可以選擇搬到上面的 :root，
-   或保留這段，兩個 :root 會合併，不會壞 */
-:root {
-  --framework-title-bg: #fbd727;    /* 標題區底色：FBD727 */
-  --framework-content-bg: #f8e483;  /* 內文區底色：F8E483 */
-  --framework-text: #333333;
-}
 
 /* Grid：四欄排列，配合現有版型 */
 .framework-grid {
@@ -1873,6 +1874,7 @@ body {
 .framework-content p:last-child {
   margin-bottom: 0;
 }
+
 
 
 
