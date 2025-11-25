@@ -1766,6 +1766,23 @@ body {
   width: 120%;        /* 手機還是可以撐滿寬 */
   margin: 24px auto 0;
 }
+/* 作品頁：錨點吸頂 */
+.portfolio-subnav {
+  position: relative;
+  z-index: 50;
+}
+
+.portfolio-subnav.is-sticky {
+  position: fixed;
+  top: 0;   /* 你沒有 header 所以用 0 */
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  padding: 10px 0;
+}
+
 
 
 
