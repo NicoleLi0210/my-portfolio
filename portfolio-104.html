@@ -448,11 +448,12 @@
   <!-- 動畫 script -->
   <script>
     // Page transition：頁面載入完，把過場畫面收起來
-    window.addEventListener("load", () => {
-      const pt = document.getElementById("page-transition");
-      if (!pt) return;
-      pt.classList.add("hide");
-    });
+    document.addEventListener("DOMContentLoaded", () => {
+  const pt = document.getElementById("page-transition");
+  if (!pt) return;
+  pt.classList.add("hide");
+});
+
 
     // 左右滑入動畫：區塊進入畫面時加上 in-view
     document.addEventListener("DOMContentLoaded", function () {
