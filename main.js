@@ -355,6 +355,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   observer.observe(sentinel);
 });
+// =============================================
+// 在原本的 IntersectionObserver 程式碼中：
+// =============================================
+
+// ... 觀察到元素進入視窗時
+if (entry.isIntersecting) {
+  // 檢查是否有 data-delay 屬性
+  const delay = parseInt(entry.target.getAttribute('data-delay') || '0', 10);
+  
+  // 設置延遲
+  setTimeout(() => {
+    entry.target.classList.add("in-view");
+  }, delay);
+  
+  // 移除觀察者
+  observer.unobserve(entry.target);
+}
+// ...
 
 
 
