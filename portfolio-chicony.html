@@ -245,119 +245,146 @@
     });
   </script>
 
-  <!-- 子導覽 + 浮動按鈕行為 -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // ============================
-      // 子導覽：桌機吸頂 + 手機 MoMo 滑出
-      // ============================
-            const subnav = document.getElementById('portfolioSubnav');
-      let subnavOffsetTop = 0;
+<!-- 子導覽 + 浮動按鈕行為 + 錨點平滑捲動 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // ============================
+    // 子導覽：桌機吸頂 + 手機 MoMo 滑出
+    // ============================
+    const subnav = document.getElementById('portfolioSubnav');
+    let subnavOffsetTop = 0;
 
-      if (subnav) {
-        // 記住子導覽原本在頁面中的 Y 位置（hero 下面）
-        subnavOffsetTop = subnav.offsetTop;
-      }
+    if (subnav) {
+      // 記住子導覽原本在頁面中的 Y 位置（hero 下面）
+      subnavOffsetTop = subnav.offsetTop;
+    }
 
-      const THRESHOLD_MOBILE = 140; // 手機版捲動到這個高度才開始滑出
+    const THRESHOLD_MOBILE = 140; // 手機版捲動到這個高度才開始滑出
 
-      const handleScroll = () => {
-        if (!subnav) return;
+    const handleScroll = () => {
+      if (!subnav) return;
 
-        const scrollY = window.scrollY;
-        const isMobile = window.innerWidth <= 768;
+      const scrollY = window.scrollY;
+      const isMobile = window.innerWidth <= 768;
 
-        if (isMobile) {
-          // 📱 手機：超過 140px 就滑出並固定在頂端
-          if (scrollY > THRESHOLD_MOBILE) {
-            subnav.classList.add('is-fixed');
-          } else {
-            subnav.classList.remove('is-fixed');
-          }
+      if (isMobile) {
+        // 📱 手機：超過 140px 就滑出並固定在頂端
+        if (scrollY > THRESHOLD_MOBILE) {
+          subnav.classList.add('is-fixed');
         } else {
-          // 💻 桌機：超過原始位置就吸頂
-          if (scrollY >= subnavOffsetTop) {
-            subnav.classList.add('is-fixed');
-          } else {
-            subnav.classList.remove('is-fixed');
-          }
+          subnav.classList.remove('is-fixed');
         }
-      };
-
-
-      if (subnav) {
-        handleScroll();
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('resize', handleScroll);
-      }
-
-      // ============================
-      // 浮動按鈕：聯絡 / 分享 / 回頂部（沿用你原本的邏輯）
-      // ============================
-
-      // 聯絡：直接開 LinkedIn
-      const fabContact = document.getElementById('fabContact');
-      if (fabContact) {
-        fabContact.addEventListener('click', () => {
-          window.open(
-            'https://www.linkedin.com/in/%E6%99%8F%E6%85%88-%E6%9D%8E-183172212',
-            '_blank',
-            'noopener'
-          );
-        });
-      }
-
-      // 分享 & 回頂部：用 data-action 共用
-      function handleAction(action) {
-        switch (action) {
-          case 'top':
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            break;
-
-          case 'share': {
-            const url = window.location.href;
-
-            // 手機：優先原生分享
-            if (window.innerWidth < 768 && navigator.share) {
-              navigator
-                .share({
-                  title: document.title,
-                  url
-                })
-                .catch(() => {});
-              return;
-            }
-
-            // 桌機：複製連結 + 提示
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-              navigator.clipboard
-                .writeText(url)
-                .then(() => {
-                  alert('連結已複製，歡迎分享給對這份作品集有興趣的人。');
-                })
-                .catch(() => {
-                  prompt('無法自動複製，請手動複製這段連結：', url);
-                });
-            } else {
-              prompt('請手動複製這段連結：', url);
-            }
-            break;
-          }
-
-          default:
-            break;
+      } else {
+        // 💻 桌機：超過原始位置就吸頂
+        if (scrollY >= subnavOffsetTop) {
+          subnav.classList.add('is-fixed');
+        } else {
+          subnav.classList.remove('is-fixed');
         }
       }
+    };
 
-      const actionButtons = document.querySelectorAll('[data-action]');
-      actionButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const action = btn.getAttribute('data-action');
-          if (action) handleAction(action);
+    if (subnav) {
+      handleScroll();
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('resize', handleScroll);
+    }
+
+    // ============================
+    // 子導覽錨點：平滑捲動到區塊
+    // ============================
+    const navLinks = document.querySelectorAll('.portfolio-subnav-link');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        // 先把預設的「瞬間跳轉」關掉
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href'); // 例如 "#ems-section"
+        const targetEl = document.querySelector(targetId);
+        if (!targetEl) return;
+
+        // 計算目標區塊在整個頁面上的位置
+        const subnavHeight = subnav ? subnav.offsetHeight : 0;
+        const extraGap = 8; // 稍微留一點空白
+        const targetTop =
+          targetEl.getBoundingClientRect().top + window.scrollY - subnavHeight - extraGap;
+
+        window.scrollTo({
+          top: targetTop,
+          behavior: 'smooth'
         });
       });
     });
-  </script>
+
+    // ============================
+    // 浮動按鈕：聯絡 / 分享 / 回頂部
+    // ============================
+
+    // 聯絡：直接開 LinkedIn
+    const fabContact = document.getElementById('fabContact');
+    if (fabContact) {
+      fabContact.addEventListener('click', () => {
+        window.open(
+          'https://www.linkedin.com/in/%E6%99%8F%E6%85%88-%E6%9D%8E-183172212',
+          '_blank',
+          'noopener'
+        );
+      });
+    }
+
+    // 分享 & 回頂部：用 data-action 共用
+    function handleAction(action) {
+      switch (action) {
+        case 'top':
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          break;
+
+        case 'share': {
+          const url = window.location.href;
+
+          // 手機：優先原生分享
+          if (window.innerWidth < 768 && navigator.share) {
+            navigator
+              .share({
+                title: document.title,
+                url
+              })
+              .catch(() => {});
+            return;
+          }
+
+          // 桌機：複製連結 + 提示
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard
+              .writeText(url)
+              .then(() => {
+                alert('連結已複製，歡迎分享給對這份作品集有興趣的人。');
+              })
+              .catch(() => {
+                prompt('無法自動複製，請手動複製這段連結：', url);
+              });
+          } else {
+            prompt('請手動複製這段連結：', url);
+          }
+          break;
+        }
+
+        default:
+          break;
+      }
+    }
+
+    const actionButtons = document.querySelectorAll('[data-action]');
+    actionButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const action = btn.getAttribute('data-action');
+        if (action) handleAction(action);
+      });
+    });
+  });
+</script>
+
 
 
 
