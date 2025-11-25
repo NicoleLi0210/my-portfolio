@@ -352,36 +352,39 @@
   </div>
   
   
-  <!-- 動畫 script -->
-  <script>
-    // Page transition：頁面載入完，把過場畫面收起來
-    document.addEventListener("DOMContentLoaded", () => {
-  const pt = document.getElementById("page-transition");
-  if (!pt) return;
-  pt.classList.add("hide");
-});
+<!-- 動畫 script -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // ============================
+    // Page transition：載入完把過場畫面收起來
+    // ============================
+    const pt = document.getElementById("page-transition");
+    if (pt) {
+      pt.classList.add("hide");
+    }
 
-
+    // ============================
     // 左右滑入動畫：區塊進入畫面時加上 in-view
-    document.addEventListener("DOMContentLoaded", function () {
-      const animatedElements = document.querySelectorAll(
-        ".fade-in-left, .fade-in-right"
-      );
+    // ============================
+    const animatedElements = document.querySelectorAll(
+      ".fade-in-left, .fade-in-right"
+    );
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("in-view");
-            }
-          });
-        },
-        { threshold: 0.2 }
-      );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
 
-      animatedElements.forEach((el) => observer.observe(el));
-    });
-  </script>
+    animatedElements.forEach((el) => observer.observe(el));
+  });
+</script>
+
 
 <!-- 子導覽 + 浮動按鈕行為 + Prototype Lightbox -->
 <script>
