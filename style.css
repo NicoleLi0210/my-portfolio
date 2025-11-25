@@ -1737,7 +1737,7 @@ body {
   z-index: 50;
 }
 
-.portfolio-subnav.is-sticky {
+.portfolio-subnav.is-fixed {
   position: fixed;
   top: 0;   /* 你沒有 header 所以用 0 */
   left: 0;
@@ -1814,6 +1814,7 @@ body {
 .framework-content p:last-child {
   margin-bottom: 0;
 }
+
 
 
 
