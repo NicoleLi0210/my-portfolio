@@ -680,7 +680,7 @@ body {
 
 /* PNG 卡片本體 */
 .framework-img {
-  width: 114%;
+  width: 106%;
   height: auto;
   display: block;
   border-radius: 8px;
@@ -1782,6 +1782,7 @@ body {
   box-shadow: 0 4px 12px rgba(0,0,0,0.06);
   padding: 10px 0;
 }
+
 
 
 
