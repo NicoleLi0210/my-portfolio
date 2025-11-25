@@ -443,8 +443,9 @@
       <img src="top.png" alt="回到頂部" />
     </button>
   </div>
-
-  <!-- 動畫 script：跟群光作品頁相同 -->
+        // ============================
+      // 動畫 script
+      // ============================
   <script>
     // Page transition
     window.addEventListener("load", () => {
@@ -474,38 +475,48 @@
     });
   </script>
 
-  <!-- 子導覽 + 浮動按鈕行為：沿用群光作品頁 -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      // ============================
-      // 子導覽：手機版 MoMo 式顯示
+        // ============================
+      // 子導覽：桌機吸頂 + 手機 MoMo 滑出
       // ============================
       const subnav = document.getElementById('portfolioSubnav');
+      let subnavOffsetTop = 0;
 
       if (subnav) {
-        const THRESHOLD = 140;
+        // 記住子導覽原本在頁面中的 Y 位置（hero 下面）
+        subnavOffsetTop = subnav.offsetTop;
+      }
 
-        const handleScroll = () => {
-          const isMobile = window.innerWidth <= 768;
+      const THRESHOLD_MOBILE = 140; // 手機版捲動到這個高度才開始滑出
 
-          // 桌機：不做 MoMo 動畫，保持原本 sticky 行為
-          if (!isMobile) {
-            subnav.classList.remove('is-visible');
-            return;
-          }
+      const handleScroll = () => {
+        if (!subnav) return;
 
-          const current = window.scrollY;
-          if (current > THRESHOLD) {
-            subnav.classList.add('is-visible');
+        const scrollY = window.scrollY;
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+          // 📱 手機：超過 140px 就滑出並固定在頂端
+          if (scrollY > THRESHOLD_MOBILE) {
+            subnav.classList.add('is-fixed');
           } else {
-            subnav.classList.remove('is-visible');
+            subnav.classList.remove('is-fixed');
           }
-        };
+        } else {
+          // 💻 桌機：超過原始位置就吸頂
+          if (scrollY >= subnavOffsetTop) {
+            subnav.classList.add('is-fixed');
+          } else {
+            subnav.classList.remove('is-fixed');
+          }
+        }
+      };
 
+      if (subnav) {
         handleScroll();
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleScroll);
       }
+
 
       // ============================
       // 浮動按鈕：聯絡 / 分享 / 回頂部
