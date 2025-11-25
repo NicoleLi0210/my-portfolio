@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PayEasy康迅數位作品｜Nicole Li - Portfolio</title>
+  <title>PayEasy康訊數位作品｜Nicole Li - Portfolio</title>
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="stylesheet" href="style.css" />
@@ -11,45 +11,62 @@
 </head>
 
 <body>
+<!-- Page Transition -->
 <div id="page-transition">
-  <div class="transition-logo">PayEasy康迅數位 作品集</div>
+  <div class="transition-logo">PayEasy康訊數位 作品集</div>
 </div>
+  <!-- 主要內容 -->
   <main class="portfolio-page">
     <div class="container">
 
+      <!-- Breadcrumb -->
       <nav class="breadcrumb" aria-label="breadcrumb">
         <a href="index.html">首頁</a>
         <span class="breadcrumb-sep">／</span>
-        <span>PayEasy康迅數位</span>
+        <span>PayEasy康訊數位</span>
         <span class="breadcrumb-sep">／</span>
         <span>作品集</span>
       </nav>
 
+      <!-- Hero 第一屏 -->
       <section class="portfolio-hero">
         <p class="portfolio-eyebrow">PORTFOLIO – PayEasy</p>
 
         <h1 class="portfolio-title">新功能規劃，學習釐清利害關係與對齊目標</h1>
 
         <p class="portfolio-subtitle">
-          在電商維運職中逐步建立 PM 的思維框架
-        </p>
-        <p>透過用戶與利害關係人訪談挖掘深層需求，避免產品流於表面功能
-        </p>
-        <p>並能在真實情境評估後，果斷調整或否決不符價值的規劃，建立務實的產品判斷能力。。
+          在電商維運職中逐步建立 PM 的思維框架<br />
+          透過用戶與利害關係人訪談挖掘深層需求，避免產品流於表面功能<br />
+          並能在真實情境評估後，果斷調整或否決不符價值的規劃，建立務實的產品判斷能力。。
         </p>
 
-        </section>
-      
+        <div class="portfolio-hero-image">
+          <img src="PEZ_02.png" alt="賣貴通報畫面" />
+        </div>
+      </section>
+      <!-- 子導覽：賣貴通報 -->
+      <nav id="portfolioSubnav" class="portfolio-subnav" aria-label="章節快速導覽">
+        <div class="portfolio-subnav-inner">
+          <a href="#ems-section" class="portfolio-subnav-link">能源管理平台</a>
+          <a href="#msi-section" class="portfolio-subnav-link">微星統包案</a>
+        </div>
+      </nav>
+
+      <!-- 第二屏：能源管理平台｜產品策略調整 -->
       <section id="pez-section-intro" class="case-section case-section-intro">
-        <h2 class="case-title">「賣貴通報」需求深度評估—成功避免錯誤開發，並找出真正的產品方向</h2>
-        <div class="case-layout case-layout-horizontal">
-            
-          <div class="case-text fade-in-left">            
+        <div class="case-layout">
+          <!-- 左圖 -->
+          <div class="case-image fade-in-left">
+            <img src="PEZ_01.png" alt="flow chart" />
+          </div>
+          <!-- 右文 -->
+          <div class="case-text fade-in-right">
+            <h2 class="case-title">「賣貴通報」需求深度評估｜成功避免錯誤開發，並找出真正的產品方向</h2>          
             <div class="case-block">
               <h3>SITUATION</h3>
-              <p><strong>需求來自高層的「許願」而非用戶問題。</strong></p>
+              <p><strong>需求來自高層的許願，而非用戶問題。</strong></p>
               <p>高層提出「賣貴通報」功能，希望企業的福委會員在購物時發現商品比外部平台貴，可一鍵通報，由前線即時議價，促進福利金使用意願。</p>
-                但此流程牽涉議價速度、廠商配合度、客服進線。若未全面評估即投入，將造成極大的營運壓力。</p>
+                <p>但此流程牽涉議價速度、廠商配合度、客服進線。若未全面評估即投入，將造成極大的營運壓力。</p>
             </div>
 
             <div class="case-block">
@@ -60,26 +77,22 @@
 
             <div class="case-block">
               <h3>ACTION</h3>
-              <p><strong>採取「自行驗證、降低開發門檻、協調前置條件」的策略，逐步推進。</strong></p>
-
-              <p><strong>1. 推演實際流程與極端狀況</strong></p>
+              <p><strong>從情境推演開始落地，釐清場景</strong></p>
+              <p><strong>1.推演「賣貴通報」的實際流程與極端狀況</strong></p>
               <ul>
                 <li>使用者通報 → 採購議價 → 平台調整價格 → 回覆使用者</li>
                 <li>討論通路差異、商品價格特性、促銷期間等不同情境</li>
                 <li>評估議價時程與極端結果是否導致使用者降低滿意度</li>
               </ul>
-
-              <p><strong>2. 跨部門訪談、還原真實作業</strong></p>
+              <p><strong>2.跨部門訪談、還原真實作業</strong></p>
               <ul>
                 <li>RM：議價彈性受限於供應商條件，且需逐案等待回覆，難以支撐大量且即時的價格通報情境。</li>
                 <li>CS：多數通報最終將以「無法調整價格」結案，預期會直接推高使用者抱怨量與客服進線量。</li>
                 <li>OP/MKT：頻繁調價會削弱供應商合作意願，使商品池縮水，降低平台作為「員工福利方案」的整體競爭力與續約誘因。</li>
-                <li>核心結論：營運成本極高，且存在反效果風險。</li>
               </ul>
-
-              <p><strong>3. 找出長官真正的需求動機</strong></p>
-              <p>釐清總經理需求源自期待平台能參考市占高的電商，而非通報功能本身。</p>
-              <p>深入理解後，提出替代方案：</p>
+              <p>核心結論：營運成本極高，且存在反效果風險。</p>
+              <p><strong>找出長官真正的需求動機</strong></p>
+              <p>釐清總經理需求源自期待平台能參考市占高的電商（如momo），而非通報功能本身。 深入理解後，提出替代方案：</p>
               <ul>
                 <li>先改善用戶體驗，從介面、效能等痛點著手。</li>
                 <li>召開workshop，召集前線與開發團隊一起同理使用者，商討多元服務平台的共識，讓福委平台不再只有購物。</li>
@@ -88,36 +101,30 @@
 
             <div class="case-block">
               <h3>RESULT</h3>
-              <p><strong>成功避免錯誤開發，並讓組織看到真正該前進的方向。</strong></p>
-              <p>最終主管理解風險與評估結果，決議不將賣貴通報送進開發，同時藉由釐清「深度需求」，成功將討論從單一功能導向，轉為改善體驗與提升平台效能，導向「多元綜合服務平台」的中長期產品策略。</p>
+              <p><strong>成功避免錯誤開發，並讓組織看到真正該前進的方向</strong></p>
+              <p>最終主管理解風險與評估結果，決議不將功能送進開發，同時藉由釐清「深度需求」，成功將討論從單一功能導向，轉為改善體驗與提升平台效能，導向「多元綜合服務平台」的中長期產品策略。             
+              </p>
             </div>
           </div>
 
-          <div class="case-image fade-in-right">
-            <img src="PEZ_01.png" alt="賣貴通報需求流程圖" />
-          </div>
-
-        </div>
-        <div class="case-layout case-layout-full-image fade-in-up">
-        <img src="PEZ_02.png" alt="PayEasy 賣貴通報整體畫面示意圖" />
         </div>
       </section>
 
-          
-        </div>
-
+      <!-- 回上一頁 -->
       <div class="portfolio-back">
-        <a href="index.html" class="portfolio-back-link">← 回到首頁</a>
+        <a href="index.html##experience-payeasy" class="portfolio-back-link">← 回到康訊經歷區塊</a>
       </div>
 
     </div>
   </main>
 
+  <!-- 全站懸浮操作按鈕（作品頁版） -->
   <div
     id="floatingActions"
     class="floating-actions"
     aria-label="快速操作按鈕"
   >
+    <!-- 聯絡：直接開 LinkedIn 新分頁 -->
     <button
       type="button"
       class="floating-icon-btn"
@@ -127,6 +134,7 @@
       <img src="contact.png" alt="Contact" />
     </button>
 
+    <!-- 分享：複製連結 / 原生分享 -->
     <button
       type="button"
       class="floating-icon-btn"
@@ -136,6 +144,7 @@
       <img src="share.png" alt="Share" />
     </button>
 
+    <!-- 回到頂部 -->
     <button
       type="button"
       class="floating-icon-btn"
@@ -146,6 +155,7 @@
     </button>
   </div>
 
+  <!-- 動畫 script -->
   <script>
     window.addEventListener("load", () => {
       const pt = document.getElementById("page-transition");
@@ -157,7 +167,7 @@
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const animatedElements = document.querySelectorAll(
-        ".fade-in-left, .fade-in-right, .fade-in-up" // 新增 .fade-in-up 給獨立圖片
+        ".fade-in-left, .fade-in-right"
       );
 
       const observer = new IntersectionObserver(
@@ -175,15 +185,58 @@
     });
   </script>
 
+  <!-- 子導覽 + 浮動按鈕行為 -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // 由於沒有 portfolioSubnav 元素，子導覽的邏輯會自動跳過。
+      // ============================
+      // 子導覽：桌機吸頂 + 手機 MoMo 滑出
+      // ============================
+      const subnav = document.getElementById('portfolioSubnav');
+      let subnavOffsetTop = 0;
+
+      if (subnav) {
+        // 記住子導覽原本在頁面中的 Y 位置（hero 下面）
+        subnavOffsetTop = subnav.offsetTop;
+      }
+
+      const THRESHOLD_MOBILE = 140;
+
+      const handleScroll = () => {
+        if (!subnav) return;
+
+        const scrollY = window.scrollY;
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+          // 📱 手機：MoMo 滑出 / 收起
+          subnav.classList.remove('is-fixed'); // 手機不用吸頂 class
+          if (scrollY > THRESHOLD_MOBILE) {
+            subnav.classList.add('is-visible');
+          } else {
+            subnav.classList.remove('is-visible');
+          }
+        } else {
+          // 💻 桌機：超過原始位置就吸頂
+          subnav.classList.remove('is-visible'); // 桌機不需要 MoMo 動畫
+          if (scrollY >= subnavOffsetTop) {
+            subnav.classList.add('is-fixed');
+          } else {
+            subnav.classList.remove('is-fixed');
+          }
+        }
+      };
+
+      if (subnav) {
+        handleScroll();
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+      }
 
       // ============================
-      // 浮動按鈕：聯絡 / 分享 / 回頂部（沿用你原本的邏輯）
+      // 浮動按鈕：聯絡 / 分享 / 回頂部（沿用原本的邏輯）
       // ============================
 
-      // 聯絡：直接開 LinkedIn (保持原頁面的 URL)
+      // 聯絡：直接開 LinkedIn
       const fabContact = document.getElementById('fabContact');
       if (fabContact) {
         fabContact.addEventListener('click', () => {
@@ -246,6 +299,8 @@
       });
     });
   </script>
+
+
 
 
   <footer class="footer">
