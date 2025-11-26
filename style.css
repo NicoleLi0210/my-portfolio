@@ -1984,6 +1984,50 @@ body.no-scroll {
   height: 100%;
   border: 0;
 }
+/* 桌機：顯示大圖，隱藏手機拆圖 */
+.case-images-desktop {
+  display: block;
+}
+
+.case-images-mobile {
+  display: none;
+}
+
+/* 手機版：改用拆圖＋加大 spacing */
+@media (max-width: 768px) {
+  .case-images-desktop {
+    display: none;
+  }
+
+  .case-images-mobile {
+    display: block;
+  }
+
+  .case-images-mobile img {
+    display: block;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto 12px;
+  }
+
+  /* 上半部拆圖跟文字之間多一點空隙 */
+  .case-images-mobile-top {
+    margin-top: 32px;
+    margin-bottom: 40px;
+  }
+
+  /* 文字跟下半部拆圖之間也多一點空隙 */
+  .case-images-mobile-bottom {
+    margin-top: 40px;
+  }
+
+  /* 手機版讓這段文字多一點呼吸空間 */
+  .insight-caption {
+    margin-top: 32px !important;
+    margin-bottom: 32px !important;
+  }
+}
+
 
 
 
