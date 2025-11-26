@@ -1255,6 +1255,9 @@ body {
 .mb-60 {
   margin-bottom: 60px;
 }
+.section-gap {
+  margin-top: 96px;   /* 你可以改成 80、96 等等 */
+}
 
 .img-medium {
   display: block;
@@ -2027,6 +2030,7 @@ body.no-scroll {
     margin-bottom: 32px !important;
   }
 }
+
 
 
 
