@@ -16,7 +16,7 @@
     <div class="transition-logo">活力台灣科技 作品集</div>
   </div>
 
-  <!-- 主要內容 -->
+  <!-- 主內容 -->
   <main class="portfolio-page">
     <div class="container">
 
@@ -29,7 +29,7 @@
         <span>作品集</span>
       </nav>
 
-      <!-- Hero 第一屏 -->
+      <!-- Hero 區 -->
       <section class="portfolio-hero">
         <p class="portfolio-eyebrow">PORTFOLIO – eForce Taiwan</p>
 
@@ -58,7 +58,8 @@
 
       <!-- 第二屏：學習歷程與產出 -->
       <section class="case-section">
-        <!-- 圖片一：流程拆解圖（置中，左進） -->
+
+        <!-- 圖片一 -->
         <div class="text-center fade-in-left" style="margin-top:40px;">
           <img
             src="EF_03.png"
@@ -68,9 +69,8 @@
           />
         </div>
 
-        <!-- 圖片二：左右排（桌機）／上下排（手機） -->
+        <!-- 圖片二：左右排 -->
         <div class="case-layout" style="margin-top:64px;">
-          <!-- 左：EF_04 -->
           <div class="case-image fade-in-left">
             <img
               src="EF_04.png"
@@ -80,7 +80,6 @@
             />
           </div>
 
-          <!-- 右：EF_05 -->
           <div class="case-image fade-in-right">
             <img
               src="EF_05.png"
@@ -91,7 +90,7 @@
           </div>
         </div>
 
-        <!-- Axure Prototype 按鈕（圖片＋hover 放大） -->
+        <!-- Prototype 按鈕 -->
         <div class="portfolio-cta" style="margin-top:56px;">
           <a
             href="https://xfas7l.axshare.com"
@@ -99,15 +98,11 @@
             rel="noopener noreferrer"
             class="portfolio-button"
           >
-            <img
-              src="104_05.png"
-              loading="lazy"
-              alt="活力台灣 — 互動原型 DEMO"
-            />
+            <img src="104_05.png" loading="lazy" alt="活力台灣 — 互動原型 DEMO" />
           </a>
         </div>
 
-        <!-- 圖片三：EF_06 （置中） -->
+        <!-- 圖片三 -->
         <div class="text-center fade-in-left" style="margin-top:72px;">
           <img
             src="EF_06.png"
@@ -117,7 +112,7 @@
           />
         </div>
 
-        <!-- 專案 WBS 按鈕（沿用 PROTOTYPE 樣式） -->
+        <!-- WBS 按鈕 -->
         <div class="portfolio-cta" style="margin-top:40px;">
           <a
             href="https://docs.google.com/spreadsheets/d/1R5P07193koQng7iYsZLrBZTHDvqMrEsMi9PC4mBjX8o/edit?gid=0#gid=0"
@@ -129,58 +124,113 @@
           </a>
         </div>
       </section>
+
       <!-- 回上一頁 -->
       <div class="portfolio-back">
-        <a href="index.html#experience-104" class="portfolio-back-link">← 回到 104 經歷區塊</a>
+        <a href="index.html#experience-eforce" class="portfolio-back-link">
+          ← 回到活力台灣經歷區塊
+        </a>
       </div>
 
     </div>
   </main>
 
-  <!-- 全站懸浮操作按鈕（作品頁版） -->
-  <div
-    id="floatingActions"
-    class="floating-actions"
-    aria-label="快速操作按鈕"
-  >
-    <!-- 聯絡：直接開 LinkedIn 新分頁 -->
-    <button
-      type="button"
-      class="floating-icon-btn"
-      id="fabContact"
-      aria-label="聯絡我（LinkedIn）"
-    >
+  <!-- 懸浮按鈕 -->
+  <div id="floatingActions" class="floating-actions" aria-label="快速操作按鈕">
+    <button type="button" class="floating-icon-btn" id="fabContact" aria-label="聯絡我（LinkedIn）">
       <img src="contact.png" alt="Contact" />
     </button>
 
-    <!-- 分享：複製連結 / 原生分享 -->
-    <button
-      type="button"
-      class="floating-icon-btn"
-      data-action="share"
-      aria-label="分享這個作品集"
-    >
+    <button type="button" class="floating-icon-btn" data-action="share" aria-label="分享這個作品集">
       <img src="share.png" alt="Share" />
     </button>
 
-    <!-- 回到頂部 -->
-    <button
-      type="button"
-      class="floating-icon-btn"
-      data-action="top"
-      aria-label="回到頂部"
-    >
-      <img src="top.png" alt="回到頂部" />
+    <button type="button" class="floating-icon-btn" data-action="top" aria-label="回到頂部">
+      <img src="top.png" alt="Top" />
     </button>
   </div>
-  
-  
-<!-- 動畫 script -->
+
+  <!-- Page Transition -->
+  <script>
+    window.addEventListener("load", () => {
+      const pt = document.getElementById("page-transition");
+      if (pt) pt.classList.add("hide");
+    });
+  </script>
+
+  <!-- 動畫＋懸浮按鈕 script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      /* Intersection Observer 淡入動畫 */
+      const animatedElements = document.querySelectorAll(
+        ".fade-in-left, .fade-in-right"
+      );
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      animatedElements.forEach((el) => observer.observe(el));
+
+      /* 浮動按鈕 */
+      const fabContact = document.getElementById("fabContact");
+      if (fabContact) {
+        fabContact.addEventListener("click", () => {
+          window.open(
+            "https://www.linkedin.com/in/%E6%99%8F%E6%85%88-%E6%9D%8E-183172212",
+            "_blank",
+            "noopener"
+          );
+        });
+      }
+
+      function handleAction(action) {
+        switch (action) {
+          case "top":
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            break;
+
+          case "share":
+            const url = window.location.href;
+
+            if (window.innerWidth < 768 && navigator.share) {
+              navigator.share({ title: document.title, url }).catch(() => {});
+              return;
+            }
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard
+                .writeText(url)
+                .then(() => alert("連結已複製，歡迎分享！"))
+                .catch(() => prompt("無法自動複製，請手動複製：", url));
+            } else {
+              prompt("請手動複製這段連結：", url);
+            }
+            break;
+        }
+      }
+
+      document.querySelectorAll("[data-action]").forEach((btn) => {
+        btn.addEventListener("click", () =>
+          handleAction(btn.getAttribute("data-action"))
+        );
+      });
+    });
+  </script>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Nicole Li. All rights reserved.</p>
     </div>
-  </main>
-<script src="main.js"></script>
-</body>
-</html>
+  </footer>
 
 </body>
 </html>
