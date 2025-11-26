@@ -1352,6 +1352,11 @@ body {
   border-top: 1px solid #f0f0f0;
   text-align: left;
 }
+.insight-caption {
+  margin-top: 60px !important;
+  margin-bottom: 72px !important;
+}
+
 
 /* 讓「文字 + 圖片」整組置中、左右排列 */
 .case-layout {
@@ -1979,6 +1984,7 @@ body.no-scroll {
   height: 100%;
   border: 0;
 }
+
 
 
 
