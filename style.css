@@ -2046,6 +2046,140 @@ body.no-scroll {
 .case-block ol.case-list-numbered > li {
   margin-bottom: 6px;
 }
+/* ============================
+   Global Sitemap Footer
+============================ */
+.site-footer {
+  background: #111111;
+  color: #bbbbbb;
+  padding: 28px 0 18px;
+  font-size: 0.85em;
+  border-top: 1px solid #222222;
+  margin-top: 40px;
+}
+
+.site-footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* 左：品牌區 */
+.site-footer-brand {
+  max-width: 260px;
+}
+
+.site-footer-logo {
+  font-size: 1.05em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.site-footer-tagline {
+  margin: 0;
+  line-height: 1.6;
+  color: #aaaaaa;
+  font-size: 0.9em;
+}
+
+/* 中：Sitemap 區塊 */
+.site-footer-sitemap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  flex: 1 1 260px;
+}
+
+.site-footer-column {
+  min-width: 140px;
+}
+
+.site-footer-title {
+  margin: 0 0 8px;
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #f0f0f0;
+}
+
+.site-footer-link {
+  display: block;
+  margin: 4px 0;
+  color: #b8b8b8;
+  text-decoration: none;
+  font-size: 0.88em;
+  line-height: 1.6;
+}
+
+.site-footer-link:hover {
+  color: #ffd700;
+  text-decoration: underline;
+}
+
+/* 右：動作按鈕區 */
+.site-footer-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.site-footer-cta {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 3px;
+}
+
+.site-footer-cta:hover {
+  border-bottom-color: #ffd700;
+  color: #ffd700;
+}
+
+/* 底部小行文字 */
+.site-footer-bottom {
+  border-top: 1px solid #222222;
+  margin-top: 18px;
+  padding-top: 10px;
+}
+
+.site-footer-bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 0.8em;
+  color: #777777;
+}
+
+/* RWD：手機版 footer 排版 */
+@media (max-width: 768px) {
+  .site-footer-inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .site-footer-actions {
+    align-items: flex-start;
+  }
+
+  .site-footer-bottom-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 
 
 
